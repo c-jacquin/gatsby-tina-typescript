@@ -7,19 +7,19 @@ module.exports = {
     author: {
       name: 'Resi Respati',
       url: 'https://twitter.com/resir014',
-      email: 'resir014@gmail.com'
-    }
+      email: 'resir014@gmail.com',
+    },
   },
   plugins: [
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com'
-      }
+        siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
+      },
     },
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-react-helmet'
-  ]
-}
+    'gatsby-plugin-react-helmet',
+  ],
+};

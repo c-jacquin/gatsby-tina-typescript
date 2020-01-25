@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { Link } from 'gatsby'
+import * as React from 'react';
+import { Link } from 'gatsby';
 
-import Page from '../components/Page'
-import Container from '../components/Container'
-import IndexLayout from '../layouts'
+import Page from '../components/Page';
+import Container from '../components/Container';
+import IndexLayout from '../layouts';
 
 const IndexPage = () => (
   <IndexLayout>
@@ -16,6 +16,6 @@ const IndexPage = () => (
       </Container>
     </Page>
   </IndexLayout>
-)
+);
 
-export default IndexPage
+export default IndexPage;
