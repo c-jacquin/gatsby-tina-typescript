@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 
 import PageLayout from '../layouts/page';
 
-const IndexPage = () => (
+const IndexPage: React.FC = () => (
   <PageLayout>
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>

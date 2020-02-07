@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 
 import PageLayout from '../layouts/page';
 
-const PageTwo = () => (
+const PageTwo: React.FC = () => (
   <PageLayout>
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>

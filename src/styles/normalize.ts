@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 
-import { dimensions, fonts, colors, breakpoints } from './variables';
-import { getEmSize } from './mixins';
+import { dimensions, fonts, colors, breakpoints } from './theme';
+import getEmSize from './mixins';
 
 export default css`
   html {

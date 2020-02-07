@@ -31,7 +31,7 @@ const PageLayout: React.FC = ({ children }) => (
         }
       }
     `}
-    render={({ site }: StaticQueryProps) => (
+    render={({ site }: StaticQueryProps): JSX.Element => (
       <Root>
         <Helmet
           title={site.siteMetadata.title}

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { transparentize } from 'polished';
 import { Link } from 'gatsby';
 
-import { heights, dimensions, colors } from '../styles/variables';
+import { heights, dimensions, colors } from '../styles/theme';
 
 export const Root = styled.div`
   display: flex;
