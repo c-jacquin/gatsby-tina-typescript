@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "start": "gatsby develop",
+    "commit": "git-cz",
     "prebuild": "rimraf public",
     "build": "gatsby build",
     "deploy": "yarn build --prefix-paths && gh-pages -d public",
@@ -29,6 +30,11 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",
@@ -60,6 +66,8 @@
     "@types/react-helmet": "^5.0.8",
     "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@typescript-eslint/parser": "^2.6.0",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "3.1.0",
     "eslint": "^6.6.0",
     "eslint-config-blvd": "^1.0.0",
     "eslint-config-prettier": "^6.5.0",
