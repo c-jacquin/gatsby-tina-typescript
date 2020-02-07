@@ -1,26 +1,34 @@
 {
-  "name": "gatsby-starter-typescript-plus",
-  "description": "A starter kit for TypeScript-based Gatsby projects with sensible defaults.",
-  "version": "1.0.0",
+  "name": "simple-site-tonkar",
+  "description": "Le site vitrine pour tonkar.",
+  "version": "0.0.0",
   "private": true,
-  "author": "Resi Respati <resir014@gmail.com>",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
   "scripts": {
+    "start": "gatsby develop",
+    "prebuild": "rimraf public",
     "build": "gatsby build",
-    "clean": "rimraf public",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "dev": "gatsby develop",
-    "lint": "eslint 'src/**/*.{ts,tsx}' --fix",
-    "start": "npm run dev",
-    "test": "npm run type-check && npm run lint",
-    "type-check": "tsc"
+    "deploy": "yarn build --prefix-paths && gh-pages -d public",
+    "lint": "eslint 'src/**/*.{ts,tsx}' --fix"
   },
-  "engines": {
-    "node": ">=8.0.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charjac/site_tonkar.git"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts, tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",
@@ -34,10 +42,9 @@
     "gatsby-plugin-react-helmet": "^3.1.0",
     "gatsby-plugin-sharp": "^2.2.1",
     "gatsby-plugin-typescript": "^2.1.0",
+    "gh-pages": "^2.2.0",
     "modern-normalize": "^0.5.0",
-    "normalize.css": "^8.0.1",
     "polished": "^3.4.1",
-    "prismjs": "^1.16.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
@@ -57,7 +64,6 @@
     "eslint-config-blvd": "^1.0.0",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-prettier": "^3.1.1",
-    "gh-pages": "^2.0.1",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.2",
     "prettier": "^1.18.2",
