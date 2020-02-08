@@ -1,25 +1,49 @@
+const SITE_URL = 'http://example.com';
+
 module.exports = {
   siteMetadata: {
-    title: 'gatsby-starter-typescript-plus',
-    description: 'A starter kit for TypeScript-based Gatsby projects with sensible defaults.',
-    keywords: 'gatsbyjs, gatsby, javascript, sample, something',
-    siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
-    author: {
-      name: 'Resi Respati',
-      url: 'https://twitter.com/resir014',
-      email: 'resir014@gmail.com',
-    },
+    siteUrl: SITE_URL,
   },
   plugins: [
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
+        siteUrl: SITE_URL,
       },
     },
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
+    'gatsby-tinacms-json',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/data`,
+        name: 'data',
+      },
+    },
+    'gatsby-transformer-json',
+    {
+      resolve: 'gatsby-plugin-tinacms',
+      options: {
+        sidebar: {
+          hidden: process.env.NODE_ENV === 'production',
+        },
+        plugins: [
+          'gatsby-tinacms-json',
+          {
+            resolve: 'gatsby-tinacms-git',
+            options: {
+              pathToRepo: __dirname,
+              defaultCommitMessage: `chore(cms): Edited with TinaCMS`,
+              defaultCommitName: 'TinaCMS',
+              defaultCommitEmail: 'git@tinacms.org',
+              pushOnCommit: false,
+            },
+          },
+        ],
+      },
+    },
   ],
 };

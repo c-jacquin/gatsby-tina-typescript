@@ -1,15 +1,49 @@
+import { Link, graphql } from 'gatsby';
+import { useLocalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
-import { Link } from 'gatsby';
 
+import { errorFormConfig } from '../@cms/form-config';
 import PageLayout from '../layouts/page';
 
-const NotFoundPage: React.FC = () => (
-  <PageLayout>
-    <h1>404: Page not found.</h1>
-    <p>
-      You&apos;ve hit the void. <Link to="/">Go back.</Link>
-    </p>
-  </PageLayout>
-);
+interface NotFoundProps {
+  data: {
+    errorJson: {
+      title: string;
+      message: string;
+      rawJson: string;
+      fileRelativePath: string;
+      id: string;
+    };
+  };
+}
+
+const NotFoundPage: React.FC<NotFoundProps> = ({ data }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [values] = useLocalJsonForm(data.errorJson, errorFormConfig) as any;
+
+  if (!values) return null;
+
+  return (
+    <PageLayout>
+      <h1>{values.title}</h1>
+      <p>
+        {values.message} <Link to="/">{values.link}</Link>
+      </p>
+    </PageLayout>
+  );
+};
+
+export const pageQuery = graphql`
+  query NotFoundQuery {
+    errorJson {
+      title
+      message
+      link
+      rawJson
+      fileRelativePath
+      id
+    }
+  }
+`;
 
 export default NotFoundPage;

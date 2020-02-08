@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
-import { transparentize } from 'polished';
 import { Link } from 'gatsby';
+import { transparentize } from 'polished';
 
 import { heights, dimensions, colors } from '../styles/theme';
+
+/* === Layout === */
 
 export const Root = styled.div`
   display: flex;
@@ -15,6 +17,8 @@ export const Main = styled.main`
   padding: ${dimensions.containerPadding}rem;
   margin-bottom: 3rem;
 `;
+
+/* === Header === */
 
 export const HeaderContainer = styled.header`
   height: ${heights.header}px;

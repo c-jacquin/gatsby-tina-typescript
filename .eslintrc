@@ -14,6 +14,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module",
     "project": "tsconfig.json",
+
     "ecmaFeatures": {
       "jsx": true
     }
@@ -23,7 +24,9 @@
       "version": "detect"
     }
   },
+  "ignorePatterns": ["gatsby-config.js"],
   "rules": {
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "@typescript-eslint/explicit-function-return-type": 0
   }
 }

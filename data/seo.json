@@ -1,0 +1,12 @@
+{
+  "title": "C'est un titre",
+  "description": "I describe the website",
+  "keywords": [
+    {
+      "label": "keyword"
+    },
+    {
+      "label": "gatsby"
+    }
+  ]
+}
