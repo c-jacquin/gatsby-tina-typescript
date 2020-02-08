@@ -1,4 +1,4 @@
-const SITE_URL = 'http://example.com';
+const SITE_URL = 'http://cameroonmusicbusiness.com';
 
 module.exports = {
   siteMetadata: {
@@ -36,7 +36,7 @@ module.exports = {
             resolve: 'gatsby-tinacms-git',
             options: {
               pathToRepo: __dirname,
-              defaultCommitMessage: `chore(cms): Edited with TinaCMS`,
+              defaultCommitMessage: 'chore(cms): Edited with TinaCMS',
               defaultCommitName: 'TinaCMS',
               defaultCommitEmail: 'git@tinacms.org',
               pushOnCommit: false,

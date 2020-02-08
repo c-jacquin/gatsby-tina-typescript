@@ -17,8 +17,8 @@ export const seoFormConfig = {
       name: 'rawJson.keywords',
       description: 'A list of keywords corresponding to your site (not used by search engine)',
       component: 'group-list',
-      itemProps: (item: { label: string }) => ({
-        key: item,
+      itemProps: (item: { label: string }, idx: number) => ({
+        key: idx,
         label: item.label,
       }),
       defaultItem: () => ({

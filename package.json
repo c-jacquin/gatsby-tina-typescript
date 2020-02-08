@@ -1,14 +1,13 @@
 {
-  "name": "simple-site-tonkar",
-  "description": "Le site vitrine pour tonkar.",
+  "name": "cameroon-music-business",
+  "description": "cameroonbusiness.com website",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "gatsby develop",
-    "commit": "git-cz",
     "build": "gatsby build",
-    "deploy": "yarn build --prefix-paths && gh-pages -d public",
-    "lint": "eslint 'src/**/*.{ts,tsx}' --fix"
+    "commit": "git-cz",
+    "lint": "eslint 'src/**/*.{ts,tsx}' --fix",
+    "start": "gatsby develop"
   },
   "repository": {
     "type": "git",
@@ -33,7 +32,6 @@
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "babel-plugin-styled-components": "^1.10.7",
-    "classnames": "^2.2.6",
     "gatsby": "^2.19.12",
     "gatsby-image": "^2.2.40",
     "gatsby-plugin-canonical-urls": "^2.1.20",
@@ -47,7 +45,6 @@
     "gatsby-tinacms-git": "^0.2.18",
     "gatsby-tinacms-json": "^0.8.6",
     "gatsby-transformer-json": "^2.2.26",
-    "gh-pages": "^2.2.0",
     "modern-normalize": "^0.6.0",
     "polished": "^3.4.4",
     "react": "^16.12.0",
@@ -57,9 +54,6 @@
     "typescript": "^3.7.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
     "@types/react-helmet": "^5.0.15",
@@ -77,7 +71,6 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.7",
-    "prettier": "^1.19.1",
-    "rimraf": "^3.0.1"
+    "prettier": "^1.19.1"
   }
 }

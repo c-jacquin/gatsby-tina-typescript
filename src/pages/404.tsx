@@ -19,7 +19,7 @@ interface NotFoundProps {
 
 const NotFoundPage: React.FC<NotFoundProps> = ({ data }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [values] = useLocalJsonForm(data.errorJson, errorFormConfig) as any;
+  const [values]: any = useLocalJsonForm(data.errorJson, errorFormConfig);
 
   if (!values) return null;
 
