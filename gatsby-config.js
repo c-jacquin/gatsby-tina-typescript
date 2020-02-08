@@ -11,11 +11,11 @@ module.exports = {
         siteUrl: SITE_URL,
       },
     },
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-tinacms-json',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
