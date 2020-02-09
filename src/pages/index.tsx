@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import { useLocalJsonForm } from 'gatsby-tinacms-json';
 
 import PageLayout from '../layouts/page';
-import { indexFormConfig } from '../@cms/form-config';
+import indexFormConfig from '../@cms/form/index-page';
 
 interface IndexProps {
   data: {
@@ -25,7 +25,6 @@ const IndexPage: React.FC<IndexProps> = ({ data }) => {
   return (
     <PageLayout>
       <p>{values.hello}</p>
-      <Link to="/page-2/">{values.message}</Link>
     </PageLayout>
   );
 };

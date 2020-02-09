@@ -1,0 +1,30 @@
+{
+  "seo": {
+    "appName": "",
+    "author": "",
+    "copyright": "",
+    "description": "I describe the website",
+    "keywords": [
+      {
+        "label": "keyword"
+      },
+      {
+        "label": "gatsby"
+      }
+    ],
+    "title": "C'est un titre"
+  },
+  "facebook": {
+    "description": "",
+    "image": "/assets/images/51153974_799500630400551_2449496857672417280_n.jpg",
+    "title": "",
+    "type": "article",
+    "url": ""
+  },
+  "twitter": {
+    "card": "summary",
+    "description": "",
+    "image": "",
+    "title": ""
+  }
+}

@@ -1,4 +1,7 @@
+const path = require('path');
+
 const SITE_URL = 'http://cameroonmusicbusiness.com';
+const IS_PROD = process.env.NODE_ENV === 'production';
 
 module.exports = {
   siteMetadata: {
@@ -14,12 +17,20 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
-    'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/data`,
+        path: path.join(__dirname, 'assets', 'images'),
+        name: 'images',
+      },
+    },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: path.join(__dirname, 'data'),
         name: 'data',
       },
     },
@@ -28,7 +39,7 @@ module.exports = {
       resolve: 'gatsby-plugin-tinacms',
       options: {
         sidebar: {
-          hidden: process.env.NODE_ENV === 'production',
+          hidden: IS_PROD,
         },
         plugins: [
           'gatsby-tinacms-json',

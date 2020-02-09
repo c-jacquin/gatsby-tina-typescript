@@ -13,8 +13,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": false,
-    "preserveConstEnums": true
+    "preserveConstEnums": true,
+    "resolveJsonModule": true
   },
   "include": ["./src/**/*"],
-  "exclude": ["gatsby-config.js"]
+  "exclude": ["gatsby-config.js", "gatsby-node.js"]
 }

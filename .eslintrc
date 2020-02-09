@@ -24,7 +24,7 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": ["gatsby-config.js"],
+  "ignorePatterns": ["gatsby-config.js", "gatsby-node.js"],
   "rules": {
     "react/prop-types": 0,
     "@typescript-eslint/explicit-function-return-type": 0

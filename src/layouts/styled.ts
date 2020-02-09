@@ -1,8 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { transparentize } from 'polished';
-
-import { heights, dimensions, colors } from '../styles/theme';
 
 /* === Layout === */
 
@@ -14,17 +13,16 @@ export const Root = styled.div`
 
 export const Main = styled.main`
   position: relative;
-  padding: ${dimensions.containerPadding}rem;
+  padding: ${({ theme }: any) => theme.dimensions.containerPadding}rem;
   margin-bottom: 3rem;
 `;
 
 /* === Header === */
 
 export const HeaderContainer = styled.header`
-  height: ${heights.header}px;
-  padding: 0 ${dimensions.containerPadding}rem;
-  background-color: ${colors.brand};
-  color: ${transparentize(0.5, colors.white)};
+  height: ${({ theme }: any) => theme.dimensions.heights.header}px;
+  padding: 0 ${({ theme }: any) => theme.dimensions.containerPadding}rem;
+  background-color: ${({ theme }: any) => theme.colors.primary};
 `;
 
 export const HeaderInner = styled.div`
@@ -35,7 +33,7 @@ export const HeaderInner = styled.div`
 `;
 
 export const HomepageLink = styled(Link)`
-  color: ${colors.white};
+  color: ${({ theme }: any) => transparentize(0.5, theme.colors.white)};
   font-size: 1.5rem;
   font-weight: 600;
 

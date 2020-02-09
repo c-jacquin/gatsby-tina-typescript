@@ -1,0 +1,58 @@
+{
+  "colors": {
+    "primary": "#663399",
+    "secondary": "#9d7cbf",
+    "accent": "#ffb238",
+    "success": "#37b635",
+    "warning": "#ec1818",
+    "ui": {
+      "bright": "#e0d6eb",
+      "light": "#f5f3f7",
+      "whisper": "#fbfafc"
+    },
+    "code": "#fcf6f0",
+    "gray": {
+      "dark": "#9a9a9a",
+      "calm": "#c1c1c1"
+    },
+    "white": "#fff",
+    "black": "#000"
+  },
+  "dimensions": {
+    "breakpoints": {
+      "xs": 0,
+      "sm": 576,
+      "md": 768,
+      "lg": 992,
+      "xl": 1200
+    },
+    "widths": {
+      "md": 720,
+      "lg": 960,
+      "xl": 1140
+    },
+    "fontSize": {
+      "regular": 16,
+      "large": 18
+    },
+    "headingSizes": {
+      "h1": 2.441,
+      "h2": 1.953,
+      "h3": 1.563,
+      "h4": 1.25
+    },
+    "lineHeight": {
+      "regular": 1.45,
+      "heading": 1.2
+    },
+    "containerPadding": 1.5,
+    "heights": {
+      "header": 60
+    }
+  },
+  "fonts": {
+    "sansSerif": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", Arial, sans-serif",
+    "serif": "Georgia, \"Times New Roman\", Times, serif",
+    "monospace": "Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace, monospace"
+  }
+}
