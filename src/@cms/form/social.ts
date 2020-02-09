@@ -1,4 +1,4 @@
-import commonForm from './common';
+import _ from 'lodash';
 
 const socialForm = {
   fields: [
@@ -31,9 +31,15 @@ const socialForm = {
       name: 'rawJson.facebook.image',
       description: 'The thumbnail of facebook share widget',
       component: 'image',
-      ...commonForm.image,
+      parse: (filename: string) => `/assets/images/facebook-share${filename.split('.')[0]}`,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      previewSrc: (formValues: any, { input }: any) => {
+        return _.get(formValues, input.name);
+      },
+      uploadDir: () => {
+        return '/assets/images/';
+      },
     },
-
     {
       label: 'Twitter title',
       name: 'rawJson.twitter.title',
@@ -57,7 +63,14 @@ const socialForm = {
       name: 'rawJson.twitter.image',
       description: 'The thumbnail of twitter share widget',
       component: 'image',
-      ...commonForm.image,
+      parse: (filename: string) => `/assets/images/facebook-share${filename.split('.')[0]}`,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      previewSrc: (formValues: any, { input }: any) => {
+        return _.get(formValues, input.name);
+      },
+      uploadDir: () => {
+        return '/assets/images/';
+      },
     },
   ],
 };

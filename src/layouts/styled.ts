@@ -29,6 +29,7 @@ export const HeaderInner = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   height: 100%;
 `;
 
@@ -36,6 +37,7 @@ export const NavigationLink = styled(Link)`
   color: ${({ theme }: any) => transparentize(0.5, theme.colors.white)};
   font-size: 1.5rem;
   font-weight: 600;
+  margin: 0 5px;
 
   &:hover,
   &:focus {
