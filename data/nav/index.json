@@ -1,0 +1,12 @@
+{
+  "header": [
+    {
+      "label": "Contact",
+      "path": "/contact"
+    },
+    {
+      "label": "Acceuil",
+      "path": "/"
+    }
+  ]
+}

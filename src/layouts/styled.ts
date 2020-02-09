@@ -32,7 +32,7 @@ export const HeaderInner = styled.div`
   height: 100%;
 `;
 
-export const HomepageLink = styled(Link)`
+export const NavigationLink = styled(Link)`
   color: ${({ theme }: any) => transparentize(0.5, theme.colors.white)};
   font-size: 1.5rem;
   font-weight: 600;
