@@ -40,6 +40,7 @@ module.exports = {
       options: {
         sidebar: {
           hidden: IS_PROD,
+          position: 'displace',
         },
         plugins: [
           'gatsby-tinacms-json',

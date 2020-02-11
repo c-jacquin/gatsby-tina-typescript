@@ -20,8 +20,8 @@ const IndexPage: React.FC<IndexProps> = ({ data }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [values] = useLocalJsonForm(data.indexJson, indexFormConfig) as any;
 
+  console.log('render');
   if (!values) return null;
-
   return (
     <PageLayout>
       <p>{values.hello}</p>
@@ -30,10 +30,9 @@ const IndexPage: React.FC<IndexProps> = ({ data }) => {
 };
 
 export const pageQuery = graphql`
-  query DataQuery {
+  query IndexPageQuery {
     indexJson {
       hello
-      message
       rawJson
       fileRelativePath
     }

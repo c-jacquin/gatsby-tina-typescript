@@ -6,12 +6,6 @@ const indexPageForm = {
       description: 'Just the basic hello world !',
       component: 'text',
     },
-    {
-      label: 'Message',
-      name: 'rawJson.message',
-      description: 'Dead end...',
-      component: 'text',
-    },
   ],
 };
 

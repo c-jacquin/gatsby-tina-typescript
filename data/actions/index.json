@@ -1,0 +1,13 @@
+{
+  "title": "",
+  "actions": [
+    {
+      "image": "IMG_20190301_103758.jpg",
+      "title": "une action de fou",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend varius nisl placerat dignissim. Aenean elit est, congue vel arcu quis, accumsan tincidunt elit. Ut non mattis nisl. Curabitur posuere turpis neque, et volutpat risus convallis at. Nunc id tellus nulla. Curabitur dapibus pellentesque libero, interdum feugiat neque. Pellentesque maximus, massa nec faucibus pellentesque, nisl metus tincidunt leo, et fermentum quam elit tincidunt odio. Donec facilisis et libero id hendrerit. Vivamus ultrices quam nulla, non aliquam justo sagittis in. Phasellus posuere turpis non enim tincidunt auctor. Sed commodo consequat nunc, vitae ultrices enim sollicitudin eget.",
+      "city": "Un patelin",
+      "place": "Salle des fêtes",
+      "date": "2020-02-19T00:00:00.000Z"
+    }
+  ]
+}

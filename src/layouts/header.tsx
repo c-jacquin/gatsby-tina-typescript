@@ -27,7 +27,9 @@ const Header: React.FC = () => {
     <HeaderContainer>
       <HeaderInner>
         {header.map(({ path, label }: any) => (
-          <NavigationLink to={path}>{label}</NavigationLink>
+          <NavigationLink key={path} to={path}>
+            {label}
+          </NavigationLink>
         ))}
       </HeaderInner>
     </HeaderContainer>
