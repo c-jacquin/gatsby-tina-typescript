@@ -1,4 +1,20 @@
 {
-  "hello": "it works yo",
-  "sections": [{}]
+  "sections": [
+    {
+      "_template": "TitleBlock",
+      "title": "Home Page"
+    },
+    {
+      "_template": "BannerBlock",
+      "image": "smarties.jpg",
+      "parallax": "0.5",
+      "height": "200px",
+      "title": "Smarties"
+    },
+    {
+      "_template": "ContentBlock",
+      "style": ".roro {\n    width: 40px;\n}\n",
+      "content": "### fooofofrofroe\n\n* tototo\n* sfsdf\n* sfd\n* sfdfsdf\n* sfdsf\n* sfdf\n* sdf\n* "
+    }
+  ]
 }

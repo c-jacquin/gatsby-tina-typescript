@@ -13,7 +13,6 @@ export const Root = styled.div`
 
 export const Main = styled.main`
   position: relative;
-  padding: ${({ theme }: any) => theme.dimensions.containerPadding}rem;
   margin-bottom: 3rem;
 `;
 
@@ -21,7 +20,7 @@ export const Main = styled.main`
 
 export const HeaderContainer = styled.header`
   height: ${({ theme }: any) => theme.dimensions.heights.header}px;
-  padding: 0 ${({ theme }: any) => theme.dimensions.containerPadding}rem;
+  padding: 0 ${({ theme }: any) => theme.dimensions.containerPadding};
   background-color: ${({ theme }: any) => theme.colors.primary};
 `;
 

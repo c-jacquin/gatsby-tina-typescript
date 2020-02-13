@@ -1,10 +1,10 @@
+import commonForm from './common';
+
 const indexPageForm = {
   fields: [
     {
-      label: 'Hello',
-      name: 'rawJson.hello',
-      description: 'Just the basic hello world !',
-      component: 'text',
+      ...commonForm.pageBlocks,
+      label: 'Main Sections',
     },
   ],
 };

@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { useGlobalJsonForm } from 'gatsby-tinacms-json';
 import _ from 'lodash';
 import React from 'react';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 import Helmet from 'react-helmet';
 import seoFormConfig from '../@cms/form/seo';
@@ -97,32 +98,34 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, meta = [], title }) =
   const twitterImage = edges.find(({ node: { relativePath } }) => relativePath === twitter.image)?.node.childImageSharp.fixed.src;
 
   return (
-    <ThemeProvider>
-      <Root>
-        <Helmet
-          title={title || seo.title}
-          meta={[
-            { name: 'description', content: seo.description },
-            { name: 'keywords', content: seo.keywords.map(({ label }: Keyword) => label).join(',') },
+    <ParallaxProvider>
+      <ThemeProvider>
+        <Root>
+          <Helmet
+            title={title || seo.title}
+            meta={[
+              { name: 'description', content: seo.description },
+              { name: 'keywords', content: seo.keywords.map(({ label }: Keyword) => label).join(',') },
 
-            { name: 'twitter:card', content: twitter.card },
-            { name: 'twitter:url', content: twitter.url },
-            { name: 'twitter:title', content: twitter.title },
-            { name: 'twitter:description', content: twitter.description },
-            { name: 'twitter:image', content: twitterImage || facebookImage },
+              { name: 'twitter:card', content: twitter.card },
+              { name: 'twitter:url', content: twitter.url },
+              { name: 'twitter:title', content: twitter.title },
+              { name: 'twitter:description', content: twitter.description },
+              { name: 'twitter:image', content: twitterImage || facebookImage },
 
-            { name: 'og:url', content: facebook.url },
-            { name: 'og:type', content: facebook.type },
-            { name: 'og:title', content: facebook.title },
-            { name: 'og:description', content: facebook.description },
-            { name: 'og:image', content: facebookImage || twitterImage },
-            ...meta,
-          ]}
-        />
-        <Header />
-        <Main>{children}</Main>
-      </Root>
-    </ThemeProvider>
+              { name: 'og:url', content: facebook.url },
+              { name: 'og:type', content: facebook.type },
+              { name: 'og:title', content: facebook.title },
+              { name: 'og:description', content: facebook.description },
+              { name: 'og:image', content: facebookImage || twitterImage },
+              ...meta,
+            ]}
+          />
+          <Header />
+          <Main>{children}</Main>
+        </Root>
+      </ThemeProvider>
+    </ParallaxProvider>
   );
 };
 

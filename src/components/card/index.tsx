@@ -1,7 +1,8 @@
 import React from 'react';
 import { Converter } from 'showdown';
 
-import { CardBody, CardImage, CardWrapper, CardTitle } from './styled';
+import { CardImage, CardWrapper, CardTitle, CardBody } from './styled';
+import { getThumbnail } from '../../helpers/thumbnail';
 
 const converter = new Converter();
 
@@ -14,7 +15,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ image, title, content, files }) => {
-  const thumbnail = files.find(({ node }) => node.relativePath === image).node.childImageSharp.fluid.src;
+  const thumbnail = getThumbnail(files, image);
 
   return (
     <CardWrapper>

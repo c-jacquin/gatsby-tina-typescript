@@ -43,6 +43,11 @@ const actionsPageForm = {
           component: 'markdown',
         },
         {
+          label: 'style',
+          name: 'style',
+          component: 'css',
+        },
+        {
           label: 'City',
           name: 'city',
           component: 'text',

@@ -27,6 +27,7 @@ module.exports = {
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-tinacms-json',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -43,7 +44,6 @@ module.exports = {
           position: 'displace',
         },
         plugins: [
-          'gatsby-tinacms-json',
           {
             resolve: 'gatsby-tinacms-git',
             options: {
