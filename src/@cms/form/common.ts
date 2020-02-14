@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import _ from 'lodash';
 
+import { getThumbnail } from '../../helpers/thumbnail';
+
 const commonImageForm = {
   parse: (filename: string) => filename,
   previewSrc: (formValues: any, { input }: any) => {
-    const imagePath = _.get(formValues, input.name);
-
-    return formValues.jsonNode?.files?.find(({ node: { relativePath } }: any) => {
-      return relativePath === imagePath;
-    })?.node.childImageSharp.fluid.src;
+    return getThumbnail(formValues.jsonNode?.files || [], _.get(formValues, input.name));
   },
   uploadDir: () => '/assets/images/',
 };

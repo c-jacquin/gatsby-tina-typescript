@@ -21,25 +21,39 @@ export const Main = styled.main`
 export const HeaderContainer = styled.header`
   height: ${({ theme }: any) => theme.dimensions.heights.header}px;
   padding: 0 ${({ theme }: any) => theme.dimensions.containerPadding};
-  background-color: ${({ theme }: any) => theme.colors.primary};
+  background-color: ${({ color }: any) => color};
+  display: flex;
 `;
 
-export const HeaderInner = styled.div`
+export const Navbar = styled.nav`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   height: 100%;
+  margin-left: 20px;
 `;
 
-export const NavigationLink = styled(Link)`
-  color: ${({ theme }: any) => transparentize(0.5, theme.colors.white)};
+export const NavigationLink = styled(Link)<{ activeColor?: string; color?: string }>`
+  color: ${({ color, theme }: any) => transparentize(0.5, color || theme.colors.white)};
   font-size: 1.5rem;
   font-weight: 600;
-  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 
   &:hover,
   &:focus {
     text-decoration: none;
+    background-color: ${({ activeColor }: any) => (activeColor ? transparentize(0.9, activeColor) : 'inherit')};
   }
+
+  &[aria-current='page'] {
+    background-color: ${({ activeColor }: any) => (activeColor ? transparentize(0.7, activeColor) : 'inherit')};
+  }
+`;
+
+export const HeaderLogo = styled.img`
+  height: ${({ theme }: any) => theme.dimensions.heights.header}px;
 `;

@@ -1,5 +1,12 @@
 {
-  "header": [
+  "linkSpace": "50px",
+  "color": "#CACCC9",
+  "activeLinkColor": "#ACA7A7",
+  "fontSize": "1.5em",
+  "backgroundColor": "#4A4A4A",
+  "logo": "logo-big.png",
+  "withLogo": true,
+  "links": [
     {
       "label": "Acceuil",
       "path": "/"

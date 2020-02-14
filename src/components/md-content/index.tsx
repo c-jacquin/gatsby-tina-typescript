@@ -14,7 +14,7 @@ interface MdContentProps {
 
 const MdContent: React.FC<MdContentProps> = ({ markdown, style, wrapperStyle }) => (
   <>
-    <Global styles={{}} css={{ css: style }} />
+    <Global styles={style} />
     <MdWrapper style={wrapperStyle} dangerouslySetInnerHTML={{ __html: converter.makeHtml(markdown) }} />
   </>
 );
