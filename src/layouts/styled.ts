@@ -4,6 +4,9 @@ import { Link } from 'gatsby';
 import { transparentize } from 'polished';
 import Burger from '@animated-burgers/burger-squeeze';
 
+import { SCROLL_DIRECTION } from '../hooks/useScroll';
+import { Theme } from '../styles/theme';
+
 /* === Layout === */
 
 export const Root = styled.div`
@@ -12,22 +15,48 @@ export const Root = styled.div`
   min-height: 100vh;
 `;
 
-export const Main = styled.main`
-  position: relative;
-  margin-bottom: 3rem;
-`;
+export const Main = styled.main(({ theme }: any) => ({
+  position: 'relative',
+  marginBottom: '3rem',
+  marginTop: theme.dimensions.heights.headerMobile,
+
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    marginTop: theme.dimensions.heights.header,
+  },
+}));
 
 /* === Header === */
 
-export const HeaderContainer = styled.header(({ theme, color }: any) => ({
-  padding: `0 ${theme.dimensions.containerPadding}`,
-  backgroundColor: color,
-  height: '45px',
-  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
-    height: `${theme.dimensions.heights.header}px`,
-    display: 'flex',
-  },
-}));
+function getHeaderTransform(isTop: boolean, scrollDirection: SCROLL_DIRECTION | null, theme: Theme) {
+  if (isTop) {
+    return '';
+  }
+  switch (scrollDirection) {
+    case SCROLL_DIRECTION.DOWN:
+      return `translateY(-${theme.dimensions.heights.header}px)`;
+    default:
+      return '';
+  }
+}
+
+export const HeaderContainer = styled.header<{ isTop: boolean; scrollDirection?: SCROLL_DIRECTION | null }>(
+  ({ theme, color, isTop, scrollDirection }: any): any => ({
+    padding: `0 ${theme.dimensions.containerPadding}`,
+    backgroundColor: color,
+    height: `${theme.dimensions.heights.headerMobile}px`,
+    transition: 'transform 0.3s linear',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    zIndex: 1,
+    transform: getHeaderTransform(isTop, scrollDirection, theme),
+    [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+      height: `${theme.dimensions.heights.header}px`,
+      display: 'flex',
+    },
+  }),
+);
 
 export const Navbar = styled.nav(({ theme }: any) => ({
   display: 'none',

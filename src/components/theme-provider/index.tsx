@@ -67,6 +67,7 @@ const ThemeProvider: React.FC = ({ children }) => {
           }
           heights {
             header
+            headerMobile
           }
           containerPadding
         }

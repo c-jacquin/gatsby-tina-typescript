@@ -47,7 +47,8 @@
     },
     "containerPadding": "1.5em",
     "heights": {
-      "header": 60
+      "header": 60,
+      "headerMobile": 45
     }
   },
   "fonts": {

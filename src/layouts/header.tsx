@@ -1,14 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import '@animated-burgers/burger-squeeze/dist/styles.css';
 
+import { useTheme } from 'emotion-theming';
 import { useStaticQuery, graphql } from 'gatsby';
 import { useLocalJsonForm } from 'gatsby-tinacms-json';
 import React, { useMemo, useContext } from 'react';
-// don't forget the styles
+
 import headerForm from '../@cms/form/header';
-import { MenuContext } from '../context/side-menu';
-import { HeaderContainer, Navbar, NavigationLink, HeaderLogo, MenuButton } from './styled';
 import { getThumbnail } from '../@cms/helpers/thumbnail';
+import { MenuContext } from '../context/side-menu';
+import useScroll from '../hooks/useScroll';
+import { Theme } from '../styles/theme';
+import { HeaderContainer, Navbar, NavigationLink, HeaderLogo, MenuButton } from './styled';
+import useIsMobile from '../hooks/useIsMobile';
 
 const Header: React.FC = () => {
   const { headerJson, allFile } = useStaticQuery(graphql`
@@ -50,12 +54,18 @@ const Header: React.FC = () => {
 
   headerJson.files = allFile.edges;
 
+  const theme = useTheme<Theme>();
+  const isMobile = useIsMobile();
   const [{ links, withLogo, logo, linkSpace, color, fontSize, backgroundColor, activeLinkColor }] = useLocalJsonForm(
     headerJson,
     headerForm,
   ) as any;
   const { toggleMenu, isMenuOpen } = useContext(MenuContext);
   const logoSrc = useMemo(() => getThumbnail(allFile.edges, logo), [logo, allFile.edges]);
+  const { isTop, scrollDirection } = useScroll({
+    offset: isMobile ? theme.dimensions.heights.headerMobile : theme.dimensions.heights.header,
+    throttleTime: 200,
+  });
 
   const linkStyle = {
     padding: `0 ${linkSpace}`,
@@ -64,7 +74,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <HeaderContainer color={backgroundColor}>
+    <HeaderContainer color={backgroundColor} isTop={isTop} scrollDirection={scrollDirection}>
       <MenuButton isOpen={isMenuOpen} onClick={toggleMenu} />
       {withLogo && !!logo && <HeaderLogo src={logoSrc} />}
       <Navbar>

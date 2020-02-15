@@ -3,9 +3,9 @@ import { useStaticQuery, graphql } from 'gatsby';
 import React, { useContext, useMemo } from 'react';
 import { slide, bubble, elastic, fallDown, push, pushRotate, reveal, scaleDown, scaleRotate, stack } from 'react-burger-menu';
 
+import { getThumbnail } from '../@cms/helpers/thumbnail';
 import { MenuContext } from '../context/side-menu';
 import { SideMenuContainer, NavigationLink, HeaderLogo, LogoWrapper } from './styled';
-import { getThumbnail } from '../@cms/helpers/thumbnail';
 
 const menu: Record<string, typeof slide> = {
   bubble,
