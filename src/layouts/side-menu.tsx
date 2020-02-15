@@ -1,5 +1,6 @@
 import { css } from '@emotion/core';
 import { useStaticQuery, graphql } from 'gatsby';
+import { transparentize } from 'polished';
 import React, { useContext, useMemo } from 'react';
 import { slide, bubble, elastic, fallDown, push, pushRotate, reveal, scaleDown, scaleRotate, stack } from 'react-burger-menu';
 
@@ -93,7 +94,15 @@ const SideMenu = () => {
           </LogoWrapper>
         )}
         {links.map(({ path, label }: any) => (
-          <NavigationLink key={path} to={path} style={linkStyle} activeColor={activeLinkColor}>
+          <NavigationLink
+            key={path}
+            to={path}
+            style={linkStyle}
+            activeStyle={{
+              backgroundColor: activeLinkColor ? transparentize(0.7, activeLinkColor) : 'inherit',
+            }}
+            activeColor={activeLinkColor}
+          >
             {label}
           </NavigationLink>
         ))}

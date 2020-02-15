@@ -73,14 +73,13 @@ export const Navbar = styled.nav(({ theme }: any) => ({
 export const NavigationLink = styled(Link)<{ activeColor?: string; color?: string }>(({ theme, activeColor, color }: any) => ({
   width: '100%',
   height: '40px',
-  marginLeft: '20px',
+  paddingLeft: '20px',
   color: transparentize(0.5, color || theme.colors.white),
   fontWeight: 600,
   fontSize: '1.5rem',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-
   [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
     height: '100%',
     marginLeft: 0,
@@ -90,10 +89,6 @@ export const NavigationLink = styled(Link)<{ activeColor?: string; color?: strin
   '&:hover, &:focus': {
     textDecoration: 'none',
     backgroundColor: activeColor ? transparentize(0.9, activeColor) : 'inherit',
-  },
-
-  '&[aria-current="page"': {
-    backgroundColor: activeColor ? transparentize(0.7, activeColor) : 'inherit',
   },
 }));
 

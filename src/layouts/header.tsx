@@ -4,6 +4,7 @@ import '@animated-burgers/burger-squeeze/dist/styles.css';
 import { useTheme } from 'emotion-theming';
 import { useStaticQuery, graphql } from 'gatsby';
 import { useLocalJsonForm } from 'gatsby-tinacms-json';
+import { transparentize } from 'polished';
 import React, { useMemo, useContext } from 'react';
 
 import headerForm from '../@cms/form/header';
@@ -79,7 +80,15 @@ const Header: React.FC = () => {
       {withLogo && !!logo && <HeaderLogo src={logoSrc} />}
       <Navbar>
         {links.map(({ path, label }: any) => (
-          <NavigationLink key={path} to={path} style={linkStyle} activeColor={activeLinkColor}>
+          <NavigationLink
+            key={path}
+            to={path}
+            style={linkStyle}
+            activeColor={activeLinkColor}
+            activeStyle={{
+              backgroundColor: activeLinkColor ? transparentize(0.7, activeLinkColor) : 'inherit',
+            }}
+          >
             {label}
           </NavigationLink>
         ))}
