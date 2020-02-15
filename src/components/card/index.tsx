@@ -1,28 +1,23 @@
 import React from 'react';
-import { Converter } from 'showdown';
 
 import { CardImage, CardWrapper, CardTitle, CardBody } from './styled';
-import { getThumbnail } from '../../@cms/helpers/thumbnail';
-
-const converter = new Converter();
+import Button from '../button';
 
 interface CardProps {
   image: string;
   title: string;
   content: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  files: any[];
+  path?: string;
 }
 
-const Card: React.FC<CardProps> = ({ image, title, content, files }) => {
-  const thumbnail = getThumbnail(files, image);
-
+const Card: React.FC<CardProps> = ({ image, title, content, path }) => {
   return (
     <CardWrapper>
-      <CardImage url={thumbnail}>
+      <CardImage url={image}>
         <CardTitle>{title}</CardTitle>
       </CardImage>
-      <CardBody dangerouslySetInnerHTML={{ __html: converter.makeHtml(content) }} />
+      <CardBody dangerouslySetInnerHTML={{ __html: content }} />
+      {path && <Button to={path}>En savoir plus</Button>}
     </CardWrapper>
   );
 };

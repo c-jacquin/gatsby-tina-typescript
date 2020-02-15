@@ -8,7 +8,7 @@ const commonImageForm = {
   previewSrc: (formValues: any, { input }: any) => {
     return getThumbnail(formValues.jsonNode?.files || [], _.get(formValues, input.name));
   },
-  uploadDir: () => '/assets/images/',
+  uploadDir: () => '/content/assets/images/',
 };
 
 const TitleBlock = {

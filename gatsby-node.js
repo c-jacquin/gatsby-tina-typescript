@@ -1,4 +1,5 @@
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const path = require(`path`);
 
 module.exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
   const config = getConfig();
@@ -12,4 +13,37 @@ module.exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
   ];
 
   actions.replaceWebpackConfig(config);
+};
+
+exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => {
+  const blogPostTemplate = path.resolve('src/@cms/templates/blog-post.tsx');
+  const result = await graphql(`
+    {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/blog/" } }
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            frontmatter {
+              path
+            }
+          }
+        }
+      }
+    }
+  `);
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.frontmatter.path,
+      component: blogPostTemplate,
+      context: {},
+    });
+  });
 };
