@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useStaticQuery, graphql } from 'gatsby';
-import { useGlobalJsonForm, useLocalJsonForm } from 'gatsby-tinacms-json';
-import React, { useMemo } from 'react';
+import '@animated-burgers/burger-squeeze/dist/styles.css';
 
+import { useStaticQuery, graphql } from 'gatsby';
+import { useLocalJsonForm } from 'gatsby-tinacms-json';
+import React, { useMemo, useContext } from 'react';
+// don't forget the styles
 import headerForm from '../@cms/form/header';
-import { HeaderContainer, Navbar, NavigationLink, HeaderLogo } from './styled';
-import { getThumbnail } from '../helpers/thumbnail';
+import { MenuContext } from '../context/side-menu';
+import { HeaderContainer, Navbar, NavigationLink, HeaderLogo, MenuButton } from './styled';
+import { getThumbnail } from '../@cms/helpers/thumbnail';
 
 const Header: React.FC = () => {
   const { headerJson, allFile } = useStaticQuery(graphql`
@@ -18,6 +21,7 @@ const Header: React.FC = () => {
         backgroundColor
         fontSize
         linkSpace
+        mobileLogo
         logo
         withLogo
         activeLinkColor
@@ -45,13 +49,13 @@ const Header: React.FC = () => {
   `);
 
   headerJson.files = allFile.edges;
+
   const [{ links, withLogo, logo, linkSpace, color, fontSize, backgroundColor, activeLinkColor }] = useLocalJsonForm(
     headerJson,
     headerForm,
   ) as any;
-  const logoSrc = useMemo(() => {
-    return getThumbnail(allFile.edges, logo);
-  }, [logo, allFile.edges]);
+  const { toggleMenu, isMenuOpen } = useContext(MenuContext);
+  const logoSrc = useMemo(() => getThumbnail(allFile.edges, logo), [logo, allFile.edges]);
 
   const linkStyle = {
     padding: `0 ${linkSpace}`,
@@ -61,6 +65,7 @@ const Header: React.FC = () => {
 
   return (
     <HeaderContainer color={backgroundColor}>
+      <MenuButton isOpen={isMenuOpen} onClick={toggleMenu} />
       {withLogo && !!logo && <HeaderLogo src={logoSrc} />}
       <Navbar>
         {links.map(({ path, label }: any) => (

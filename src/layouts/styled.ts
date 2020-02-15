@@ -2,6 +2,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { transparentize } from 'polished';
+import Burger from '@animated-burgers/burger-squeeze';
 
 /* === Layout === */
 
@@ -18,42 +19,85 @@ export const Main = styled.main`
 
 /* === Header === */
 
-export const HeaderContainer = styled.header`
-  height: ${({ theme }: any) => theme.dimensions.heights.header}px;
-  padding: 0 ${({ theme }: any) => theme.dimensions.containerPadding};
-  background-color: ${({ color }: any) => color};
-  display: flex;
-`;
+export const HeaderContainer = styled.header(({ theme, color }: any) => ({
+  padding: `0 ${theme.dimensions.containerPadding}`,
+  backgroundColor: color,
+  height: '45px',
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    height: `${theme.dimensions.heights.header}px`,
+    display: 'flex',
+  },
+}));
 
-export const Navbar = styled.nav`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  margin-left: 20px;
-`;
+export const Navbar = styled.nav(({ theme }: any) => ({
+  display: 'none',
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    marginLeft: '20px',
+  },
+}));
 
-export const NavigationLink = styled(Link)<{ activeColor?: string; color?: string }>`
-  color: ${({ color, theme }: any) => transparentize(0.5, color || theme.colors.white)};
-  font-size: 1.5rem;
-  font-weight: 600;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
+export const NavigationLink = styled(Link)<{ activeColor?: string; color?: string }>(({ theme, activeColor, color }: any) => ({
+  width: '100%',
+  height: '40px',
+  marginLeft: '20px',
+  color: transparentize(0.5, color || theme.colors.white),
+  fontWeight: 600,
+  fontSize: '1.5rem',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
 
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    background-color: ${({ activeColor }: any) => (activeColor ? transparentize(0.9, activeColor) : 'inherit')};
-  }
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    height: '100%',
+    marginLeft: 0,
+    width: 'auto',
+  },
 
-  &[aria-current='page'] {
-    background-color: ${({ activeColor }: any) => (activeColor ? transparentize(0.7, activeColor) : 'inherit')};
-  }
-`;
+  '&:hover, &:focus': {
+    textDecoration: 'none',
+    backgroundColor: activeColor ? transparentize(0.9, activeColor) : 'inherit',
+  },
 
-export const HeaderLogo = styled.img`
-  height: ${({ theme }: any) => theme.dimensions.heights.header}px;
-`;
+  '&[aria-current="page"': {
+    backgroundColor: activeColor ? transparentize(0.7, activeColor) : 'inherit',
+  },
+}));
+
+export const HeaderLogo = styled.img(({ theme }: any) => ({
+  display: 'none',
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    display: 'inline-block',
+    height: `${theme.dimensions.heights.header}px`,
+  },
+}));
+
+export const MenuButton = styled(Burger as any)(({ theme }: any) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  height: '100%',
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    display: 'none',
+  },
+}));
+
+/* === Side menu === */
+
+export const SideMenuContainer = styled.aside(({ theme }: any) => ({
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    display: 'none',
+  },
+}));
+
+export const LogoWrapper = styled.div(({ theme }: any) => ({
+  backgroundColor: theme.colors.white,
+  textAlign: 'center',
+  ' img': {
+    display: 'inline',
+  },
+}));

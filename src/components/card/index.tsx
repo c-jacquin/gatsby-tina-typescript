@@ -2,7 +2,7 @@ import React from 'react';
 import { Converter } from 'showdown';
 
 import { CardImage, CardWrapper, CardTitle, CardBody } from './styled';
-import { getThumbnail } from '../../helpers/thumbnail';
+import { getThumbnail } from '../../@cms/helpers/thumbnail';
 
 const converter = new Converter();
 

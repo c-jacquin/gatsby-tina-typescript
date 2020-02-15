@@ -1,13 +1,26 @@
 import styled from '@emotion/styled';
 
-export const IndexContainer = styled.div`
-  display: flex;
-`;
+export const IndexContainer = styled.div(({ theme }: any) => ({
+  display: 'flex',
+  flexDirection: 'column',
 
-export const IndexMain = styled.section`
-  width: 80%;
-`;
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    flexDirection: 'row',
+  },
+}));
 
-export const IndexAside = styled.aside`
-  width: 20%;
-`;
+export const IndexMain = styled.section(({ theme }: any) => ({
+  width: '100%',
+
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    width: '80%',
+  },
+}));
+
+export const IndexAside = styled.aside(({ theme }: any) => ({
+  width: '100%',
+
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    width: '20%',
+  },
+}));

@@ -14,5 +14,6 @@ export interface FieldProps {
     min?: number;
     max?: number;
     step?: number;
+    options?: { value: string; label: string }[];
   };
 }

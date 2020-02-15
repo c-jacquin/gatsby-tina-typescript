@@ -15,6 +15,25 @@ const headerForm = {
       ...commonForm.image,
     },
     {
+      label: 'Mobile Logo',
+      name: 'rawJson.mobileLogo',
+      description: 'Your logo for mobile version (in the side menu)',
+      component: 'image',
+      ...commonForm.image,
+    },
+    {
+      label: 'Mobile Menu animation',
+      name: 'rawJson.sideMenuType',
+      description: 'the animation used by the mobile burger navigation menu',
+      component: 'select',
+      options: ['bubble', 'elastic', 'fallDown', 'push', 'pushRotate', 'reveal', 'scaleDown', 'scaleRotate', 'slide', 'stack'].map(
+        value => ({
+          value,
+          label: value,
+        }),
+      ),
+    },
+    {
       label: 'Background color',
       name: 'rawJson.backgroundColor',
       component: 'color',
@@ -39,7 +58,6 @@ const headerForm = {
       name: 'rawJson.linkSpace',
       component: 'text',
     },
-
     {
       label: 'Header navigation',
       name: 'rawJson.links',

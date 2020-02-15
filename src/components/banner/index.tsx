@@ -2,7 +2,7 @@
 import React from 'react';
 import { ParallaxBanner } from 'react-scroll-parallax';
 
-import { getThumbnail } from '../../helpers/thumbnail';
+import { getThumbnail } from '../../@cms/helpers/thumbnail';
 import { BannerTitle } from '../title';
 
 interface BannerProps {

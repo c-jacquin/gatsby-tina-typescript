@@ -5,7 +5,9 @@
   "fontSize": "1.5em",
   "backgroundColor": "#4A4A4A",
   "logo": "logo-big.png",
+  "mobileLogo": "logo-banner.png",
   "withLogo": true,
+  "sideMenuType": "slide",
   "links": [
     {
       "label": "Acceuil",

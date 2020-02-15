@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import _ from 'lodash';
 
-import { getThumbnail } from '../../helpers/thumbnail';
+import { getThumbnail } from '../helpers/thumbnail';
 
 const commonImageForm = {
   parse: (filename: string) => filename,
