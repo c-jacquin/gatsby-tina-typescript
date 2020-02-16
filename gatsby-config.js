@@ -13,6 +13,7 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-csp',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
