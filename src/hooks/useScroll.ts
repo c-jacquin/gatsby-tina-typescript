@@ -26,8 +26,8 @@ function getScrollDirection(
 
 function useScroll({ throttleTime = 150, offset = 0 }) {
   const [isTop, setTop] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(window.pageYOffset);
-  const [scrollDirection, setScrollDirection] = useState(getScrollDirection(window.pageYOffset, offset, 0));
+  const [lastScrollY, setLastScrollY] = useState();
+  const [scrollDirection, setScrollDirection] = useState();
 
   useEffect(() => {
     const handleScroll = _.throttle(() => {
