@@ -13,22 +13,21 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
-    // {
-    //   resolve: `gatsby-plugin-csp`,
-    //   options: {
-    //     disableOnDev: true,
-    //     reportOnly: false, // Changes header to Content-Security-Policy-Report-Only for csp testing purposes
-    //     mergeScriptHashes: true, // you can disable scripts sha256 hashes
-    //     mergeStyleHashes: true, // you can disable styles sha256 hashes
-    //     mergeDefaultDirectives: true,
-    //     directives: {
-    //       'script-src': '*',
-    //       'style-src': '*',
-    //       'img-src': "'self' data:",
-    //       // you can add your directives or override defaults
-    //     },
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-csp`,
+      options: {
+        disableOnDev: true,
+        reportOnly: false,
+        mergeScriptHashes: true,
+        mergeStyleHashes: true,
+        mergeDefaultDirectives: true,
+        directives: {
+          'script-src': "'self' 'unsafe-inline' blob:",
+          'style-src': "'self' 'unsafe-inline' blob:",
+          'img-src': "'self' data: blob:",
+        },
+      },
+    },
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
