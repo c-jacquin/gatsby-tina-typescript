@@ -18,8 +18,8 @@ module.exports = {
       options: {
         disableOnDev: true,
         reportOnly: false,
-        mergeScriptHashes: true,
-        mergeStyleHashes: true,
+        mergeScriptHashes: false,
+        mergeStyleHashes: false,
         mergeDefaultDirectives: true,
         directives: {
           'script-src': "'self' 'unsafe-inline' blob:",

@@ -8,6 +8,7 @@ import { TinaField } from '@tinacms/form-builder';
 import PageLayout from '../../layouts/page';
 
 function Template({ data, isEditing, setIsEditing }: any) {
+  console.log(process.env.NODE_ENV);
   return (
     <>
       <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
@@ -17,9 +18,11 @@ function Template({ data, isEditing, setIsEditing }: any) {
           </div>
         </PageLayout>
       </TinaField>
-      <button type="button" onClick={() => setIsEditing((p: any) => !p)}>
-        {isEditing ? 'Preview' : 'Edit'}
-      </button>
+      {process.env.NODE_ENV === 'production' && (
+        <button type="button" onClick={() => setIsEditing((p: any) => !p)}>
+          {isEditing ? 'Preview' : 'Edit'}
+        </button>
+      )}
     </>
   );
 }
