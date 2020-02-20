@@ -2,19 +2,29 @@
   "sections": [
     {
       "_template": "TitleBlock",
-      "title": "Home Page"
+      "title": "Home Page",
+      "align": "center",
+      "color": "#000",
+      "margin": "1.4",
+      "tag": "h1"
     },
     {
       "_template": "BannerBlock",
       "image": "smarties.jpg",
-      "parallax": "0.5",
+      "parallax": "0.3",
       "height": "200px",
-      "title": "Smarties"
+      "title": "Smarties",
+      "titleColor": "#000",
+      "tag": "h2",
+      "opacity": "0.4"
     },
     {
       "_template": "ContentBlock",
       "style": ".roro {\n    width: 40px;\n}\n",
       "content": "### fooofofrofroe\n\n* tototo\n* sfsdf\n* sfd\n* sfdfsdf\n* sfdsf\n* sfdf\n* sdf\n* "
     }
-  ]
+  ],
+  "__gatsby_resolved": {
+    "fileRelativePath": "/data/pages/index.json"
+  }
 }

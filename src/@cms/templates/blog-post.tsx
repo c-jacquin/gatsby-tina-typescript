@@ -14,7 +14,6 @@ import ContentTemplate from './blog-content';
 function Template({ data }: any) {
   const [{ frontmatter }] = useLocalRemarkForm(data.markdownRemark, blogPostForm) as any;
 
-  console.log('NODE_ENV', process.env.NODE_ENV);
   return (
     <PageLayout>
       <PostContainer>

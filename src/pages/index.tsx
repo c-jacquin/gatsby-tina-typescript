@@ -1,28 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { graphql } from 'gatsby';
-import { useLocalJsonForm } from 'gatsby-tinacms-json';
+import { useLocalJsonForm, useGlobalJsonForm } from 'gatsby-tinacms-json';
 
 import indexFormConfig from '../@cms/form/index-page';
 import settingsForm from '../@cms/form/settings';
-import Banner from '../components/banner';
 import BlogPostList from '../components/blog-post-list';
-import MdContent from '../components/md-content';
-import { PageTitle } from '../components/title';
 import { IndexAside, IndexContainer, IndexMain } from '../components/pages/index.styled';
 import { FormProvider } from '../context/form';
 import PageLayout from '../layouts/page';
 import NewsletterForm from '../components/form-newsletter';
-
-enum template {
-  BannerBlock = 'BannerBlock',
-  ContentBlock = 'ContentBlock',
-  TitleBlock = 'TitleBlock',
-}
+import Blocks from '../components/blocks';
 
 interface IndexProps {
   data: {
-    indexJson: {
+    pagesJson: {
       sections: string;
       rawJson: string;
       fileRelativePath: string;
@@ -41,9 +33,9 @@ interface IndexProps {
 
 const IndexPage: React.FC<IndexProps> = ({ data }) => {
   // eslint-disable-next-line no-param-reassign
-  (data.indexJson as any).files = data.allFile.edges;
-  const [values] = useLocalJsonForm(data.indexJson, indexFormConfig) as any;
-  const [{ apiUrl, newsletterLabel, newsletterEmailErrorLabel, newsletterErrorLabel, newsletterSuccessLabel }] = useLocalJsonForm(
+  (data.pagesJson as any).files = data.allFile.edges;
+  const [values] = useLocalJsonForm(data.pagesJson, indexFormConfig) as any;
+  const [{ apiUrl, newsletterLabel, newsletterEmailErrorLabel, newsletterErrorLabel, newsletterSuccessLabel }] = useGlobalJsonForm(
     data.settingsJson,
     settingsForm,
   ) as any;
@@ -55,22 +47,7 @@ const IndexPage: React.FC<IndexProps> = ({ data }) => {
       <PageLayout>
         <IndexContainer>
           <IndexMain>
-            {values.sections.map(({ _template, title, content, style, image, height, parallax }: any) => {
-              switch (_template) {
-                case template.TitleBlock:
-                  return <PageTitle>{title}</PageTitle>;
-                case template.ContentBlock:
-                  return <MdContent markdown={content} style={style} />;
-                case template.BannerBlock:
-                  return (
-                    <Banner image={image} height={height} parallax={parallax} files={data.allFile.edges}>
-                      {title}
-                    </Banner>
-                  );
-                default:
-                  return null;
-              }
-            })}
+            <Blocks allFile={data.allFile} sections={values.sections} />
           </IndexMain>
           <IndexAside>
             <NewsletterForm
@@ -89,19 +66,11 @@ const IndexPage: React.FC<IndexProps> = ({ data }) => {
 
 export const pageQuery = graphql`
   query IndexPageQuery {
-    indexJson {
+    pagesJson(fileRelativePath: { regex: "/index/" }) {
       rawJson
       id
       fileRelativePath
-      sections {
-        _template
-        style
-        content
-        image
-        parallax
-        height
-        title
-      }
+      ...Block
     }
     settingsJson {
       rawJson
@@ -114,19 +83,7 @@ export const pageQuery = graphql`
       newsletterSuccessLabel
     }
     allFile {
-      edges {
-        node {
-          relativePath
-          childImageSharp {
-            fixed {
-              src
-            }
-            fluid {
-              src
-            }
-          }
-        }
-      }
+      ...FluidImg
     }
   }
 `;

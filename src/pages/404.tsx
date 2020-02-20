@@ -35,7 +35,7 @@ const NotFoundPage: React.FC<NotFoundProps> = ({ data }) => {
 
 export const pageQuery = graphql`
   query NotFoundQuery {
-    errorJson {
+    pagesJson(fileRelativePath: { regex: "/404/" }) {
       title
       message
       link

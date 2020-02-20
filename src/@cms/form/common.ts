@@ -11,6 +11,38 @@ const commonImageForm = {
   uploadDir: () => '/content/assets/images/',
 };
 
+const titleTagSelect = {
+  label: 'title tag type',
+  name: 'tag',
+  component: 'select',
+  options: [
+    {
+      value: 'h1',
+      label: 'h1',
+    },
+    {
+      value: 'h2',
+      label: 'h2',
+    },
+    {
+      value: 'h3',
+      label: 'h3',
+    },
+    {
+      value: 'h4',
+      label: 'h4',
+    },
+    {
+      value: 'h5',
+      label: 'h5',
+    },
+    {
+      value: 'h6',
+      label: 'h6',
+    },
+  ],
+};
+
 const TitleBlock = {
   label: 'Title',
   fields: [
@@ -19,6 +51,25 @@ const TitleBlock = {
       name: 'title',
       component: 'text',
     },
+    {
+      label: 'color',
+      name: 'color',
+      component: 'color',
+    },
+    {
+      label: 'align',
+      name: 'align',
+      component: 'text',
+    },
+    {
+      label: 'vertical margin',
+      name: 'margin',
+      component: 'slider',
+      min: 0,
+      max: 5,
+      step: 0.1,
+    },
+    titleTagSelect,
   ],
 };
 
@@ -31,10 +82,21 @@ const BannerBlock = {
       component: 'text',
     },
     {
+      label: 'title color',
+      name: 'titleColor',
+      component: 'color',
+    },
+    titleTagSelect,
+    {
       label: 'image',
       name: 'image',
       component: 'image',
       ...commonImageForm,
+    },
+    {
+      label: 'Height',
+      name: 'height',
+      component: 'text',
     },
     {
       label: 'parallax',
@@ -45,9 +107,12 @@ const BannerBlock = {
       step: 0.1,
     },
     {
-      label: 'Height',
-      name: 'height',
-      component: 'text',
+      label: 'background opacity',
+      name: 'opacity',
+      component: 'slider',
+      min: -1,
+      max: 1,
+      step: 0.1,
     },
   ],
 };
@@ -68,6 +133,28 @@ const ContentBlock = {
   ],
 };
 
+const BlogPostGridBlock = {
+  label: 'Blog post grid',
+  fields: [
+    {
+      label: 'size',
+      name: 'limit',
+      component: 'number',
+    },
+  ],
+};
+
+const BlogPostListBlock = {
+  label: 'Blog post list',
+  fields: [
+    {
+      label: 'size',
+      name: 'limit',
+      component: 'number',
+    },
+  ],
+};
+
 export default {
   image: commonImageForm,
   pageBlocks: {
@@ -78,6 +165,8 @@ export default {
       TitleBlock,
       BannerBlock,
       ContentBlock,
+      BlogPostGridBlock,
+      BlogPostListBlock,
     },
   },
 };

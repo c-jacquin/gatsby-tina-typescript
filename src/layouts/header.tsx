@@ -3,7 +3,7 @@ import '@animated-burgers/burger-squeeze/dist/styles.css';
 
 import { useTheme } from 'emotion-theming';
 import { useStaticQuery, graphql } from 'gatsby';
-import { useLocalJsonForm } from 'gatsby-tinacms-json';
+import { useGlobalJsonForm } from 'gatsby-tinacms-json';
 import { transparentize } from 'polished';
 import React, { useMemo, useContext } from 'react';
 
@@ -57,7 +57,7 @@ const Header: React.FC = () => {
 
   const theme = useTheme<Theme>();
   const isMobile = useIsMobile();
-  const [{ links, withLogo, logo, linkSpace, color, fontSize, backgroundColor, activeLinkColor }] = useLocalJsonForm(
+  const [{ links, withLogo, logo, linkSpace, color, fontSize, backgroundColor, activeLinkColor }] = useGlobalJsonForm(
     headerJson,
     headerForm,
   ) as any;

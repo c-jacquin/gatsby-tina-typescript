@@ -1,0 +1,18 @@
+{
+  "sections": [
+    {
+      "_template": "TitleBlock",
+      "title": "Nos Actions",
+      "align": "center",
+      "color": "#000",
+      "margin": "1.4",
+      "tag": "h1"
+    },
+    {
+      "_template": "BlogPostGridBlock"
+    }
+  ],
+  "__gatsby_resolved": {
+    "fileRelativePath": "/data/pages/actions.json"
+  }
+}

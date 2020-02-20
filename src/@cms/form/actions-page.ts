@@ -1,10 +1,10 @@
+import commonForm from './common';
+
 const actionsPageForm = {
   fields: [
     {
-      label: 'Titre',
-      name: 'rawJson.title',
-      description: "page's title",
-      component: 'text',
+      ...commonForm.pageBlocks,
+      label: 'Page sections',
     },
   ],
 };

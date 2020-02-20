@@ -5,36 +5,40 @@ import { useLocalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
 
 import actionsForm from '../@cms/form/actions-page';
-import BlogPostGrid from '../components/blog-post-grid';
+import Blocks from '../components/blocks';
 import PageLayout from '../layouts/page';
 
 interface ActionsPagProps {
   data: {
-    actionsJson: {
-      title: string;
-      rawJson: string;
-      fileRelativePath: string;
-    };
+    pagesJson: any;
+    allFile: any;
   };
 }
 
 const ActionsPage: React.FC<ActionsPagProps> = ({ data }) => {
-  const [{ title }] = useLocalJsonForm(data.actionsJson as any, actionsForm) as any;
+  const [values] = useLocalJsonForm(data.pagesJson, actionsForm) as any;
+
+  if (!values) {
+    return null;
+  }
 
   return (
     <PageLayout>
-      <h1>{title}</h1>
-      <BlogPostGrid />
+      <Blocks sections={values.sections || []} allFile={data.allFile} />
     </PageLayout>
   );
 };
 
 export const pageQuery = graphql`
   query ActionPageQuery {
-    actionsJson {
-      title
+    pagesJson(fileRelativePath: { regex: "/actions/" }) {
       rawJson
+      id
       fileRelativePath
+      ...Block
+    }
+    allFile {
+      ...FluidImg
     }
   }
 `;

@@ -16,6 +16,7 @@ export const BlogItemBody = styled.div({
   padding: '0 1em',
   fontSize: '0.8em',
   textAlign: 'center',
+  alignSelf: 'center',
 });
 
 export const BlogItemLabel = styled.span({

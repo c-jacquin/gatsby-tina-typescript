@@ -26,7 +26,7 @@ function normalize({ colors, dimensions, fonts }: Theme) {
       overflow-y: scroll;
       font-family: ${fonts.sansSerif};
       color: ${colors.black};
-      background-color: ${colors.white};
+      background-color: ${colors.ui.light};
       -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
     }

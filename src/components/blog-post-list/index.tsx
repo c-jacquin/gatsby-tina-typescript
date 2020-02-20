@@ -35,7 +35,7 @@ const BlogPostList: React.FC = () => {
   return (
     <List>
       {posts?.edges.map(({ node: { frontmatter: { image, title, city, place, date, path } } }) => (
-        <Link to={path}>
+        <Link to={path} key={title}>
           <ListItem>
             <BlogItemThumb src={image?.childImageSharp.fluid.src} />
             <BlogItemBody>

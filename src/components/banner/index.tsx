@@ -1,23 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { ParallaxBanner } from 'react-scroll-parallax';
 
 import { getThumbnail } from '../../@cms/helpers/thumbnail';
 import { BannerTitle } from '../title';
+import { StyledParalaxBanner } from './styled';
 
 interface BannerProps {
   image: string;
   height: string;
   parallax?: number;
   files: any[];
+  tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  color: string;
+  opacity: number;
 }
 
-const Banner: React.FC<BannerProps> = ({ children, image, height, parallax, files }) => {
+const Banner: React.FC<BannerProps> = ({ children, image, height, parallax, files, tag, color, opacity }) => {
   const thumbnail = getThumbnail(files, image);
 
   return (
-    <ParallaxBanner
-      className="your-class"
+    <StyledParalaxBanner
+      height={height}
       layers={[
         {
           image: thumbnail,
@@ -25,13 +28,11 @@ const Banner: React.FC<BannerProps> = ({ children, image, height, parallax, file
           amount: parallax || 0,
         },
       ]}
-      style={{
-        height,
-        width: '100%',
-      }}
     >
-      <BannerTitle>{children}</BannerTitle>
-    </ParallaxBanner>
+      <BannerTitle color={color} tag={tag} opacity={opacity}>
+        {children}
+      </BannerTitle>
+    </StyledParalaxBanner>
   );
 };
 
