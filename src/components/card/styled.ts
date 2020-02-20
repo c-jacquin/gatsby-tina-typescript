@@ -2,12 +2,15 @@
 import styled from '@emotion/styled';
 import { transparentize } from 'polished';
 
-export const CardWrapper = styled.article`
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  border: solid 1px black;
-`;
+export const CardWrapper = styled.article(({ theme }: any) => ({
+  width: '100%',
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '400px',
+    border: 'solid 1px black',
+  },
+}));
 
 export const CardImage = styled.div<{ url: string }>`
   background-image: ${({ url }) => `url(${url})`};

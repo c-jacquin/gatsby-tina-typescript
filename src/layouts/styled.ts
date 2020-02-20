@@ -20,7 +20,7 @@ export const Main = styled.main(({ theme }: any) => ({
   marginBottom: '3rem',
   marginTop: theme.dimensions.heights.headerMobile,
 
-  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+  [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     marginTop: theme.dimensions.heights.header,
   },
 }));
@@ -51,7 +51,7 @@ export const HeaderContainer = styled.header<{ isTop: boolean; scrollDirection?:
     width: '100%',
     zIndex: 1,
     transform: getHeaderTransform(isTop, scrollDirection, theme),
-    [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
       height: `${theme.dimensions.heights.header}px`,
       display: 'flex',
     },
@@ -60,7 +60,7 @@ export const HeaderContainer = styled.header<{ isTop: boolean; scrollDirection?:
 
 export const Navbar = styled.nav(({ theme }: any) => ({
   display: 'none',
-  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+  [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -80,7 +80,7 @@ export const NavigationLink = styled(Link)<{ activeColor?: string; color?: strin
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+  [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     height: '100%',
     marginLeft: 0,
     width: 'auto',
@@ -94,7 +94,7 @@ export const NavigationLink = styled(Link)<{ activeColor?: string; color?: strin
 
 export const HeaderLogo = styled.img(({ theme }: any) => ({
   display: 'none',
-  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+  [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     display: 'inline-block',
     height: `${theme.dimensions.heights.header}px`,
   },
@@ -105,7 +105,7 @@ export const MenuButton = styled(Burger as any)(({ theme }: any) => ({
   flexDirection: 'column',
   justifyContent: 'center',
   height: '100%',
-  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+  [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     display: 'none',
   },
 }));
@@ -113,7 +113,7 @@ export const MenuButton = styled(Burger as any)(({ theme }: any) => ({
 /* === Side menu === */
 
 export const SideMenuContainer = styled.aside(({ theme }: any) => ({
-  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+  [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     display: 'none',
   },
 }));

@@ -5,16 +5,18 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { useGlobalJsonForm } from 'gatsby-tinacms-json';
 import _ from 'lodash';
 import React from 'react';
-import { ParallaxProvider } from 'react-scroll-parallax';
-
 import Helmet from 'react-helmet';
+import { ParallaxProvider } from 'react-scroll-parallax';
+import { withPlugin } from 'tinacms';
+
+import BlogPostCreator from '../@cms/creator/blog-post';
 import seoFormConfig from '../@cms/form/seo';
+import { getThumbnail } from '../@cms/helpers/thumbnail';
 import socialFormConfig from '../@cms/form/social';
 import ThemeProvider from '../components/theme-provider';
-import SideMenu from './side-menu';
-
 import { MenuProvider } from '../context/side-menu';
 import Header from './header';
+import SideMenu from './side-menu';
 import { Main, Root } from './styled';
 
 interface PageLayoutProps {
@@ -97,8 +99,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, meta = [], title }) =
   seoJson.files = edges;
   const [{ seo, facebook, twitter }] = useGlobalJsonForm(seoJson, _.merge(seoFormConfig, socialFormConfig)) as any;
 
-  const facebookImage = edges.find(({ node: { relativePath } }) => relativePath === facebook.image)?.node.childImageSharp.fixed.src;
-  const twitterImage = edges.find(({ node: { relativePath } }) => relativePath === twitter.image)?.node.childImageSharp.fixed.src;
+  const facebookImage = getThumbnail(edges, facebook.image);
+  const twitterImage = getThumbnail(edges, twitter.image);
 
   return (
     <ParallaxProvider>
@@ -135,4 +137,4 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, meta = [], title }) =
   );
 };
 
-export default PageLayout;
+export default withPlugin(PageLayout, BlogPostCreator);

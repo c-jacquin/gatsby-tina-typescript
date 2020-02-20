@@ -33,10 +33,16 @@ function normalize({ colors, dimensions, fonts }: Theme) {
 
     a {
       text-decoration: none;
+      outline: 0;
 
-      &:hover,
-      &:focus {
-        text-decoration: underline;
+      & * {
+        text-decoration: none;
+      }
+    }
+
+    a:visited {
+      * {
+        color: ${colors.black};
       }
     }
 

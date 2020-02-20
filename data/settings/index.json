@@ -1,0 +1,8 @@
+{
+  "apiUrl": "https://getform.io/f/a5310e1c-3aa0-4eb5-b88e-23fb551d47d5",
+  "newsletterLabel": "Inscrivez vous à la newletter !",
+  "newsletterEmailErrorLabel": "Entrez une adresse mail valide",
+  "newsletterErrorLabel": "Une erreur est surevenue veuillez reesayer plus tard.",
+  "newsletterSuccessLabel": "Merci pour votre inscription",
+  "newsletterSubmitLabel": "S'inscrire"
+}

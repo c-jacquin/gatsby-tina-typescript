@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
+import { ActionEdges } from '../../types';
 import Card from '../card';
 import { PostGridContainer } from './styled';
 
@@ -9,8 +10,8 @@ interface BlogPostGridProps {
 }
 
 const BlogPostGrid: React.FC<BlogPostGridProps> = () => {
-  const { posts } = useStaticQuery(graphql`
-    query BlogPosts {
+  const { posts } = useStaticQuery<ActionEdges>(graphql`
+    query BlogPostGrid {
       posts: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/blog/" } }) {
         totalCount
         edges {
@@ -39,7 +40,7 @@ const BlogPostGrid: React.FC<BlogPostGridProps> = () => {
   return (
     <PostGridContainer>
       {posts?.edges?.map(({ node: { frontmatter: { title, image, path }, excerpt } }: any) => (
-        <Card key={title} content={excerpt} image={image.childImageSharp.fluid.src} title={title} path={path} />
+        <Card key={title} content={excerpt} image={image?.childImageSharp.fluid.src} title={title} path={path} />
       ))}
     </PostGridContainer>
   );

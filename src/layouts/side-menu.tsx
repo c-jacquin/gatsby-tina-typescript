@@ -75,7 +75,7 @@ const SideMenu = () => {
         burgerBarClassName={
           css`
             display: none;
-          `.styles as any
+          `.styles
         }
         styles={
           {

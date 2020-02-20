@@ -1,43 +1,48 @@
 /* eslint-disable react/no-danger */
-import { graphql } from 'gatsby';
-import { inlineRemarkForm } from 'gatsby-tinacms-remark';
-import React from 'react';
 import { Wysiwyg } from '@tinacms/fields';
 import { TinaField } from '@tinacms/form-builder';
+import { graphql } from 'gatsby';
+import { inlineRemarkForm, useLocalRemarkForm } from 'gatsby-tinacms-remark';
+import React, { useEffect } from 'react';
 
 import PageLayout from '../../layouts/page';
+import blogPostForm from '../form/blog-post';
+import { PostBody, PostContainer, PostImage, PostTitle } from './blog-post.styled';
+import EditButton from './edit-button';
+import ContentTemplate from './blog-content';
 
-function Template({ data, isEditing, setIsEditing }: any) {
-  console.log(process.env.NODE_ENV);
+function Template({ data }: any) {
+  const [{ frontmatter }] = useLocalRemarkForm(data.markdownRemark, blogPostForm) as any;
+
+  console.log('NODE_ENV', process.env.NODE_ENV);
   return (
-    <>
-      <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
-        <PageLayout>
-          <div className="blog-post-container">
-            <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: data?.markdownRemark?.html }} />
-          </div>
-        </PageLayout>
-      </TinaField>
-      {process.env.NODE_ENV === 'production' && (
-        <button type="button" onClick={() => setIsEditing((p: any) => !p)}>
-          {isEditing ? 'Preview' : 'Edit'}
-        </button>
-      )}
-    </>
+    <PageLayout>
+      <PostContainer>
+        <PostImage src={frontmatter.image && frontmatter.image.childImageSharp.fluid.src} />
+        <PostTitle>{frontmatter.title}</PostTitle>
+        <ContentTemplate data={data} />
+      </PostContainer>
+    </PageLayout>
   );
 }
+
 export const pageQuery = graphql`
   query($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
-      rawMarkdownBody
-      rawFrontmatter
-      fileRelativePath
+      ...TinaRemark
       frontmatter {
         title
+        image {
+          childImageSharp {
+            fluid {
+              src
+            }
+          }
+        }
       }
       html
     }
   }
 `;
 
-export default inlineRemarkForm(Template);
+export default Template;
