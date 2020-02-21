@@ -1,66 +1,45 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { graphql } from 'gatsby';
-import { useLocalJsonForm, useGlobalJsonForm } from 'gatsby-tinacms-json';
+import { useLocalJsonForm } from 'gatsby-tinacms-json';
 
-import indexFormConfig from '../@cms/form/index-page';
-import settingsForm from '../@cms/form/settings';
-import BlogPostList from '../components/blog-post-list';
+import Page2colForm from '../@cms/form/page-2col';
+
 import { IndexAside, IndexContainer, IndexMain } from '../components/pages/index.styled';
-import { FormProvider } from '../context/form';
 import PageLayout from '../layouts/page';
-import NewsletterForm from '../components/form-newsletter';
 import Blocks from '../components/blocks';
 
 interface IndexProps {
   data: {
     pagesJson: {
-      sections: string;
+      sections: any[];
+      aside: any[];
       rawJson: string;
       fileRelativePath: string;
       id: string;
-    };
-    settingsJson: {
-      rawJson: string;
-      fileRelativePath: string;
-      id: string;
-      apiUrl: string;
-      newsletterLabel: string;
     };
     allFile: any;
   };
 }
 
 const IndexPage: React.FC<IndexProps> = ({ data }) => {
-  // eslint-disable-next-line no-param-reassign
   (data.pagesJson as any).files = data.allFile.edges;
-  const [values] = useLocalJsonForm(data.pagesJson, indexFormConfig) as any;
-  const [{ apiUrl, newsletterLabel, newsletterEmailErrorLabel, newsletterErrorLabel, newsletterSuccessLabel }] = useGlobalJsonForm(
-    data.settingsJson,
-    settingsForm,
-  ) as any;
+  const [values] = useLocalJsonForm(data.pagesJson as any, Page2colForm) as any;
 
   if (!values) return null;
 
   return (
-    <FormProvider apiUrl={apiUrl}>
-      <PageLayout>
-        <IndexContainer>
-          <IndexMain>
-            <Blocks allFile={data.allFile} sections={values.sections} />
-          </IndexMain>
-          <IndexAside>
-            <NewsletterForm
-              label={newsletterLabel}
-              errorLabel={newsletterErrorLabel}
-              emailErrorLabel={newsletterEmailErrorLabel}
-              successLabel={newsletterSuccessLabel}
-            />
-            <BlogPostList />
-          </IndexAside>
-        </IndexContainer>
-      </PageLayout>
-    </FormProvider>
+    <PageLayout>
+      <IndexContainer>
+        <IndexMain>
+          <Blocks allFile={data.allFile} sections={values.sections || []} />
+        </IndexMain>
+        <IndexAside>
+          <Blocks allFile={data.allFile} sections={values.aside || []} />
+        </IndexAside>
+      </IndexContainer>
+    </PageLayout>
   );
 };
 
@@ -70,17 +49,8 @@ export const pageQuery = graphql`
       rawJson
       id
       fileRelativePath
-      ...Block
-    }
-    settingsJson {
-      rawJson
-      id
-      fileRelativePath
-      apiUrl
-      newsletterLabel
-      newsletterEmailErrorLabel
-      newsletterErrorLabel
-      newsletterSuccessLabel
+      ...SectionsBlock
+      ...AsideBlock
     }
     allFile {
       ...FluidImg

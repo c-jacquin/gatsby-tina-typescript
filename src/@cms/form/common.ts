@@ -43,6 +43,116 @@ const titleTagSelect = {
   ],
 };
 
+const FormBlock = {
+  label: 'Form',
+  fields: [
+    {
+      label: 'Api url',
+      name: 'apiUrl',
+      component: 'text',
+    },
+    {
+      label: 'Server error message',
+      name: 'errorMessage',
+      component: 'text',
+    },
+    {
+      label: 'Label on the submit button',
+      name: 'submitLabel',
+      component: 'text',
+    },
+    {
+      label: 'Success message',
+      name: 'successMessage',
+      component: 'text',
+    },
+    {
+      label: 'Form fields',
+      name: 'fields',
+      description: 'The fields of the form',
+      component: 'group-list',
+      itemProps: (item: any, idx: number) => ({
+        key: idx,
+        ...item,
+      }),
+      defaultItem: () => ({
+        type: 'text',
+        name: 'a name',
+        label: '',
+        errorMessage: 'error',
+        required: false,
+      }),
+      fields: [
+        {
+          label: 'label',
+          name: 'label',
+          component: 'text',
+        },
+        {
+          label: 'name',
+          name: 'name',
+          component: 'text',
+        },
+        {
+          label: 'error message',
+          name: 'fieldErrorMessage',
+          component: 'text',
+        },
+        {
+          label: 'is required',
+          name: 'required',
+          component: 'toggle',
+        },
+        {
+          label: 'type',
+          name: 'path',
+          component: 'select',
+          options: ['text', 'email', 'textarea'].map(value => ({
+            value,
+            label: value,
+          })),
+        },
+      ],
+    },
+  ],
+};
+
+const NewsletterBlock = {
+  label: 'Newsletter widget',
+  fields: [
+    {
+      label: 'Forms endpoint',
+      name: 'apiUrl',
+      description: 'The endpoints used by newsletter form and contact forms (!!!)',
+      component: 'text',
+    },
+    {
+      label: 'Newsletter form label',
+      name: 'title',
+      description: 'The label on top of your newsletter form',
+      component: 'text',
+    },
+    {
+      label: 'Newsletter email error label',
+      name: 'fieldErrorMessage',
+      description: 'The error message displayed when email is invalid',
+      component: 'text',
+    },
+    {
+      label: 'Newsletter form error label',
+      name: 'errorMessage',
+      description: 'The error message when something fail on submit',
+      component: 'text',
+    },
+    {
+      label: 'Newsletter form success label',
+      name: 'successMessage',
+      description: 'The message displayed when the form submitted successfully',
+      component: 'text',
+    },
+  ],
+};
+
 const TitleBlock = {
   label: 'Title',
   fields: [
@@ -71,6 +181,13 @@ const TitleBlock = {
     },
     titleTagSelect,
   ],
+  defaultItem: () => ({
+    title: 'un titre',
+    color: '#000',
+    align: 'center',
+    margin: '2',
+    tag: 'h1',
+  }),
 };
 
 const BannerBlock = {
@@ -167,6 +284,22 @@ export default {
       ContentBlock,
       BlogPostGridBlock,
       BlogPostListBlock,
+      FormBlock,
+      NewsletterBlock,
+    },
+  },
+  asideBlocks: {
+    label: 'Aside Blocks',
+    name: 'rawJson.aside',
+    component: 'blocks',
+    templates: {
+      TitleBlock,
+      BannerBlock,
+      ContentBlock,
+      BlogPostGridBlock,
+      BlogPostListBlock,
+      FormBlock,
+      NewsletterBlock,
     },
   },
 };

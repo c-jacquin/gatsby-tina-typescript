@@ -2,6 +2,7 @@
 import styled from '@emotion/styled';
 
 import Input from '../input';
+import Button from '../button';
 
 export const NewsletterFormContainer = styled.form(({ theme }: any) => ({
   margin: `${theme.dimensions.containerPadding} 0`,
@@ -27,4 +28,9 @@ export const ErrorLabel = styled.span({
 export const NewsletterInputWrapper = styled.div({
   display: 'flex',
   justifyContent: 'space-between',
+});
+
+export const SubmitButton = styled(Button)({
+  width: '2em',
+  marginBottom: '30px',
 });

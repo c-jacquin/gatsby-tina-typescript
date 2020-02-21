@@ -4,10 +4,12 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import Banner from '../banner';
-import MdContent from '../md-content';
-import { PageTitle } from '../title';
 import BlogPostGrid from '../blog-post-grid';
 import BlogPostList from '../blog-post-list';
+import NewsletterForm from '../form-newsletter';
+import MdContent from '../md-content';
+import { PageTitle } from '../title';
+import Form from '../form';
 
 interface BlocksProps {
   sections: any;
@@ -20,6 +22,8 @@ enum template {
   TitleBlock = 'TitleBlock',
   BlogPostGridBlock = 'BlogPostGridBlock',
   BlogPostListBlock = 'BlogPostListBlock',
+  NewsletterBlock = 'NewsletterBlock',
+  FormBlock = 'FormBlock',
 }
 
 const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
@@ -45,6 +49,10 @@ const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
             return <BlogPostGrid />;
           case template.BlogPostListBlock:
             return <BlogPostList />;
+          case template.NewsletterBlock:
+            return <NewsletterForm {...props} key={idx} />;
+          case template.FormBlock:
+            return <Form {...props} />;
           default:
             return null;
         }
@@ -55,8 +63,8 @@ const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
 
 export default Blocks;
 
-export const blocksQuery = graphql`
-  fragment Block on PagesJson {
+export const sectionsQuery = graphql`
+  fragment SectionsBlock on PagesJson {
     sections {
       _template
       style
@@ -71,6 +79,32 @@ export const blocksQuery = graphql`
       margin
       tag
       opacity
+      apiUrl
+      fieldErrorMessage
+      errorMessage
+      successMessage
+      submitLabel
+      fields {
+        type
+        name
+        label
+        fieldErrorMessage
+        required
+      }
+    }
+  }
+`;
+
+export const asideQuery = graphql`
+  fragment AsideBlock on PagesJson {
+    aside {
+      _template
+      apiUrl
+      title
+      fieldErrorMessage
+      errorMessage
+      successMessage
+      submitLabel
     }
   }
 `;

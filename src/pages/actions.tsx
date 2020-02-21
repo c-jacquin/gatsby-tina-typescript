@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { useLocalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
 
-import actionsForm from '../@cms/form/actions-page';
+import pageForm from '../@cms/form/page';
 import Blocks from '../components/blocks';
 import PageLayout from '../layouts/page';
 
@@ -16,7 +16,7 @@ interface ActionsPagProps {
 }
 
 const ActionsPage: React.FC<ActionsPagProps> = ({ data }) => {
-  const [values] = useLocalJsonForm(data.pagesJson, actionsForm) as any;
+  const [values] = useLocalJsonForm(data.pagesJson, pageForm) as any;
 
   if (!values) {
     return null;
@@ -35,7 +35,7 @@ export const pageQuery = graphql`
       rawJson
       id
       fileRelativePath
-      ...Block
+      ...SectionsBlock
     }
     allFile {
       ...FluidImg

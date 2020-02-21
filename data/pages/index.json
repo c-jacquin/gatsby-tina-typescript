@@ -1,6 +1,34 @@
 {
   "sections": [
     {
+      "_template": "Setup",
+      "title": "",
+      "align": "",
+      "color": "",
+      "margin": "",
+      "tag": "",
+      "image": "",
+      "parallax": "",
+      "height": "",
+      "titleColor": "",
+      "opacity": "",
+      "style": "",
+      "content": "",
+      "fieldErrorMessage": "",
+      "errorMessage": "",
+      "submitLabel": "",
+      "successMessage": "",
+      "fields": [
+        {
+          "name": "",
+          "type": "",
+          "required": false,
+          "label": "",
+          "fieldErrorMessage": ""
+        }
+      ]
+    },
+    {
       "_template": "TitleBlock",
       "title": "Home Page",
       "align": "center",
@@ -22,6 +50,47 @@
       "_template": "ContentBlock",
       "style": ".roro {\n    width: 40px;\n}\n",
       "content": "### fooofofrofroe\n\n* tototo\n* sfsdf\n* sfd\n* sfdfsdf\n* sfdsf\n* sfdf\n* sdf\n* "
+    }
+  ],
+  "aside": [
+    {
+      "_template": "Setup",
+      "title": "",
+      "align": "",
+      "color": "",
+      "margin": "",
+      "tag": "",
+      "image": "",
+      "parallax": "",
+      "height": "",
+      "titleColor": "",
+      "opacity": "",
+      "style": "",
+      "content": "",
+      "fieldErrorMessage": "",
+      "errorMessage": "",
+      "submitLabel": "",
+      "successMessage": "",
+      "fields": [
+        {
+          "name": "",
+          "type": "",
+          "required": false,
+          "label": "",
+          "fieldErrorMessage": ""
+        }
+      ]
+    },
+    {
+      "_template": "NewsletterBlock",
+      "apiUrl": "https://getform.io/f/a5310e1c-3aa0-4eb5-b88e-23fb551d47d5",
+      "title": "Inscrivez vous à la newletter !",
+      "fieldErrorMessage": "Entrez une adresse mail valide",
+      "errorMessage": "Une erreur est surevenue veuillez reesayer plus tard.",
+      "successMessage": "Merci pour votre inscription"
+    },
+    {
+      "_template": "BlogPostListBlock"
     }
   ],
   "__gatsby_resolved": {

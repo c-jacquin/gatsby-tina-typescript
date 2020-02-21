@@ -1,12 +1,16 @@
 import commonForm from './common';
 
-const indexPageForm = {
+const Page2colForm = {
   fields: [
     {
       ...commonForm.pageBlocks,
       label: 'Main Sections',
     },
+    {
+      ...commonForm.asideBlocks,
+      label: 'Aside Blocks',
+    },
   ],
 };
 
-export default indexPageForm;
+export default Page2colForm;

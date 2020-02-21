@@ -51,3 +51,58 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
     });
   });
 };
+
+// exports.createSchemaCustomization = ({ actions }) => {
+//   const { createTypes } = actions;
+//   const typeDefs = `
+//     type PagesJson implements Node @dontInfer {
+//       title: String!
+//       message: String!
+//       link: String!
+//       sections: PagesJsonSections
+//       aside: PagesJsonAside
+//     }
+
+//     type PagesJsonSections {
+//       _template: String
+//       style: String!
+//       content: String!
+//       image: String!
+//       parallax: String!
+//       height: String!
+//       title: String!
+//       titleColor: String!
+//       align: String!
+//       color: String!
+//       margin: String!
+//       tag: String!
+//       opacity: Float!
+//       apiUrl: String!
+//       fieldErrorMessage: String!
+//       errorMessage: String!
+//       successMessage: String!
+//       submitLabel: String!
+//       fields: Fields
+//     }
+
+//     type PagesJsonAside {
+//       _template: String
+//       apiUrl: String!
+//       title: String!
+//       fieldErrorMessage: String!
+//       errorMessage: String!
+//       successMessage: String!
+//       submitLabel: String!
+//       fields: Fields
+//     }
+
+//     type Fields {
+//       type: String!
+//       name: String!
+//       label: String!
+//       fieldErrorMessage: String!
+//       required: Boolean!
+//     }
+//   `;
+//   createTypes(typeDefs);
+// };

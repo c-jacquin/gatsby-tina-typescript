@@ -22,6 +22,7 @@ export const Main = styled.main(({ theme }: any) => ({
   zIndex: 10,
   marginBottom: '300px',
   backgroundColor: theme.colors.ui.light,
+  minHeight: '100vh',
 
   [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     marginTop: theme.dimensions.heights.header,
@@ -52,7 +53,7 @@ export const HeaderContainer = styled.header<{ isTop: boolean; scrollDirection?:
     top: 0,
     left: 0,
     width: '100%',
-    zIndex: 1,
+    zIndex: 11,
     transform: getHeaderTransform(isTop, scrollDirection, theme),
     [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
       height: `${theme.dimensions.heights.header}px`,
