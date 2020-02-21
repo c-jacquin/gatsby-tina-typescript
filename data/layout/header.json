@@ -25,5 +25,8 @@
       "label": "Contact",
       "path": "/contact"
     }
-  ]
+  ],
+  "__gatsby_resolved": {
+    "fileRelativePath": "/data/layout/header.json"
+  }
 }

@@ -15,6 +15,7 @@ import { getThumbnail } from '../@cms/helpers/thumbnail';
 import socialFormConfig from '../@cms/form/social';
 import ThemeProvider from '../components/theme-provider';
 import { MenuProvider } from '../context/side-menu';
+import Footer from './footer';
 import Header from './header';
 import SideMenu from './side-menu';
 import { Main, Root } from './styled';
@@ -80,19 +81,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, meta = [], title }) =
         }
       }
       allFile {
-        edges {
-          node {
-            relativePath
-            childImageSharp {
-              fixed {
-                src
-              }
-              fluid {
-                src
-              }
-            }
-          }
-        }
+        ...FluidImg
       }
     }
   `);
@@ -130,6 +119,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, meta = [], title }) =
             <Header />
             <SideMenu />
             <Main id="main">{children}</Main>
+            <Footer />
           </Root>
         </MenuProvider>
       </ThemeProvider>

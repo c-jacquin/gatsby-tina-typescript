@@ -16,9 +16,9 @@ import { HeaderContainer, Navbar, NavigationLink, HeaderLogo, MenuButton } from 
 import useIsMobile from '../hooks/useIsMobile';
 
 const Header: React.FC = () => {
-  const { headerJson, allFile } = useStaticQuery(graphql`
-    query NavHeader {
-      headerJson {
+  const { layoutJson, allFile } = useStaticQuery(graphql`
+    query Header {
+      layoutJson(fileRelativePath: { regex: "/header/" }) {
         fileRelativePath
         rawJson
         id
@@ -36,29 +36,17 @@ const Header: React.FC = () => {
         }
       }
       allFile {
-        edges {
-          node {
-            relativePath
-            childImageSharp {
-              fixed {
-                src
-              }
-              fluid {
-                src
-              }
-            }
-          }
-        }
+        ...FluidImg
       }
     }
   `);
 
-  headerJson.files = allFile.edges;
+  layoutJson.files = allFile.edges;
 
   const theme = useTheme<Theme>();
   const isMobile = useIsMobile();
   const [{ links, withLogo, logo, linkSpace, color, fontSize, backgroundColor, activeLinkColor }] = useGlobalJsonForm(
-    headerJson,
+    layoutJson,
     headerForm,
   ) as any;
   const { toggleMenu, isMenuOpen } = useContext(MenuContext);

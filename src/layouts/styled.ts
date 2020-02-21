@@ -17,8 +17,11 @@ export const Root = styled.div`
 
 export const Main = styled.main(({ theme }: any) => ({
   position: 'relative',
-  marginBottom: '3rem',
+  // marginBottom: '3rem',
   marginTop: theme.dimensions.heights.headerMobile,
+  zIndex: 10,
+  marginBottom: '300px',
+  backgroundColor: theme.colors.ui.light,
 
   [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     marginTop: theme.dimensions.heights.header,
@@ -125,3 +128,18 @@ export const LogoWrapper = styled.div(({ theme }: any) => ({
     display: 'inline',
   },
 }));
+
+// Footer
+
+export const FooterContainer = styled.footer({
+  backgroundColor: '#000',
+  height: '300px',
+  position: 'fixed',
+  zIndex: 1,
+  bottom: 0,
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: 'white',
+});

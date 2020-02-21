@@ -24,11 +24,11 @@ const menu: Record<string, typeof slide> = {
 const SideMenu = () => {
   const { isMenuOpen } = useContext(MenuContext);
   const {
-    headerJson: { color, backgroundColor, fontSize, mobileLogo, withLogo, activeLinkColor, links, sideMenuType },
+    layoutJson: { color, backgroundColor, fontSize, mobileLogo, withLogo, activeLinkColor, links, sideMenuType },
     allFile,
   } = useStaticQuery(graphql`
     query SideMenu {
-      headerJson {
+      layoutJson(fileRelativePath: { regex: "/header/" }) {
         color
         backgroundColor
         fontSize
