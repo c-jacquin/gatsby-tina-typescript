@@ -132,7 +132,7 @@ export const LogoWrapper = styled.div(({ theme }: any) => ({
 
 // Footer
 
-export const FooterContainer = styled.footer({
+export const FooterContainer = styled.footer(({ theme }: any) => ({
   backgroundColor: '#000',
   height: '300px',
   position: 'fixed',
@@ -140,7 +140,12 @@ export const FooterContainer = styled.footer({
   bottom: 0,
   width: '100%',
   display: 'flex',
-  justifyContent: 'center',
+  flexDirection: 'column',
   alignItems: 'center',
   color: 'white',
-});
+  [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
+    padding: '60px',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+}));

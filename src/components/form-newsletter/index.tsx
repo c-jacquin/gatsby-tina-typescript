@@ -61,7 +61,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({ apiUrl, title, errorMes
   );
 
   return (
-    <NewsletterFormContainer onSubmit={handleSubmit(onSubmit)}>
+    <NewsletterFormContainer onSubmit={handleSubmit(onSubmit)} noValidate>
       <NewsletterLabel>{title}</NewsletterLabel>
       <NewsletterInputWrapper>
         <NewsletterInput placeholder="Votre email" name="email" type="email" ref={register({ pattern: emailPattern, required: true })} />

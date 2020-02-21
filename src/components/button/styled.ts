@@ -3,8 +3,9 @@ import styled from '@emotion/styled';
 
 export type StyleType = 'primary' | 'white' | 'warning' | 'accent';
 
-export const StyledButton = styled.button<{ styleType?: StyleType }>(({ theme, styleType = 'primary' }: any) => ({
-  width: '100%',
+export const StyledButton = styled.button<{ styleType?: StyleType; block?: boolean }>(({ theme, styleType = 'primary', block }: any) => ({
+  minWidth: '2em',
+  width: block ? '100%' : 'auto',
   border: 'none',
   cursor: 'pointer',
   backgroundColor: theme.colors[styleType],

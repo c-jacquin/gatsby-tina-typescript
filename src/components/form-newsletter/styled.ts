@@ -30,7 +30,4 @@ export const NewsletterInputWrapper = styled.div({
   justifyContent: 'space-between',
 });
 
-export const SubmitButton = styled(Button)({
-  width: '2em',
-  marginBottom: '30px',
-});
+export const SubmitButton = styled(Button)({});
