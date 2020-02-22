@@ -2,6 +2,46 @@
   "sections": [
     {
       "_template": "Setup",
+      "hpadding": 0,
+      "vpadding": 0,
+      "hmargin": 0,
+      "vmargin": 0,
+      "flexAlign": "",
+      "flexReverse": false,
+      "cols": [
+        {
+          "hpadding": 0,
+          "vpadding": 0,
+          "hmargin": 0,
+          "vmargin": 0,
+          "width": 0,
+          "blocks": [
+            {
+              "_template": "",
+              "title": "",
+              "color": "",
+              "align": "",
+              "margin": "",
+              "tag": "",
+              "lat": 0,
+              "lng": 0,
+              "zoom": 0,
+              "flex": false,
+              "height": "",
+              "width": "",
+              "fields": [
+                {
+                  "name": "",
+                  "type": "",
+                  "required": false,
+                  "label": "",
+                  "fieldErrorMessage": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "title": "",
       "align": "",
       "color": "",

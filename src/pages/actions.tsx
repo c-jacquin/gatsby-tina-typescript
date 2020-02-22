@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { useLocalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
 
-import pageForm from '../@cms/form/page';
+import pageForm from '../@cms/form/templates/page-1col';
 import Blocks from '../components/blocks';
 import PageLayout from '../layouts/page';
 

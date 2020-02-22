@@ -1,6 +1,49 @@
 {
   "sections": [
     {
+      "flexAlign": "flex-start",
+      "flexReverse": false,
+      "hpadding": 2,
+      "vpadding": 0,
+      "hmargin": 0,
+      "vmargin": 4,
+      "cols": [
+        {
+          "width": 26,
+          "hpadding": 0,
+          "vpadding": 0,
+          "hmargin": 0,
+          "vmargin": 0,
+          "blocks": [
+            {
+              "_template": "NewsletterBlock"
+            }
+          ],
+          "_template": "ColBlock"
+        },
+        {
+          "width": 70,
+          "hpadding": 0,
+          "vpadding": 0,
+          "hmargin": 0,
+          "vmargin": 0,
+          "blocks": [
+            {
+              "lat": 6,
+              "lng": 55,
+              "zoom": 3,
+              "height": "300px",
+              "width": "100%",
+              "_template": "MapBlock",
+              "flex": true
+            }
+          ],
+          "_template": "ColBlock"
+        }
+      ],
+      "_template": "RowBlock"
+    },
+    {
       "title": "Contactez nous",
       "color": "#000",
       "align": "center",

@@ -1,16 +1,15 @@
-// import { graphql, useStaticQuery } from 'gatsby';
 import { useStaticQuery, graphql } from 'gatsby';
-import { useLocalJsonForm } from 'gatsby-tinacms-json';
+import { useGlobalJsonForm } from 'gatsby-tinacms-json';
 import Map from 'pigeon-maps';
 import React from 'react';
 
-import footerForm from '../@cms/form/footer';
-import { FooterContainer } from './styled';
+import footerForm from '../@cms/form/globals/footer';
+import { FooterContainer, FooterNavbar, FooterNavlink } from './styled';
 
 const Footer: React.FC = () => {
-  const { layoutJson } = useStaticQuery(graphql`
+  const { layoutJson, nav } = useStaticQuery(graphql`
     query Footer {
-      layoutJson(fileRelativePath: { regex: "/header/" }) {
+      layoutJson(fileRelativePath: { regex: "/footer/" }) {
         fileRelativePath
         rawJson
         id
@@ -18,19 +17,31 @@ const Footer: React.FC = () => {
         lng
         zoom
       }
+      nav: layoutJson(fileRelativePath: { regex: "/header/" }) {
+        fileRelativePath
+        rawJson
+        id
+        links {
+          path
+          label
+        }
+      }
       allFile {
         ...FluidImg
       }
     }
   `);
-  const [{ lat, lng, zoom }] = useLocalJsonForm(layoutJson, footerForm) as any;
-  const position = [lat || 45, lng || 10];
+  const [{ lat, lng, zoom }] = useGlobalJsonForm(layoutJson, footerForm) as any;
+  const position = [lat, lng];
 
-  console.log(position, zoom);
   return (
     <FooterContainer>
-      <div>Footer</div>
-      <Map center={[50.879, 4.6997]} zoom={12} width={300} height={200} />
+      <FooterNavbar>
+        {nav.links.map(({ path, label }: any) => (
+          <FooterNavlink to={path}>{label}</FooterNavlink>
+        ))}
+      </FooterNavbar>
+      <Map center={position} zoom={zoom} />
     </FooterContainer>
   );
 };

@@ -149,3 +149,22 @@ export const FooterContainer = styled.footer(({ theme }: any) => ({
     justifyContent: 'space-between',
   },
 }));
+
+export const FooterNavbar = styled.nav({
+  margin: '20px 0',
+});
+
+export const FooterNavlink = styled(Link)(({ theme }: any) => ({
+  color: theme.colors.white,
+  marginRight: '10px',
+
+  '&:visited': {
+    color: theme.colors.white,
+  },
+  '&:active': {
+    color: theme.colors.white,
+  },
+  '&:hover': {
+    color: theme.colors.white,
+  },
+}));

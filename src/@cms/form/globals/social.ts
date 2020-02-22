@@ -1,4 +1,4 @@
-import commonForm from './common';
+import { commonImageForm } from '../common';
 
 const socialForm = {
   fields: [
@@ -31,7 +31,7 @@ const socialForm = {
       name: 'rawJson.facebook.image',
       description: 'The thumbnail of facebook share widget',
       component: 'image',
-      ...commonForm.image,
+      ...commonImageForm,
     },
     {
       label: 'Twitter title',
@@ -56,7 +56,7 @@ const socialForm = {
       name: 'rawJson.twitter.image',
       description: 'The thumbnail of twitter share widget',
       component: 'image',
-      ...commonForm.image,
+      ...commonImageForm,
     },
   ],
 };

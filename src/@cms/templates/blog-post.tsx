@@ -6,7 +6,7 @@ import { inlineRemarkForm, useLocalRemarkForm } from 'gatsby-tinacms-remark';
 import React, { useEffect } from 'react';
 
 import PageLayout from '../../layouts/page';
-import blogPostForm from '../form/blog-post';
+import blogPostForm from '../form/templates/blog-post';
 import { PostBody, PostContainer, PostImage, PostTitle } from './blog-post.styled';
 import EditButton from './edit-button';
 import ContentTemplate from './blog-content';

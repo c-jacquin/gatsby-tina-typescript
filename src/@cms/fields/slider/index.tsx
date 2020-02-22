@@ -6,7 +6,7 @@ import RangeInput from './styled';
 const Slider: React.FC<FieldProps> = ({ input, field, meta }) => {
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      input.onChange(event.target.value);
+      input.onChange(parseInt(event.target.value, 10));
     },
     [input],
   );

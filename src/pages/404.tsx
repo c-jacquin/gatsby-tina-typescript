@@ -2,7 +2,7 @@ import { Link, graphql } from 'gatsby';
 import { useLocalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
 
-import errorFormConfig from '../@cms/form/error';
+import errorFormConfig from '../@cms/form/pages/404';
 import PageLayout from '../layouts/page';
 
 interface NotFoundProps {

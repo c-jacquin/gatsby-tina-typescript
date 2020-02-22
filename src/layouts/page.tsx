@@ -10,9 +10,9 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import { withPlugin } from 'tinacms';
 
 import BlogPostCreator from '../@cms/creator/blog-post';
-import seoFormConfig from '../@cms/form/seo';
+import seoFormConfig from '../@cms/form/globals/seo';
 import { getThumbnail } from '../@cms/helpers/thumbnail';
-import socialFormConfig from '../@cms/form/social';
+import socialFormConfig from '../@cms/form/globals/social';
 import ThemeProvider from '../components/theme-provider';
 import { MenuProvider } from '../context/side-menu';
 import Footer from './footer';

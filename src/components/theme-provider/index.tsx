@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { useGlobalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
 
-import themeFormConfig from '../../@cms/form/theme';
+import themeFormConfig from '../../@cms/form/globals/theme';
 import normalize from '../../styles/normalize';
 
 const ThemeProvider: React.FC = ({ children }) => {

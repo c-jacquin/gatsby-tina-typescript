@@ -7,7 +7,7 @@ import { useGlobalJsonForm } from 'gatsby-tinacms-json';
 import { transparentize } from 'polished';
 import React, { useMemo, useContext } from 'react';
 
-import headerForm from '../@cms/form/header';
+import headerForm from '../@cms/form/globals/header';
 import { getThumbnail } from '../@cms/helpers/thumbnail';
 import { MenuContext } from '../context/side-menu';
 import useScroll from '../hooks/useScroll';

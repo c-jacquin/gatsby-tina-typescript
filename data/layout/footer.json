@@ -1,5 +1,8 @@
 {
   "lat": 51.505,
   "lng": -0.09,
-  "zoom": 13
+  "zoom": 13,
+  "__gatsby_resolved": {
+    "fileRelativePath": "/data/layout/footer.json"
+  }
 }

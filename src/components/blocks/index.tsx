@@ -10,13 +10,15 @@ import NewsletterForm from '../form-newsletter';
 import MdContent from '../md-content';
 import { PageTitle } from '../title';
 import Form from '../form';
+import Map from '../map';
+import Row from '../row';
 
 interface BlocksProps {
   sections: any;
   allFile: any;
 }
 
-enum template {
+export enum Template {
   BannerBlock = 'BannerBlock',
   ContentBlock = 'ContentBlock',
   TitleBlock = 'TitleBlock',
@@ -24,41 +26,45 @@ enum template {
   BlogPostListBlock = 'BlogPostListBlock',
   NewsletterBlock = 'NewsletterBlock',
   FormBlock = 'FormBlock',
+  MapBlock = 'MapBlock',
+  RowBlock = 'RowBlock',
 }
 
 const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
-  return (
-    <>
-      {sections.map(({ _template, title, content, ...props }: any, idx: number) => {
-        switch (_template) {
-          case template.TitleBlock:
-            return (
-              <PageTitle {...props} key={idx}>
-                {title}
-              </PageTitle>
-            );
-          case template.ContentBlock:
-            return <MdContent {...props} markdown={content} key={idx} />;
-          case template.BannerBlock:
-            return (
-              <Banner {...props} files={allFile.edges} key={idx}>
-                {title}
-              </Banner>
-            );
-          case template.BlogPostGridBlock:
-            return <BlogPostGrid />;
-          case template.BlogPostListBlock:
-            return <BlogPostList />;
-          case template.NewsletterBlock:
-            return <NewsletterForm {...props} key={idx} />;
-          case template.FormBlock:
-            return <Form {...props} />;
-          default:
-            return null;
-        }
-      })}
-    </>
-  );
+  return sections.map(({ _template, title, content, ...props }: any, idx: number) => {
+    switch (_template) {
+      case Template.TitleBlock:
+        return (
+          <PageTitle {...props} key={idx}>
+            {title}
+          </PageTitle>
+        );
+      case Template.ContentBlock:
+        return <MdContent {...props} markdown={content} key={idx} />;
+      case Template.BannerBlock:
+        return (
+          <Banner {...props} files={allFile.edges} key={idx}>
+            {title}
+          </Banner>
+        );
+      case Template.BlogPostGridBlock:
+        return <BlogPostGrid />;
+      case Template.BlogPostListBlock:
+        return <BlogPostList />;
+      case Template.NewsletterBlock:
+        return <NewsletterForm {...props} key={idx} />;
+      case Template.FormBlock:
+        return <Form {...props} />;
+      case Template.MapBlock:
+        return <Map {...props} key={idx} />;
+      case Template.RowBlock: {
+        console.log('row props => ', props);
+        return <Row {...props} />;
+      }
+      default:
+        return null;
+    }
+  });
 };
 
 export default Blocks;
@@ -90,6 +96,41 @@ export const sectionsQuery = graphql`
         label
         fieldErrorMessage
         required
+      }
+
+      hpadding
+      vpadding
+      hmargin
+      vmargin
+      flexAlign
+      flexReverse
+      cols {
+        hpadding
+        vpadding
+        hmargin
+        vmargin
+        width
+        blocks {
+          _template
+          title
+          color
+          align
+          margin
+          tag
+          lat
+          lng
+          zoom
+          flex
+          height
+          width
+          fields {
+            name
+            type
+            required
+            label
+            fieldErrorMessage
+          }
+        }
       }
     }
   }

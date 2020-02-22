@@ -2,7 +2,7 @@ export interface FieldProps {
   input: {
     name: string;
     value: string;
-    onChange: (value: string) => void;
+    onChange: (value: string | number | boolean) => void;
   };
   meta: {
     error?: string;

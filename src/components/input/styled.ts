@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 export const InputContainer = styled.div(({ theme }: any) => ({
   display: 'flex',
+  width: '100%',
   flexDirection: 'column',
   [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     flexDirection: 'row',
