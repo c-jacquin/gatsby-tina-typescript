@@ -2,8 +2,8 @@ const ContentBlock = {
   label: 'Markdown content',
   fields: [
     {
-      label: 'Content',
-      name: 'content',
+      label: 'markdown Content',
+      name: 'markdown',
       component: 'markdown',
     },
     {

@@ -144,14 +144,15 @@ export const FooterContainer = styled.footer(({ theme }: any) => ({
   alignItems: 'center',
   color: 'white',
   [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
-    padding: '60px',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    padding: '20px',
   },
 }));
 
 export const FooterNavbar = styled.nav({
   margin: '20px 0',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
 });
 
 export const FooterNavlink = styled(Link)(({ theme }: any) => ({

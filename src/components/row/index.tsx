@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Col from './col';
-import { RowContainer } from './styled';
+import { RowContainer, ColContainer } from './styled';
 
 interface RowProps {
   cols: any[];
-  allFile: any;
+  files: any;
   vmargin: number;
   hmargin: number;
   vpadding: number;
@@ -14,11 +14,14 @@ interface RowProps {
   flexAlign: string;
 }
 
-const Row: React.FC<RowProps> = ({ allFile, cols, ...style }) => {
+const Row: React.FC<RowProps> = ({ files, cols, ...style }) => {
+  console.log('row props =>', style);
   return (
     <RowContainer {...style}>
-      {cols.map((props: any) => (
-        <Col {...props} allFile={allFile} />
+      {cols.map(({ vmargin, hmargin, vpadding, hpadding, width, ...props }: any) => (
+        <ColContainer hmargin={hmargin} vmargin={vmargin} vpadding={vpadding} hpadding={hpadding} width={width}>
+          <Col {...props} files={files} />
+        </ColContainer>
       ))}
     </RowContainer>
   );

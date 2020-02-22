@@ -67,6 +67,20 @@ const FormBlock = {
       ],
     },
   ],
+  defaultItem: {
+    errorMessage: 'Somthing fail :(',
+    submitLabel: 'Submit',
+    successMessage: 'Success !!!',
+    fields: [
+      {
+        label: 'name',
+        type: 'text',
+        required: false,
+        name: 'name',
+        errorMessage: 'error',
+      },
+    ],
+  },
 };
 
 export default FormBlock;

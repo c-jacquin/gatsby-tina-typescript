@@ -17,6 +17,7 @@ export const RowContainer = styled.section<RowContainerProps>(
     justifyContent: flexAlign,
     padding: `${vpadding / 2}em 0`,
     margin: `${vmargin / 2}em 0`,
+    width: '100%',
 
     [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
       padding: `${vpadding}em ${hpadding}em`,

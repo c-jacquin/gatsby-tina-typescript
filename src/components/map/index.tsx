@@ -15,7 +15,16 @@ interface MapProps {
 const Map: React.FC<MapProps> = ({ lat, lng, zoom, width, height, flex }) => {
   const isMobile = useIsMobile();
 
-  return <OpenMap center={[lat, lng]} zoom={zoom} width={flex ? undefined : width} height={!isMobile && flex ? undefined : height} />;
+  return (
+    <OpenMap
+      touchEvents={false}
+      mouseEvents={false}
+      center={[lat, lng]}
+      zoom={zoom}
+      width={flex ? undefined : width}
+      height={!isMobile && flex ? undefined : height}
+    />
+  );
 };
 
 export default Map;

@@ -20,7 +20,7 @@ const Banner: React.FC<BannerProps> = ({ children, image, height, parallax, file
 
   return (
     <StyledParalaxBanner
-      height={height}
+      height={`${height}px`}
       layers={[
         {
           image: thumbnail,

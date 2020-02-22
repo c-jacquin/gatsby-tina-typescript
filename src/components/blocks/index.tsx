@@ -12,6 +12,7 @@ import { PageTitle } from '../title';
 import Form from '../form';
 import Map from '../map';
 import Row from '../row';
+import Spacer from '../spacer';
 
 interface BlocksProps {
   sections: any;
@@ -28,10 +29,11 @@ export enum Template {
   FormBlock = 'FormBlock',
   MapBlock = 'MapBlock',
   RowBlock = 'RowBlock',
+  SpacerBlock = 'SpacerBlock',
 }
 
 const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
-  return sections.map(({ _template, title, content, ...props }: any, idx: number) => {
+  return sections.map(({ _template, title, ...props }: any, idx: number) => {
     switch (_template) {
       case Template.TitleBlock:
         return (
@@ -40,7 +42,7 @@ const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
           </PageTitle>
         );
       case Template.ContentBlock:
-        return <MdContent {...props} markdown={content} key={idx} />;
+        return <MdContent {...props} key={idx} />;
       case Template.BannerBlock:
         return (
           <Banner {...props} files={allFile.edges} key={idx}>
@@ -57,10 +59,10 @@ const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
         return <Form {...props} />;
       case Template.MapBlock:
         return <Map {...props} key={idx} />;
-      case Template.RowBlock: {
-        console.log('row props => ', props);
-        return <Row {...props} />;
-      }
+      case Template.RowBlock:
+        return <Row {...props} files={allFile.edges} key={idx} />;
+      case Template.SpacerBlock:
+        return <Spacer {...props} key={idx} />;
       default:
         return null;
     }
@@ -74,7 +76,7 @@ export const sectionsQuery = graphql`
     sections {
       _template
       style
-      content
+      markdown
       image
       parallax
       height
@@ -90,6 +92,8 @@ export const sectionsQuery = graphql`
       errorMessage
       successMessage
       submitLabel
+      hasLine
+      lineColor
       fields {
         type
         name
@@ -110,26 +114,27 @@ export const sectionsQuery = graphql`
         hmargin
         vmargin
         width
-        blocks {
-          _template
-          title
-          color
-          align
-          margin
-          tag
-          lat
-          lng
-          zoom
-          flex
-          height
-          width
-          fields {
-            name
-            type
-            required
-            label
-            fieldErrorMessage
-          }
+        _template
+        title
+        image
+        color
+        align
+        margin
+        tag
+        lat
+        lng
+        zoom
+        flex
+        markdown
+        style
+        height
+        submitLabel
+        fields {
+          name
+          type
+          required
+          label
+          fieldErrorMessage
         }
       }
     }

@@ -1,8 +1,48 @@
 {
-  "lat": 51.505,
-  "lng": -0.09,
-  "zoom": 13,
   "__gatsby_resolved": {
     "fileRelativePath": "/data/layout/footer.json"
-  }
+  },
+  "rows": [
+    {
+      "flexAlign": "",
+      "flexReverse": false,
+      "hpadding": 0,
+      "vpadding": 0,
+      "hmargin": 0,
+      "vmargin": 0,
+      "cols": [
+        {
+          "hpadding": 0,
+          "vpadding": 0,
+          "hmargin": 0,
+          "vmargin": 0,
+          "width": 0,
+          "height": 0,
+          "lat": 0,
+          "lng": 0,
+          "zoom": 3,
+          "title": "",
+          "color": "",
+          "align": "",
+          "margin": "",
+          "tag": "",
+          "flex": false,
+          "markdown": "",
+          "style": "",
+          "submitLabel": "",
+          "fields": [
+            {
+              "name": "",
+              "type": "",
+              "required": false,
+              "label": "",
+              "fieldErrorMessage": ""
+            }
+          ],
+          "_template": ""
+        }
+      ],
+      "_template": "Setup"
+    }
+  ]
 }

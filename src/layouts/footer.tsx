@@ -1,9 +1,10 @@
+/* eslint-disable react/no-array-index-key */
 import { useStaticQuery, graphql } from 'gatsby';
 import { useGlobalJsonForm } from 'gatsby-tinacms-json';
-import Map from 'pigeon-maps';
 import React from 'react';
 
 import footerForm from '../@cms/form/globals/footer';
+import Row from '../components/row';
 import { FooterContainer, FooterNavbar, FooterNavlink } from './styled';
 
 const Footer: React.FC = () => {
@@ -13,9 +14,37 @@ const Footer: React.FC = () => {
         fileRelativePath
         rawJson
         id
-        lat
-        lng
-        zoom
+        rows {
+          _template
+          hpadding
+          vpadding
+          hmargin
+          vmargin
+          cols {
+            _template
+            hpadding
+            vpadding
+            hmargin
+            vmargin
+            width
+            title
+            lat
+            lng
+            zoom
+            flex
+            markdown
+            style
+            height
+            submitLabel
+            fields {
+              name
+              type
+              required
+              label
+              fieldErrorMessage
+            }
+          }
+        }
       }
       nav: layoutJson(fileRelativePath: { regex: "/header/" }) {
         fileRelativePath
@@ -31,8 +60,7 @@ const Footer: React.FC = () => {
       }
     }
   `);
-  const [{ lat, lng, zoom }] = useGlobalJsonForm(layoutJson, footerForm) as any;
-  const position = [lat, lng];
+  const [values] = useGlobalJsonForm(layoutJson, footerForm) as any;
 
   return (
     <FooterContainer>
@@ -41,7 +69,8 @@ const Footer: React.FC = () => {
           <FooterNavlink to={path}>{label}</FooterNavlink>
         ))}
       </FooterNavbar>
-      <Map center={position} zoom={zoom} />
+      {values.rows &&
+        values.rows.filter(({ _template }: any) => _template !== 'Setup').map((row: any, idx: number) => <Row {...row} key={idx} />)}
     </FooterContainer>
   );
 };

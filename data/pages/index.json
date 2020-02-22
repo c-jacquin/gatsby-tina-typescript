@@ -8,6 +8,14 @@
       "vmargin": 0,
       "flexAlign": "",
       "flexReverse": false,
+      "title": "",
+      "align": "",
+      "color": "",
+      "margin": "",
+      "tag": "",
+      "image": "",
+      "hasLine": false,
+      "lineColor": "",
       "cols": [
         {
           "hpadding": 0,
@@ -15,41 +23,34 @@
           "hmargin": 0,
           "vmargin": 0,
           "width": 0,
-          "blocks": [
+          "height": 0,
+          "lat": 0,
+          "lng": 0,
+          "zoom": 3,
+          "image": "",
+          "title": "",
+          "color": "",
+          "align": "",
+          "margin": "",
+          "tag": "",
+          "flex": false,
+          "markdown": "",
+          "style": "",
+          "submitLabel": "",
+          "fields": [
             {
-              "_template": "",
-              "title": "",
-              "color": "",
-              "align": "",
-              "margin": "",
-              "tag": "",
-              "lat": 0,
-              "lng": 0,
-              "zoom": 0,
-              "flex": false,
-              "height": "",
-              "width": "",
-              "fields": [
-                {
-                  "name": "",
-                  "type": "",
-                  "required": false,
-                  "label": "",
-                  "fieldErrorMessage": ""
-                }
-              ]
+              "name": "",
+              "type": "",
+              "required": false,
+              "label": "",
+              "fieldErrorMessage": ""
             }
-          ]
+          ],
+          "_template": ""
         }
       ],
-      "title": "",
-      "align": "",
-      "color": "",
-      "margin": "",
-      "tag": "",
-      "image": "",
       "parallax": "",
-      "height": "",
+      "height": 0,
       "titleColor": "",
       "opacity": "",
       "style": "",
@@ -80,7 +81,7 @@
       "_template": "BannerBlock",
       "image": "smarties.jpg",
       "parallax": "0.3",
-      "height": "200px",
+      "height": 200,
       "title": "Smarties",
       "titleColor": "#000",
       "tag": "h2",
@@ -89,7 +90,7 @@
     {
       "_template": "ContentBlock",
       "style": ".roro {\n    width: 40px;\n}\n",
-      "content": "### fooofofrofroe\n\n* tototo\n* sfsdf\n* sfd\n* sfdfsdf\n* sfdsf\n* sfdf\n* sdf\n* "
+      "markdown": ""
     }
   ],
   "aside": [
@@ -102,7 +103,7 @@
       "tag": "",
       "image": "",
       "parallax": "",
-      "height": "",
+      "height": 0,
       "titleColor": "",
       "opacity": "",
       "style": "",

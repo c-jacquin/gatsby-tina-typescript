@@ -1,49 +1,6 @@
 {
   "sections": [
     {
-      "flexAlign": "flex-start",
-      "flexReverse": false,
-      "hpadding": 2,
-      "vpadding": 0,
-      "hmargin": 0,
-      "vmargin": 4,
-      "cols": [
-        {
-          "width": 26,
-          "hpadding": 0,
-          "vpadding": 0,
-          "hmargin": 0,
-          "vmargin": 0,
-          "blocks": [
-            {
-              "_template": "NewsletterBlock"
-            }
-          ],
-          "_template": "ColBlock"
-        },
-        {
-          "width": 70,
-          "hpadding": 0,
-          "vpadding": 0,
-          "hmargin": 0,
-          "vmargin": 0,
-          "blocks": [
-            {
-              "lat": 6,
-              "lng": 55,
-              "zoom": 3,
-              "height": "300px",
-              "width": "100%",
-              "_template": "MapBlock",
-              "flex": true
-            }
-          ],
-          "_template": "ColBlock"
-        }
-      ],
-      "_template": "RowBlock"
-    },
-    {
       "title": "Contactez nous",
       "color": "#000",
       "align": "center",
@@ -90,6 +47,27 @@
     "fileRelativePath": "/data/pages/contact.json",
     "sections": [
       {
+        "_template": "TitleBlock",
+        "apiUrl": "https://getform.io/f/a5310e1c-3aa0-4eb5-b88e-23fb551d47d5",
+        "submitLabel": "Envoyer",
+        "successMessage": "Merci, à bientot !",
+        "errorMessage": "Une erreur est survenue, réessayer plus tard",
+        "fields": [
+          {
+            "type": "text",
+            "name": "name",
+            "label": "votre nom",
+            "fieldErrorMessage": "Vous devez entrer un nom",
+            "required": true
+          }
+        ],
+        "title": "Contactez nous",
+        "color": "#000",
+        "align": "center",
+        "margin": "2",
+        "tag": "h1"
+      },
+      {
         "_template": "FormBlock",
         "apiUrl": "https://getform.io/f/a5310e1c-3aa0-4eb5-b88e-23fb551d47d5",
         "submitLabel": "Envoyer",
@@ -102,6 +80,24 @@
             "label": "votre nom",
             "fieldErrorMessage": "Vous devez entrer un nom",
             "required": true
+          },
+          {
+            "type": "email",
+            "name": "email",
+            "label": "Votre email",
+            "errorMessage": "error",
+            "required": false,
+            "fieldErrorMessage": "veuillez entrer une adresse mail valide",
+            "path": "email"
+          },
+          {
+            "type": "textarea",
+            "name": "message",
+            "label": "Votre message",
+            "errorMessage": "error",
+            "required": true,
+            "path": "textarea",
+            "fieldErrorMessage": "Vous devez entrer un mesage"
           }
         ]
       }

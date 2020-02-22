@@ -6,6 +6,7 @@ import FormBlock from '../blocks/form';
 import NewsletterBlock from '../blocks/newsletter';
 import RowBlock from '../blocks/row';
 import MapBlock from '../blocks/map';
+import SpacerBlock from '../blocks/spacer';
 
 export const pageBlocks = {
   label: 'Page Sections',
@@ -20,6 +21,7 @@ export const pageBlocks = {
     FormBlock,
     NewsletterBlock,
     RowBlock,
+    SpacerBlock,
   },
 };
 

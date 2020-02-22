@@ -28,7 +28,10 @@ const BannerBlock = {
     {
       label: 'Height',
       name: 'height',
-      component: 'text',
+      component: 'slider',
+      min: 1,
+      max: 600,
+      step: 1,
     },
     {
       label: 'parallax',
@@ -47,6 +50,14 @@ const BannerBlock = {
       step: 0.1,
     },
   ],
+  defaultItem: {
+    tag: 'h2',
+    parallax: 0.5,
+    opacity: 0,
+    height: 200,
+    title: 'A Title',
+    color: '#000',
+  },
 };
 
 export default BannerBlock;

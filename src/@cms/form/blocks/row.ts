@@ -4,41 +4,19 @@ import FormBlock from './form';
 import MapBlock from './map';
 import TitleBlock from './title';
 import NewsletterBlock from './newsletter';
+import BannerBlock from './banner';
 
-const ColBlock = {
-  label: 'col',
-  fields: [
-    {
-      label: 'width',
-      name: 'width',
-      component: 'slider',
-      min: '0',
-      max: '100',
-      step: '1',
-    },
-    ...containerForm,
-    {
-      label: 'col',
-      name: 'blocks',
-      component: 'blocks',
-      templates: {
-        ContentBlock,
-        MapBlock,
-        FormBlock,
-        TitleBlock,
-        NewsletterBlock,
-      },
-    },
-  ],
-  defaultItem: {
-    width: 50,
-    hpadding: 0,
-    vpadding: 0,
-    hmargin: 0,
-    vmargin: 0,
-    blocks: [],
+const colFields = [
+  {
+    label: 'width',
+    name: 'width',
+    component: 'slider',
+    min: '0',
+    max: '100',
+    step: '1',
   },
-};
+  ...containerForm,
+];
 
 const RowBlock = {
   label: 'row',
@@ -60,7 +38,30 @@ const RowBlock = {
       name: 'cols',
       component: 'blocks',
       templates: {
-        ColBlock,
+        ContentBlock: {
+          ...ContentBlock,
+          fields: [...colFields, ...ContentBlock.fields],
+        },
+        MapBlock: {
+          ...MapBlock,
+          fields: [...colFields, ...MapBlock.fields],
+        },
+        FormBlock: {
+          ...FormBlock,
+          fields: [...colFields, ...FormBlock.fields],
+        },
+        TitleBlock: {
+          ...TitleBlock,
+          fields: [...colFields, ...TitleBlock.fields],
+        },
+        NewsletterBlock: {
+          ...NewsletterBlock,
+          fields: [...colFields, ...NewsletterBlock.fields],
+        },
+        BannerBlock: {
+          ...BannerBlock,
+          fields: [...colFields, ...BannerBlock.fields],
+        },
       },
     },
   ],

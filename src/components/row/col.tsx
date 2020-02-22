@@ -10,7 +10,6 @@ import MdContent from '../md-content';
 import { PageTitle } from '../title';
 import Form from '../form';
 import Map from '../map';
-import { ColContainer } from './styled';
 
 enum Template {
   BannerBlock = 'BannerBlock',
@@ -23,52 +22,43 @@ enum Template {
   MapBlock = 'MapBlock',
 }
 
-interface ColProps {
-  blocks: any[];
-  allFile: any;
-  vmargin: number;
-  hmargin: number;
-  vpadding: number;
-  hpadding: number;
-  width: number;
-}
+// interface ColProps {
+//   _template: string;
+//   title: string;
+//   content: string;
+//   allFile: any;
+//   vmargin: number;
+//   hmargin: number;
+//   vpadding: number;
+//   hpadding: number;
+//   width: number;
+// }
 
-const Col: React.FC<ColProps> = ({ blocks, allFile, ...style }) => {
-  return (
-    <ColContainer {...style}>
-      {blocks.map(({ _template, title, content, ...props }: any, idx: number) => {
-        switch (_template) {
-          case Template.TitleBlock:
-            return (
-              <PageTitle {...props} key={idx}>
-                {title}
-              </PageTitle>
-            );
-          case Template.ContentBlock:
-            return <MdContent {...props} markdown={content} key={idx} />;
-          case Template.BannerBlock:
-            return (
-              <Banner {...props} files={allFile.edges} key={idx}>
-                {title}
-              </Banner>
-            );
-          case Template.BlogPostGridBlock:
-            return <BlogPostGrid />;
-          case Template.BlogPostListBlock:
-            return <BlogPostList />;
-          case Template.NewsletterBlock:
-            return <NewsletterForm {...props} key={idx} />;
-          case Template.FormBlock:
-            return <Form {...props} />;
-          case Template.MapBlock:
-            return <Map {...props} key={idx} />;
-
-          default:
-            return null;
-        }
-      })}
-    </ColContainer>
-  );
+const Col: React.FC<any> = ({ _template, files, title, ...props }) => {
+  switch (_template) {
+    case Template.TitleBlock:
+      return <PageTitle {...props}>{title}</PageTitle>;
+    case Template.ContentBlock:
+      return <MdContent {...props} />;
+    case Template.BannerBlock:
+      return (
+        <Banner {...props} files={files}>
+          {title}
+        </Banner>
+      );
+    case Template.BlogPostGridBlock:
+      return <BlogPostGrid />;
+    case Template.BlogPostListBlock:
+      return <BlogPostList />;
+    case Template.NewsletterBlock:
+      return <NewsletterForm {...props} />;
+    case Template.FormBlock:
+      return <Form {...props} />;
+    case Template.MapBlock:
+      return <Map {...props} />;
+    default:
+      return null;
+  }
 };
 
 export default Col;

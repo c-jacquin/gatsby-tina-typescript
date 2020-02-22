@@ -28,12 +28,18 @@ const MapBlock = {
     {
       label: 'height',
       name: 'height',
-      component: 'text',
+      component: 'slider',
+      min: 0,
+      max: 500,
+      step: 1,
     },
     {
       label: 'width',
       name: 'width',
-      component: 'text',
+      component: 'slider',
+      min: 0,
+      max: 500,
+      step: 1,
     },
   ],
   defaultItem: () => ({
