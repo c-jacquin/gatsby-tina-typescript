@@ -7,12 +7,12 @@ interface MapProps {
   lat: number;
   lng: number;
   zoom: number;
-  flex?: boolean;
+  flexMap?: boolean;
   width: string;
   height: string;
 }
 
-const Map: React.FC<MapProps> = ({ lat, lng, zoom, width, height, flex }) => {
+const Map: React.FC<MapProps> = ({ lat, lng, zoom, width, height, flexMap }) => {
   const isMobile = useIsMobile();
 
   return (
@@ -21,8 +21,8 @@ const Map: React.FC<MapProps> = ({ lat, lng, zoom, width, height, flex }) => {
       mouseEvents={false}
       center={[lat, lng]}
       zoom={zoom}
-      width={flex ? undefined : width}
-      height={!isMobile && flex ? undefined : height}
+      width={flexMap ? undefined : width}
+      height={!isMobile && flexMap ? undefined : height}
     />
   );
 };

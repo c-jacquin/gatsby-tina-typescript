@@ -21,7 +21,7 @@ const MapBlock = {
     },
     {
       label: 'flex',
-      name: 'flex',
+      name: 'flexMap',
       description: 'full width and height map (ignore width and height define right above)',
       component: 'toggle',
     },

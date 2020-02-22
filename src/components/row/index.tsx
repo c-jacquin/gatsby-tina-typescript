@@ -18,8 +18,8 @@ const Row: React.FC<RowProps> = ({ files, cols, ...style }) => {
   console.log('row props =>', style);
   return (
     <RowContainer {...style}>
-      {cols.map(({ vmargin, hmargin, vpadding, hpadding, width, ...props }: any) => (
-        <ColContainer hmargin={hmargin} vmargin={vmargin} vpadding={vpadding} hpadding={hpadding} width={width}>
+      {cols.map(({ vmargin, hmargin, vpadding, hpadding, flex, ...props }: any) => (
+        <ColContainer hmargin={hmargin} vmargin={vmargin} vpadding={vpadding} hpadding={hpadding} flex={flex}>
           <Col {...props} files={files} />
         </ColContainer>
       ))}

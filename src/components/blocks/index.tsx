@@ -109,13 +109,14 @@ export const sectionsQuery = graphql`
       flexAlign
       flexReverse
       cols {
+        _template
         hpadding
         vpadding
         hmargin
         vmargin
         width
-        _template
         title
+        limit
         image
         color
         align
@@ -125,6 +126,7 @@ export const sectionsQuery = graphql`
         lng
         zoom
         flex
+        flexMap
         markdown
         style
         height

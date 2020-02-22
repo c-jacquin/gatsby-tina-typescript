@@ -29,19 +29,21 @@ export const RowContainer = styled.section<RowContainerProps>(
 );
 
 interface ColContainerProps {
-  width: number;
+  flex: number;
   vmargin: number;
   vpadding: number;
   hmargin: number;
   hpadding: number;
 }
 
-export const ColContainer = styled.div<ColContainerProps>(({ hpadding, hmargin, vmargin, vpadding, width, theme }: any) => ({
+export const ColContainer = styled.div<ColContainerProps>(({ hpadding, hmargin, vmargin, vpadding, flex, theme }: any) => ({
   margin: `${vmargin} 0`,
   padding: `${vpadding} 0`,
+  position: 'relative',
   width: '100%',
   [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
-    width: `${width}%`,
+    width: 'auto',
+    flex,
     margin: `${vmargin} ${hmargin}`,
     padding: `${vpadding} ${hpadding}`,
   },

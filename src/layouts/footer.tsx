@@ -27,6 +27,7 @@ const Footer: React.FC = () => {
             hmargin
             vmargin
             width
+            limit
             title
             lat
             lng

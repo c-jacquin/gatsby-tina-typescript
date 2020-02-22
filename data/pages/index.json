@@ -1,6 +1,36 @@
 {
   "sections": [
     {
+      "flexAlign": "flex-start",
+      "flexReverse": false,
+      "hpadding": 0,
+      "vpadding": 0,
+      "hmargin": 0,
+      "vmargin": 0,
+      "cols": [
+        {
+          "title": "un titre",
+          "color": "#000",
+          "align": "center",
+          "margin": "2",
+          "tag": "h1",
+          "flex": 1,
+          "_template": "TitleBlock"
+        },
+        {
+          "lat": 40,
+          "lng": 40,
+          "zoom": 13,
+          "height": 300,
+          "width": 300,
+          "flex": 3,
+          "_template": "MapBlock",
+          "flexMap": true
+        }
+      ],
+      "_template": "RowBlock"
+    },
+    {
       "_template": "Setup",
       "hpadding": 0,
       "vpadding": 0,
@@ -14,6 +44,7 @@
       "margin": "",
       "tag": "",
       "image": "",
+      "limit": 0,
       "hasLine": false,
       "lineColor": "",
       "cols": [
@@ -26,14 +57,16 @@
           "height": 0,
           "lat": 0,
           "lng": 0,
-          "zoom": 3,
+          "zoom": 0,
+          "limit": 0,
           "image": "",
           "title": "",
           "color": "",
           "align": "",
           "margin": "",
           "tag": "",
-          "flex": false,
+          "flex": 1,
+          "flexMap": false,
           "markdown": "",
           "style": "",
           "submitLabel": "",
@@ -101,6 +134,7 @@
       "color": "",
       "margin": "",
       "tag": "",
+      "limit": 0,
       "image": "",
       "parallax": "",
       "height": 0,

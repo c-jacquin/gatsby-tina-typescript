@@ -5,7 +5,11 @@ import React from 'react';
 import { BlogItemThumb, BlogItemBody, BlogItemTitle, BlogItemLabel, BlogItemDate, ListItem, List } from './styled';
 import { ActionEdges } from '../../types';
 
-const BlogPostList: React.FC = () => {
+interface BlogPostListProps {
+  limit?: number;
+}
+
+const BlogPostList: React.FC<BlogPostListProps> = ({ limit }) => {
   const { posts } = useStaticQuery<ActionEdges>(graphql`
     query BlogPostList {
       posts: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/blog/" } }, limit: 10) {
@@ -32,9 +36,10 @@ const BlogPostList: React.FC = () => {
       }
     }
   `);
+
   return (
     <List>
-      {posts?.edges.map(({ node: { frontmatter: { image, title, city, place, date, path } } }) => (
+      {posts?.edges.slice(0, limit || posts?.edges.length).map(({ node: { frontmatter: { image, title, city, place, date, path } } }) => (
         <Link to={path} key={title}>
           <ListItem>
             <BlogItemThumb src={image?.childImageSharp.fluid.src} />

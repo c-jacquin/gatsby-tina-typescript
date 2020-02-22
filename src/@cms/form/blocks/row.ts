@@ -8,11 +8,11 @@ import BannerBlock from './banner';
 
 const colFields = [
   {
-    label: 'width',
-    name: 'width',
+    label: 'flex',
+    name: 'flex',
     component: 'slider',
-    min: '0',
-    max: '100',
+    min: '1',
+    max: '10',
     step: '1',
   },
   ...containerForm,
