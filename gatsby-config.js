@@ -16,7 +16,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-csp`,
       options: {
-        disableOnDev: true,
+        disableOnDev: false,
         reportOnly: false,
         mergeScriptHashes: false,
         mergeStyleHashes: false,
@@ -24,7 +24,7 @@ module.exports = {
         directives: {
           'script-src': "'self' 'unsafe-inline' blob:",
           'style-src': "'self' 'unsafe-inline' blob:",
-          'img-src': "'self' data: blob:",
+          'img-src': "'self' https://* data: blob:",
         },
       },
     },
