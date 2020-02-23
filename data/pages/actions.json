@@ -9,7 +9,8 @@
       "tag": "h1"
     },
     {
-      "_template": "BlogPostGridBlock"
+      "_template": "BlogPostGridBlock",
+      "limit": 0
     }
   ],
   "__gatsby_resolved": {

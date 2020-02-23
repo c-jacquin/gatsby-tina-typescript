@@ -12,7 +12,7 @@ interface BlogPostListProps {
 const BlogPostList: React.FC<BlogPostListProps> = ({ limit }) => {
   const { posts } = useStaticQuery<ActionEdges>(graphql`
     query BlogPostList {
-      posts: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/blog/" } }, limit: 10) {
+      posts: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/blog/" } }, sort: { fields: frontmatter___date, order: DESC }) {
         totalCount
         edges {
           node {

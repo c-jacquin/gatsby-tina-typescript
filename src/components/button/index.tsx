@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { Link } from 'gatsby';
 
 import { StyledButton, StyleType } from './styled';
@@ -8,13 +8,15 @@ interface ButtonProps {
   type?: 'submit' | 'button';
   to?: string;
   disabled?: boolean;
+  style?: CSSProperties;
+  className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, type = 'button', to, styleType = 'primary' }) => {
+const Button: React.FC<ButtonProps> = ({ children, style, className, type = 'button', to, styleType = 'primary' }) => {
   if (to) {
     return (
       <Link to={to}>
-        <StyledButton styleType={styleType} type={type}>
+        <StyledButton styleType={styleType} type={type} style={style} className={className}>
           {children}
         </StyledButton>
       </Link>
@@ -22,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({ children, type = 'button', to, styleTyp
   }
 
   return (
-    <StyledButton styleType={styleType} type={type}>
+    <StyledButton styleType={styleType} type={type} style={style} className={className}>
       {children}
     </StyledButton>
   );

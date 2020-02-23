@@ -1,10 +1,10 @@
 ---
 title: une action de fou
-image: ../../assets/images/logo-big.png
+image: ../../assets/images/blackCatRebel.png
 path: /une-action-de-fou
 city: Un patelin
 place: Salle des fêtes
-date: '2020-02-19T00:00:00.000Z'
+date: 2020-02-13T00:00:00.000Z
 ---
 qsdqd
 

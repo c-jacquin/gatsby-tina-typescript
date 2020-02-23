@@ -12,7 +12,7 @@ interface BlogPostGridProps {
 const BlogPostGrid: React.FC<BlogPostGridProps> = ({ limit }) => {
   const { posts } = useStaticQuery<ActionEdges>(graphql`
     query BlogPostGrid {
-      posts: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/blog/" } }) {
+      posts: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/blog/" } }, sort: { fields: frontmatter___date, order: DESC }) {
         totalCount
         edges {
           node {

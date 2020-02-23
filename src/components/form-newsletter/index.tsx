@@ -20,9 +20,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({ apiUrl, title, errorMes
   const [hasServerError, setHasServerError] = useState(false);
   const [isPending, setIsPending] = useState(false);
   const [message, setMessage] = useState();
-  const { register, handleSubmit, errors, reset } = useForm({
-    mode: 'onChange',
-  });
+  const { register, handleSubmit, errors, reset } = useForm();
 
   const onSubmit = useCallback(
     async (formData: Partial<ContactFormvalues>) => {

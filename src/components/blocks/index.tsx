@@ -50,9 +50,9 @@ const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
           </Banner>
         );
       case Template.BlogPostGridBlock:
-        return <BlogPostGrid />;
+        return <BlogPostGrid {...props} />;
       case Template.BlogPostListBlock:
-        return <BlogPostList />;
+        return <BlogPostList {...props} />;
       case Template.NewsletterBlock:
         return <NewsletterForm {...props} key={idx} />;
       case Template.FormBlock:
@@ -88,6 +88,7 @@ export const sectionsQuery = graphql`
       tag
       opacity
       apiUrl
+      limit
       fieldErrorMessage
       errorMessage
       successMessage
@@ -147,6 +148,7 @@ export const asideQuery = graphql`
   fragment AsideBlock on PagesJson {
     aside {
       _template
+      limit
       apiUrl
       title
       fieldErrorMessage

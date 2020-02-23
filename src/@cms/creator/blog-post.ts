@@ -25,9 +25,9 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
       },
       required: true,
     },
-    { name: 'city', label: 'Ville', component: 'text' },
-    { name: 'place', label: 'Salle de concert', component: 'text' },
-    { name: 'date', label: 'Date', component: 'date' },
+    { name: 'city', label: 'Ville', component: 'text', required: true },
+    { name: 'place', label: 'Salle de concert', component: 'text', required: true },
+    { name: 'date', label: 'Date', component: 'date', required: true },
   ],
   filename: form => {
     const slug = form.title.replace(/\s+/, '-').toLowerCase();
