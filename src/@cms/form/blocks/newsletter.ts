@@ -32,6 +32,13 @@ const NewsletterBlock = {
       component: 'text',
     },
   ],
+  defaultItem: {
+    apiUrl: '',
+    title: 'Newsletter',
+    fieldErrorMessage: 'invalid email',
+    errorMessage: 'something fail',
+    successMessage: 'thank you !',
+  },
 };
 
 export default NewsletterBlock;

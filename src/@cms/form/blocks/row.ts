@@ -18,6 +18,21 @@ const colFields = [
   ...containerForm,
 ];
 
+const makeColBlock = (block: any) => {
+  return {
+    ...block,
+    fields: [...colFields, ...block.fields],
+    defaultItem: {
+      ...block.defaultItem,
+      flex: 1,
+      hmargin: 0,
+      vmargin: 0,
+      hpadding: 0,
+      vpadding: 0,
+    },
+  };
+};
+
 const RowBlock = {
   label: 'row',
   fields: [
@@ -38,30 +53,12 @@ const RowBlock = {
       name: 'cols',
       component: 'blocks',
       templates: {
-        ContentBlock: {
-          ...ContentBlock,
-          fields: [...colFields, ...ContentBlock.fields],
-        },
-        MapBlock: {
-          ...MapBlock,
-          fields: [...colFields, ...MapBlock.fields],
-        },
-        FormBlock: {
-          ...FormBlock,
-          fields: [...colFields, ...FormBlock.fields],
-        },
-        TitleBlock: {
-          ...TitleBlock,
-          fields: [...colFields, ...TitleBlock.fields],
-        },
-        NewsletterBlock: {
-          ...NewsletterBlock,
-          fields: [...colFields, ...NewsletterBlock.fields],
-        },
-        BannerBlock: {
-          ...BannerBlock,
-          fields: [...colFields, ...BannerBlock.fields],
-        },
+        ContentBlock: makeColBlock(ContentBlock),
+        MapBlock: makeColBlock(MapBlock),
+        FormBlock: makeColBlock(FormBlock),
+        TitleBlock: makeColBlock(TitleBlock),
+        NewsletterBlock: makeColBlock(NewsletterBlock),
+        BannerBlock: makeColBlock(BannerBlock),
       },
     },
   ],

@@ -42,13 +42,13 @@ const MapBlock = {
       step: 1,
     },
   ],
-  defaultItem: () => ({
+  defaultItem: {
     lat: 40,
     lng: 40,
     zoom: 13,
     height: 300,
     width: 300,
-  }),
+  },
 };
 
 export default MapBlock;

@@ -60,7 +60,7 @@ const FormBlock = {
         },
         {
           label: 'type',
-          name: 'path',
+          name: 'type',
           component: 'select',
           options: ['text', 'email', 'textarea'],
         },
@@ -68,7 +68,7 @@ const FormBlock = {
     },
   ],
   defaultItem: {
-    errorMessage: 'Somthing fail :(',
+    errorMessage: 'Something fail :(',
     submitLabel: 'Submit',
     successMessage: 'Success !!!',
     fields: [

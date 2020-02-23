@@ -37,14 +37,14 @@ interface ColContainerProps {
 }
 
 export const ColContainer = styled.div<ColContainerProps>(({ hpadding, hmargin, vmargin, vpadding, flex, theme }: any) => ({
-  margin: `${vmargin} 0`,
-  padding: `${vpadding} 0`,
+  margin: `${vmargin}em 0`,
+  padding: `${vpadding}em 0`,
   position: 'relative',
   width: '100%',
   [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     width: 'auto',
     flex,
-    margin: `${vmargin} ${hmargin}`,
-    padding: `${vpadding} ${hpadding}`,
+    margin: `${vmargin}em ${hmargin}em`,
+    padding: `${vpadding}em ${hpadding}em`,
   },
 }));

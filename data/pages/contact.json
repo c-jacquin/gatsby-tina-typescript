@@ -9,38 +9,66 @@
       "_template": "TitleBlock"
     },
     {
-      "_template": "FormBlock",
-      "apiUrl": "https://getform.io/f/a5310e1c-3aa0-4eb5-b88e-23fb551d47d5",
-      "submitLabel": "Envoyer",
-      "successMessage": "Merci, à bientot !",
-      "errorMessage": "Une erreur est survenue, réessayer plus tard",
-      "fields": [
+      "flexAlign": "flex-start",
+      "flexReverse": false,
+      "hpadding": 0,
+      "vpadding": 0,
+      "hmargin": 0,
+      "vmargin": 0,
+      "cols": [
         {
-          "type": "text",
-          "name": "name",
-          "label": "votre nom",
-          "fieldErrorMessage": "Vous devez entrer un nom",
-          "required": true
+          "lat": 40,
+          "lng": 40,
+          "zoom": 13,
+          "height": 300,
+          "width": 300,
+          "flex": 2,
+          "hmargin": 0,
+          "vmargin": 0,
+          "hpadding": 0,
+          "vpadding": 0,
+          "_template": "MapBlock",
+          "flexMap": true
         },
         {
-          "type": "email",
-          "name": "email",
-          "label": "Votre email",
-          "errorMessage": "error",
-          "required": false,
-          "fieldErrorMessage": "veuillez entrer une adresse mail valide",
-          "path": "email"
-        },
-        {
-          "type": "textarea",
-          "name": "message",
-          "label": "Votre message",
-          "errorMessage": "error",
-          "required": true,
-          "path": "textarea",
-          "fieldErrorMessage": "Vous devez entrer un mesage"
+          "errorMessage": "Something fail :(",
+          "submitLabel": "Submit",
+          "successMessage": "Success !!!",
+          "fields": [
+            {
+              "label": "Nom",
+              "type": "text",
+              "required": true,
+              "name": "name",
+              "errorMessage": "error",
+              "fieldErrorMessage": "Entrez votre nom svp"
+            },
+            {
+              "type": "email",
+              "name": "email",
+              "label": "Email",
+              "errorMessage": "error",
+              "required": true,
+              "fieldErrorMessage": "Entrez une adresse email valide svp"
+            },
+            {
+              "type": "textarea",
+              "name": "message",
+              "label": "Votre message",
+              "errorMessage": "error",
+              "required": true,
+              "fieldErrorMessage": "Entrez un message svp"
+            }
+          ],
+          "flex": 3,
+          "hmargin": 0,
+          "vmargin": 0,
+          "hpadding": 3,
+          "vpadding": 3,
+          "_template": "FormBlock"
         }
-      ]
+      ],
+      "_template": "RowBlock"
     }
   ],
   "__gatsby_resolved": {

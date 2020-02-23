@@ -15,11 +15,12 @@ interface RowProps {
 }
 
 const Row: React.FC<RowProps> = ({ files, cols, ...style }) => {
-  console.log('row props =>', style);
+  console.log('row cols =>', cols);
   return (
     <RowContainer {...style}>
       {cols.map(({ vmargin, hmargin, vpadding, hpadding, flex, ...props }: any) => (
         <ColContainer hmargin={hmargin} vmargin={vmargin} vpadding={vpadding} hpadding={hpadding} flex={flex}>
+          {console.log(hpadding, vpadding)}
           <Col {...props} files={files} />
         </ColContainer>
       ))}

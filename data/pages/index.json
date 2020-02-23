@@ -18,6 +18,7 @@
       "limit": 0,
       "hasLine": false,
       "lineColor": "",
+      "apiUrl": "",
       "cols": [
         {
           "hpadding": 0,
@@ -41,6 +42,7 @@
           "markdown": "",
           "style": "",
           "submitLabel": "",
+          "apiUrl": "",
           "fields": [
             {
               "name": "",

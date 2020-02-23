@@ -20,6 +20,11 @@ const spacerBlock = {
       component: 'color',
     },
   ],
+  defaultItem: {
+    height: 100,
+    hasLine: false,
+    color: '#000',
+  },
 };
 
 export default spacerBlock;

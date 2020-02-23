@@ -31,13 +31,13 @@ const TitleBlock = {
       options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
     },
   ],
-  defaultItem: () => ({
+  defaultItem: {
     title: 'un titre',
     color: '#000',
     align: 'center',
     margin: '2',
     tag: 'h1',
-  }),
+  },
 };
 
 export default TitleBlock;

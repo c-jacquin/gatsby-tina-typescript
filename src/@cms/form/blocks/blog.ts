@@ -7,6 +7,9 @@ export const BlogPostGridBlock = {
       component: 'number',
     },
   ],
+  defaultItem: {
+    limit: 0,
+  },
 };
 
 export const BlogPostListBlock = {
@@ -18,4 +21,7 @@ export const BlogPostListBlock = {
       component: 'number',
     },
   ],
+  defaultItem: {
+    limit: 0,
+  },
 };

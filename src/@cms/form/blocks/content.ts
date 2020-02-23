@@ -12,6 +12,10 @@ const ContentBlock = {
       component: 'css',
     },
   ],
+  defaultItem: {
+    markdown: '',
+    style: '',
+  },
 };
 
 export default ContentBlock;
