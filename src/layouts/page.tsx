@@ -3,15 +3,15 @@ import 'modern-normalize';
 
 import { useStaticQuery, graphql } from 'gatsby';
 import { useGlobalJsonForm } from 'gatsby-tinacms-json';
-import _ from 'lodash';
 import React from 'react';
 import Helmet from 'react-helmet';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { withPlugin } from 'tinacms';
 
 import BlogPostCreator from '../@cms/creator/blog-post';
+import PageCreator from '../@cms/creator/page';
+
 import seoFormConfig from '../@cms/form/globals/seo';
-import socialFormConfig from '../@cms/form/globals/social';
 import ThemeProvider from '../components/theme-provider';
 import { MenuProvider } from '../context/side-menu';
 import Footer from './footer';
@@ -78,7 +78,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, meta = [], title }) =
       }
     }
   `);
-  const [{ seo, facebook, twitter }] = useGlobalJsonForm(seoJson, _.merge(socialFormConfig, seoFormConfig)) as any;
+  const [{ seo, facebook, twitter }] = useGlobalJsonForm(seoJson, seoFormConfig) as any;
 
   return (
     <ParallaxProvider>
@@ -116,4 +116,4 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, meta = [], title }) =
   );
 };
 
-export default withPlugin(PageLayout, BlogPostCreator);
+export default withPlugin(PageLayout, [BlogPostCreator, PageCreator]);

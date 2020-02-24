@@ -9,7 +9,8 @@
       "align": "center",
       "margin": "2",
       "tag": "h1",
-      "_template": "TitleBlock"
+      "_template": "TitleBlock",
+      "content": ""
     },
     {
       "flexAlign": "flex-start",
@@ -71,7 +72,8 @@
           "_template": "FormBlock"
         }
       ],
-      "_template": "RowBlock"
+      "_template": "RowBlock",
+      "content": ""
     }
   ]
 }

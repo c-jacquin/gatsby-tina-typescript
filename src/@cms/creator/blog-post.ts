@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import _ from 'lodash';
 import { RemarkCreatorPlugin } from 'gatsby-tinacms-remark';
+import { imageField } from '../form/common';
 
 const CreatePostPlugin = new RemarkCreatorPlugin({
   label: 'Nouvelle Action',
@@ -10,20 +10,11 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
       name: 'image',
       label: 'Image',
       component: 'image',
-      parse: (filename: string) => `../../assets/images/${filename}`,
-
-      previewSrc: (formValues: any, { input }: any) => {
-        const path = input.name.replace('rawFrontmatter', 'frontmatter');
-        const gastbyImageNode = _.get(formValues, path);
-        if (!gastbyImageNode) return '';
-        // specific to gatsby-image
-        return gastbyImageNode.childImageSharp ? gastbyImageNode.childImageSharp.fluid.src : gastbyImageNode;
-      },
-
       uploadDir: () => {
         return '/content/assets/images/';
       },
       required: true,
+      ...imageField,
     },
     { name: 'city', label: 'Ville', component: 'text', required: true },
     { name: 'place', label: 'Salle de concert', component: 'text', required: true },
@@ -32,7 +23,7 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
   filename: form => {
     const slug = form.title.replace(/\s+/, '-').toLowerCase();
 
-    return `content/blog/${slug}/index.md`;
+    return `content/blog/${slug}.md`;
   },
   frontmatter: form => ({
     ...form,

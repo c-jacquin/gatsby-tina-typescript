@@ -1,6 +1,6 @@
 ---
 title: yeeeah
-image: ../../assets/images/acba.jpeg
+image: ../assets/images/acba.jpeg
 city: Ivry
 place: salle Lenine
 path: /yeeeah
