@@ -1,14 +1,18 @@
 /* eslint-disable import/prefer-default-export */
 import _ from 'lodash';
 
-import { getThumbnail } from '../helpers/thumbnail';
-
-export const commonImageForm = {
-  parse: (filename: string) => filename,
-  previewSrc: (formValues: any, { input }: any) => {
-    return getThumbnail(formValues.jsonNode?.files || [], _.get(formValues, input.name));
-  },
+export const imageField = {
+  label: 'Image',
+  name: 'image',
+  component: 'image',
+  parse: (filename: string) => `../assets/images/${filename}`,
   uploadDir: () => '/content/assets/images/',
+  previewSrc: (formValues: any, fieldProps: any) => {
+    const pathName = fieldProps.input.name.replace('rawJson', 'jsonNode');
+    const imageNode = _.get(formValues, pathName);
+    if (!imageNode || !imageNode.childImageSharp) return '';
+    return imageNode.childImageSharp.fluid.src;
+  },
 };
 
 export const containerForm = [

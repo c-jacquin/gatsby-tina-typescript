@@ -1,4 +1,5 @@
 const themeForm = {
+  label: 'Theme',
   fields: [
     ...[
       'primary',

@@ -1,0 +1,19 @@
+{
+  "path": "/actions",
+  "label": "Nos actions",
+  "layout": "1col",
+  "sections": [
+    {
+      "_template": "TitleBlock",
+      "title": "Nos Actions",
+      "align": "center",
+      "color": "#000",
+      "margin": "1.4",
+      "tag": "h1"
+    },
+    {
+      "_template": "BlogPostGridBlock",
+      "limit": 0
+    }
+  ]
+}

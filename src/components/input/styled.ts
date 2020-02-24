@@ -73,3 +73,20 @@ export const NativeInput = styled.input({
   fontSize: '1.1em',
   width: '100%',
 });
+
+export const PlainInput = styled.input`
+  color: inherit;
+  font-size: inherit;
+  background: inherit;
+  line-height: inherit;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  padding: 0;
+  margin: 0;
+  border-width: 0;
+  display: block;
+  width: 100%;
+`;

@@ -2,7 +2,7 @@ export interface FieldProps {
   input: {
     name: string;
     value: string;
-    onChange: (value: string | number | boolean) => void;
+    onChange: (value: any) => void;
   };
   meta: {
     error?: string;
@@ -14,6 +14,6 @@ export interface FieldProps {
     min?: number;
     max?: number;
     step?: number;
-    options?: { value: string; label: string }[];
+    options?: string[];
   };
 }

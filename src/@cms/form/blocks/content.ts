@@ -3,7 +3,7 @@ const ContentBlock = {
   fields: [
     {
       label: 'markdown Content',
-      name: 'markdown',
+      name: 'content',
       component: 'markdown',
     },
     {
@@ -13,7 +13,7 @@ const ContentBlock = {
     },
   ],
   defaultItem: {
-    markdown: '',
+    content: '',
     style: '',
   },
 };

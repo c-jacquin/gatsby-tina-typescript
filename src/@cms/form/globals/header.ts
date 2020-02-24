@@ -1,6 +1,7 @@
-import { commonImageForm } from '../common';
+import { imageField } from '../common';
 
 const headerForm = {
+  label: 'Header',
   fields: [
     {
       label: 'Display logo ?',
@@ -8,18 +9,18 @@ const headerForm = {
       component: 'toggle',
     },
     {
+      ...imageField,
       label: 'Logo',
       name: 'rawJson.logo',
       description: 'Your logo',
       component: 'image',
-      ...commonImageForm,
     },
     {
+      ...imageField,
       label: 'Mobile Logo',
       name: 'rawJson.mobileLogo',
       description: 'Your logo for mobile version (in the side menu)',
       component: 'image',
-      ...commonImageForm,
     },
     {
       label: 'Mobile Menu animation',

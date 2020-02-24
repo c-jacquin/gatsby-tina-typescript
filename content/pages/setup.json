@@ -8,13 +8,12 @@
       "vmargin": 0,
       "flexAlign": "",
       "flexReverse": false,
-      "markdown": "",
       "title": "",
       "align": "",
       "color": "",
       "margin": "",
       "tag": "",
-      "image": "",
+      "image": "../assets/images/logo-big.png",
       "limit": 0,
       "hasLine": false,
       "lineColor": "",
@@ -31,7 +30,7 @@
           "lng": 0,
           "zoom": 0,
           "limit": 0,
-          "image": "",
+          "image": "../assets/images/logo-big.png",
           "title": "",
           "color": "",
           "align": "",
@@ -39,7 +38,7 @@
           "tag": "",
           "flex": 1,
           "flexMap": false,
-          "markdown": "",
+          "content": "",
           "style": "",
           "submitLabel": "",
           "apiUrl": "",
@@ -55,10 +54,10 @@
           "_template": ""
         }
       ],
-      "parallax": "",
+      "parallax": 0,
       "height": 0,
       "titleColor": "",
-      "opacity": "",
+      "opacity": 0,
       "style": "",
       "content": "",
       "fieldErrorMessage": "",
@@ -74,28 +73,6 @@
           "fieldErrorMessage": ""
         }
       ]
-    },
-    {
-      "_template": "TitleBlock",
-      "title": "Home Page",
-      "align": "center",
-      "color": "#000",
-      "margin": "1.4",
-      "tag": "h1"
-    },
-    {
-      "_template": "BannerBlock",
-      "image": "smarties.jpg",
-      "parallax": "0.3",
-      "height": 200,
-      "title": "Smarties",
-      "titleColor": "#000",
-      "tag": "h2",
-      "opacity": "0.4"
-    },
-    {
-      "_template": "BlogPostGridBlock",
-      "limit": 4
     }
   ],
   "aside": [
@@ -107,13 +84,14 @@
       "margin": "",
       "tag": "",
       "limit": 0,
-      "image": "",
+      "image": "../assets/images/logo-big.png",
       "parallax": "",
       "height": 0,
       "titleColor": "",
       "opacity": "",
       "style": "",
       "content": "",
+      "apiUrl": "",
       "fieldErrorMessage": "",
       "errorMessage": "",
       "submitLabel": "",
@@ -127,21 +105,6 @@
           "fieldErrorMessage": ""
         }
       ]
-    },
-    {
-      "_template": "NewsletterBlock",
-      "apiUrl": "https://getform.io/f/a5310e1c-3aa0-4eb5-b88e-23fb551d47d5",
-      "title": "Inscrivez vous à la newletter !",
-      "fieldErrorMessage": "Entrez une adresse mail valide",
-      "errorMessage": "Une erreur est surevenue veuillez reesayer plus tard.",
-      "successMessage": "Merci pour votre inscription"
-    },
-    {
-      "_template": "BlogPostListBlock",
-      "limit": 3
     }
-  ],
-  "__gatsby_resolved": {
-    "fileRelativePath": "/data/pages/index.json"
-  }
+  ]
 }

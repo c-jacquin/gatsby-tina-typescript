@@ -1,4 +1,4 @@
-import { commonImageForm } from '../common';
+import { imageField } from '../common';
 
 const BannerBlock = {
   label: 'Banner',
@@ -19,12 +19,7 @@ const BannerBlock = {
       component: 'select',
       options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
     },
-    {
-      label: 'image',
-      name: 'image',
-      component: 'image',
-      ...commonImageForm,
-    },
+    imageField,
     {
       label: 'Height',
       name: 'height',
@@ -45,9 +40,9 @@ const BannerBlock = {
       label: 'background opacity',
       name: 'opacity',
       component: 'slider',
-      min: -1,
+      min: 0,
       max: 1,
-      step: 0.1,
+      step: 0.01,
     },
   ],
   defaultItem: {

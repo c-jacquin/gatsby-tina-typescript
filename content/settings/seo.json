@@ -3,7 +3,7 @@
     "appName": "",
     "author": "",
     "copyright": "",
-    "description": "I describe the website",
+    "description": "",
     "keywords": [
       {
         "label": "keyword"
@@ -12,11 +12,11 @@
         "label": "gatsby"
       }
     ],
-    "title": "C'est un titre"
+    "title": ""
   },
   "facebook": {
     "description": "",
-    "image": "",
+    "image": "../assets/images/logo-big.png",
     "title": "",
     "type": "article",
     "url": ""
@@ -24,7 +24,10 @@
   "twitter": {
     "card": "summary",
     "description": "",
-    "image": "",
+    "image": "../assets/images/logo-big.png",
     "title": ""
+  },
+  "__gatsby_resolved": {
+    "fileRelativePath": "/content/settings/seo.json"
   }
 }

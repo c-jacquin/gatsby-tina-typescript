@@ -1,0 +1,19 @@
+{
+  "path": "/about",
+  "label": "A propos",
+  "layout": "1col",
+  "sections": [
+    {
+      "_template": "TitleBlock",
+      "title": "A propos",
+      "align": "center",
+      "color": "#000",
+      "margin": "1.4",
+      "tag": "h1"
+    },
+    {
+      "_template": "BlogPostGridBlock",
+      "limit": 0
+    }
+  ]
+}

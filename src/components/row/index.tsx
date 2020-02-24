@@ -5,7 +5,6 @@ import { RowContainer, ColContainer } from './styled';
 
 interface RowProps {
   cols: any[];
-  files: any;
   vmargin: number;
   hmargin: number;
   vpadding: number;
@@ -14,14 +13,12 @@ interface RowProps {
   flexAlign: string;
 }
 
-const Row: React.FC<RowProps> = ({ files, cols, ...style }) => {
-  console.log('row cols =>', cols);
+const Row: React.FC<RowProps> = ({ cols, ...style }) => {
   return (
     <RowContainer {...style}>
       {cols.map(({ vmargin, hmargin, vpadding, hpadding, flex, ...props }: any) => (
         <ColContainer hmargin={hmargin} vmargin={vmargin} vpadding={vpadding} hpadding={hpadding} flex={flex}>
-          {console.log(hpadding, vpadding)}
-          <Col {...props} files={files} />
+          <Col {...props} />
         </ColContainer>
       ))}
     </RowContainer>

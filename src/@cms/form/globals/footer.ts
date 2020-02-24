@@ -1,6 +1,7 @@
 import RowBlock from '../blocks/row';
 
 const footerForm = {
+  label: 'Footer',
   fields: [
     {
       label: 'Footer content',

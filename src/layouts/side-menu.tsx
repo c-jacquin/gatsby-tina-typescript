@@ -4,7 +4,6 @@ import { transparentize } from 'polished';
 import React, { useContext, useMemo } from 'react';
 import { slide, bubble, elastic, fallDown, push, pushRotate, reveal, scaleDown, scaleRotate, stack } from 'react-burger-menu';
 
-import { getThumbnail } from '../@cms/helpers/thumbnail';
 import { MenuContext } from '../context/side-menu';
 import { SideMenuContainer, NavigationLink, HeaderLogo, LogoWrapper } from './styled';
 
@@ -24,15 +23,20 @@ const menu: Record<string, typeof slide> = {
 const SideMenu = () => {
   const { isMenuOpen } = useContext(MenuContext);
   const {
-    layoutJson: { color, backgroundColor, fontSize, mobileLogo, withLogo, activeLinkColor, links, sideMenuType },
-    allFile,
+    settingsJson: { color, backgroundColor, fontSize, mobileLogo, withLogo, activeLinkColor, links, sideMenuType },
   } = useStaticQuery(graphql`
     query SideMenu {
-      layoutJson(fileRelativePath: { regex: "/header/" }) {
+      settingsJson(fileRelativePath: { regex: "/header/" }) {
         color
         backgroundColor
         fontSize
-        mobileLogo
+        mobileLogo {
+          childImageSharp {
+            fluid {
+              src
+            }
+          }
+        }
         withLogo
         activeLinkColor
         links {
@@ -41,29 +45,15 @@ const SideMenu = () => {
         }
         sideMenuType
       }
-      allFile {
-        edges {
-          node {
-            relativePath
-            childImageSharp {
-              fixed {
-                src
-              }
-              fluid {
-                src
-              }
-            }
-          }
-        }
-      }
     }
   `);
   const Menu = useMemo(() => menu[sideMenuType], [sideMenuType]);
-  const logoSrc = useMemo(() => getThumbnail(allFile.edges, mobileLogo), [allFile.edges, mobileLogo]);
   const linkStyle = {
     color,
     fontSize,
   };
+
+  const logoSrc = mobileLogo.childImageSharp.fluid.src;
 
   return (
     <SideMenuContainer>

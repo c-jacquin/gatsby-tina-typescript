@@ -1,6 +1,7 @@
-import { commonImageForm } from '../common';
+import { imageField } from '../common';
 
 const socialForm = {
+  label: 'Social network',
   fields: [
     {
       label: 'Facebook title',
@@ -27,11 +28,11 @@ const socialForm = {
       component: 'text',
     },
     {
+      ...imageField,
       label: 'Facebook image',
       name: 'rawJson.facebook.image',
       description: 'The thumbnail of facebook share widget',
       component: 'image',
-      ...commonImageForm,
     },
     {
       label: 'Twitter title',
@@ -52,11 +53,11 @@ const socialForm = {
       component: 'text',
     },
     {
+      ...imageField,
       label: 'Twitter image',
       name: 'rawJson.twitter.image',
       description: 'The thumbnail of twitter share widget',
       component: 'image',
-      ...commonImageForm,
     },
   ],
 };

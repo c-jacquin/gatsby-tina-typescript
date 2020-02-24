@@ -5,6 +5,7 @@ import MapBlock from './map';
 import TitleBlock from './title';
 import NewsletterBlock from './newsletter';
 import BannerBlock from './banner';
+import ImageBlock from './image';
 
 const colFields = [
   {
@@ -59,6 +60,7 @@ const RowBlock = {
         TitleBlock: makeColBlock(TitleBlock),
         NewsletterBlock: makeColBlock(NewsletterBlock),
         BannerBlock: makeColBlock(BannerBlock),
+        ImageBlock: makeColBlock(ImageBlock),
       },
     },
   ],

@@ -7,15 +7,15 @@ import { MdWrapper } from './styled';
 const converter = new Converter();
 
 interface MdContentProps {
-  markdown: string;
+  content: string;
   style: string;
   wrapperStyle?: CSSProperties;
 }
 
-const MdContent: React.FC<MdContentProps> = ({ markdown, style, wrapperStyle }) => (
+const MdContent: React.FC<MdContentProps> = ({ content, style, wrapperStyle, ...props }) => (
   <>
     <Global styles={style} />
-    <MdWrapper style={wrapperStyle} dangerouslySetInnerHTML={{ __html: converter.makeHtml(markdown) }} />
+    <MdWrapper style={wrapperStyle} dangerouslySetInnerHTML={{ __html: converter.makeHtml(content) }} />
   </>
 );
 

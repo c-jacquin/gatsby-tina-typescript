@@ -3,12 +3,11 @@ import '@animated-burgers/burger-squeeze/dist/styles.css';
 
 import { useTheme } from 'emotion-theming';
 import { useStaticQuery, graphql } from 'gatsby';
-import { useGlobalJsonForm } from 'gatsby-tinacms-json';
+import { useLocalJsonForm } from 'gatsby-tinacms-json';
 import { transparentize } from 'polished';
 import React, { useMemo, useContext } from 'react';
 
 import headerForm from '../@cms/form/globals/header';
-import { getThumbnail } from '../@cms/helpers/thumbnail';
 import { MenuContext } from '../context/side-menu';
 import useScroll from '../hooks/useScroll';
 import { Theme } from '../styles/theme';
@@ -16,9 +15,9 @@ import { HeaderContainer, Navbar, NavigationLink, HeaderLogo, MenuButton } from 
 import useIsMobile from '../hooks/useIsMobile';
 
 const Header: React.FC = () => {
-  const { layoutJson, allFile } = useStaticQuery(graphql`
+  const { settingsJson } = useStaticQuery(graphql`
     query Header {
-      layoutJson(fileRelativePath: { regex: "/header/" }) {
+      settingsJson(fileRelativePath: { regex: "/header/" }) {
         fileRelativePath
         rawJson
         id
@@ -26,8 +25,13 @@ const Header: React.FC = () => {
         backgroundColor
         fontSize
         linkSpace
-        mobileLogo
-        logo
+        logo {
+          childImageSharp {
+            fluid {
+              src
+            }
+          }
+        }
         withLogo
         activeLinkColor
         links {
@@ -35,22 +39,16 @@ const Header: React.FC = () => {
           label
         }
       }
-      allFile {
-        ...FluidImg
-      }
     }
   `);
 
-  layoutJson.files = allFile.edges;
-
   const theme = useTheme<Theme>();
   const isMobile = useIsMobile();
-  const [{ links, withLogo, logo, linkSpace, color, fontSize, backgroundColor, activeLinkColor }] = useGlobalJsonForm(
-    layoutJson,
+  const [{ links, withLogo, logo, linkSpace, color, fontSize, backgroundColor, activeLinkColor }] = useLocalJsonForm(
+    settingsJson,
     headerForm,
   ) as any;
   const { toggleMenu, isMenuOpen } = useContext(MenuContext);
-  const logoSrc = useMemo(() => getThumbnail(allFile.edges, logo), [logo, allFile.edges]);
   const { isTop, scrollDirection } = useScroll({
     offset: isMobile ? theme.dimensions.heights.headerMobile : theme.dimensions.heights.header,
     throttleTime: 200,
@@ -65,7 +63,7 @@ const Header: React.FC = () => {
   return (
     <HeaderContainer color={backgroundColor} isTop={isTop} scrollDirection={scrollDirection}>
       <MenuButton isOpen={isMenuOpen} onClick={toggleMenu} />
-      {withLogo && !!logo && <HeaderLogo src={logoSrc} />}
+      {withLogo && !!logo && <HeaderLogo src={settingsJson.logo.childImageSharp.fluid.src} />}
       <Navbar>
         {links.map(({ path, label }: any) => (
           <NavigationLink

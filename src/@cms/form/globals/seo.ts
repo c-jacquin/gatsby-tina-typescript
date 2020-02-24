@@ -1,4 +1,5 @@
 const seoFormConfig = {
+  label: 'Seo',
   fields: [
     {
       label: 'Title',

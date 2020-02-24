@@ -29,6 +29,7 @@
     "@typescript-eslint/explicit-function-return-type": 0,
     "react/jsx-props-no-spreading": 0,
     "react/no-unescaped-entities": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "no-use-before-define": 0
   }
 }

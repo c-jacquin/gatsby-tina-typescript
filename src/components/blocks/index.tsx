@@ -16,7 +16,7 @@ import Spacer from '../spacer';
 
 interface BlocksProps {
   sections: any;
-  allFile: any;
+  markdown?: any;
 }
 
 export enum Template {
@@ -32,8 +32,8 @@ export enum Template {
   SpacerBlock = 'SpacerBlock',
 }
 
-const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
-  return sections.map(({ _template, title, ...props }: any, idx: number) => {
+const Blocks: React.FC<BlocksProps> = ({ sections, markdown }) => {
+  return sections.map(({ _template, title, style, ...props }: any, idx: number) => {
     switch (_template) {
       case Template.TitleBlock:
         return (
@@ -42,10 +42,10 @@ const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
           </PageTitle>
         );
       case Template.ContentBlock:
-        return <MdContent {...props} key={idx} />;
+        return <MdContent content={markdown[idx].childMarkdownRemark.html} style={style} key={idx} />;
       case Template.BannerBlock:
         return (
-          <Banner {...props} files={allFile.edges} key={idx}>
+          <Banner {...props} key={idx}>
             {title}
           </Banner>
         );
@@ -60,7 +60,7 @@ const Blocks: React.FC<BlocksProps> = ({ sections, allFile }) => {
       case Template.MapBlock:
         return <Map {...props} key={idx} />;
       case Template.RowBlock:
-        return <Row {...props} files={allFile.edges} key={idx} />;
+        return <Row {...props} key={idx} />;
       case Template.SpacerBlock:
         return <Spacer {...props} key={idx} />;
       default:
@@ -76,8 +76,14 @@ export const sectionsQuery = graphql`
     sections {
       _template
       style
-      markdown
-      image
+      content
+      image {
+        childImageSharp {
+          fluid(quality: 70, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
       parallax
       height
       title
@@ -118,7 +124,13 @@ export const sectionsQuery = graphql`
         width
         title
         limit
-        image
+        image {
+          childImageSharp {
+            fluid(quality: 70, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
         color
         align
         margin
@@ -128,7 +140,7 @@ export const sectionsQuery = graphql`
         zoom
         flex
         flexMap
-        markdown
+        content
         style
         height
         submitLabel
@@ -159,16 +171,11 @@ export const asideQuery = graphql`
   }
 `;
 
-export const imgQuery = graphql`
-  fragment FluidImg on FileConnection {
-    edges {
-      node {
-        relativePath
-        childImageSharp {
-          fluid {
-            src
-          }
-        }
+export const jsonMarkdownQuery = graphql`
+  fragment MarkdownBlock on PagesJson {
+    childrenPagesJsonBlockMarkdown {
+      childMarkdownRemark {
+        html
       }
     }
   }

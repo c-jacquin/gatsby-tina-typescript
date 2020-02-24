@@ -20,10 +20,12 @@ module.exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
 };
 
 exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => {
-  const blogPostTemplate = path.resolve('src/@cms/templates/blog-post.tsx');
+  const blogPostTemplate = path.resolve('src/templates/blog-post.tsx');
+  const pageTemplate = path.resolve('src/templates/page.tsx');
+
   const result = await graphql(`
     {
-      allMarkdownRemark(
+      blogPosts: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/blog/" } }
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
@@ -36,6 +38,14 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
           }
         }
       }
+
+      pages: allPagesJson(filter: { path: { ne: null } }) {
+        edges {
+          node {
+            path
+          }
+        }
+      }
     }
   `);
   // Handle errors
@@ -43,13 +53,91 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
     reporter.panicOnBuild(`Error while running GraphQL query.`);
     return;
   }
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.blogPosts.edges.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.path,
       component: blogPostTemplate,
       context: {},
     });
   });
+
+  result.data.pages.edges.forEach(({ node }) => {
+    createPage({
+      path: node.path,
+      component: pageTemplate,
+      context: {},
+    });
+  });
+};
+
+exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }) => {
+  const { createNode, createNodeField, createParentChildLink } = actions;
+
+  console.log('create node ===> ', node.internal.type);
+  if (node.internal.type === `PagesJson`) {
+    if (node.sections) {
+      const markdownHost = {
+        id: createNodeId(`${node.id} markdown host`),
+        parent: node.id,
+        internal: {
+          contentDigest: createContentDigest(JSON.stringify(node.sections)),
+          type: `${node.internal.type}MarkdownData`,
+        },
+      };
+
+      createNode(markdownHost);
+
+      createNodeField({
+        node,
+        name: `markdownContent___NODE`, // Before the ___NODE: Name of the new fields
+        value: markdownHost.id, // Connects both nodes
+      });
+
+      node.sections.forEach((block, i) => {
+        if (!block.content) {
+          block.content = '';
+        }
+        const blockNode = {
+          id: `${node.id} block ${i} markdown`,
+          parent: markdownHost.id,
+          internal: {
+            content: block.content,
+            contentDigest: createContentDigest(block.content),
+            type: `${node.internal.type}BlockMarkdown`,
+            mediaType: 'text/markdown',
+          },
+        };
+
+        createNode(blockNode);
+
+        createParentChildLink({ parent: node, child: blockNode });
+      });
+    }
+
+    // transform markdown in node.content
+    if (node.content) {
+      const textNode = {
+        id: createNodeId(`${node.id} markdown field`),
+        children: [],
+        parent: node.id,
+        internal: {
+          content: node.content,
+          mediaType: `text/markdown`, // Important!
+          contentDigest: createContentDigest(node.content),
+          type: `${node.internal.type}Markdown`,
+        },
+      };
+
+      createNode(textNode);
+
+      // Add link to the new node
+      createNodeField({
+        node,
+        name: `markdownContent___NODE`, // Before the ___NODE: Name of the new fields
+        value: textNode.id, // Connects both nodes
+      });
+    }
+  }
 };
 
 // exports.createSchemaCustomization = ({ actions }) => {

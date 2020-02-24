@@ -8,11 +8,19 @@ module.exports = {
     siteUrl: SITE_URL,
   },
   plugins: [
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sharp',
+    'gatsby-tinacms-json',
+    // {
+    //   resolve: 'gatsby-plugin-layout',
+    //   options: {
+    //     component: require.resolve('./src/layouts/page.tsx'),
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-csp`,
       options: {
@@ -44,8 +52,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: path.join(__dirname, 'data'),
-        name: 'data',
+        path: path.join(__dirname, 'content', 'settings'),
+        name: 'settings',
       },
     },
     {
@@ -62,16 +70,22 @@ module.exports = {
         name: 'pages',
       },
     },
-    'gatsby-transformer-sharp',
     'gatsby-transformer-json',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-relative-images',
+            options: {
+              name: 'uploads',
+            },
+          },
+          {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 590,
+              maxWidth: 880,
+              withWebp: true,
             },
           },
           {
@@ -80,7 +94,12 @@ module.exports = {
               wrapperStyle: 'margin-bottom: 1.0725rem',
             },
           },
-          'gatsby-remark-copy-linked-files',
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static',
+            },
+          },
           'gatsby-remark-smartypants',
         ],
       },
@@ -94,7 +113,6 @@ module.exports = {
         },
         plugins: [
           'gatsby-tinacms-remark',
-          'gatsby-tinacms-json',
           {
             resolve: 'gatsby-tinacms-git',
             options: {

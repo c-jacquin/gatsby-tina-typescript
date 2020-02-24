@@ -1,0 +1,37 @@
+{
+  "path": "/",
+  "label": "Acceuil",
+  "layout": "2col",
+  "sections": [
+    {
+      "tag": "h2",
+      "parallax": 0.6,
+      "opacity": 0.45,
+      "height": 560,
+      "title": "A Title",
+      "color": "#000",
+      "_template": "BannerBlock",
+      "image": "../assets/images/smarties.jpg",
+      "content": ""
+    },
+    {
+      "content": "### gggg",
+      "style": "",
+      "_template": "ContentBlock"
+    }
+  ],
+  "aside": [
+    {
+      "_template": "NewsletterBlock",
+      "apiUrl": "https://getform.io/f/a5310e1c-3aa0-4eb5-b88e-23fb551d47d5",
+      "title": "Inscrivez vous à la newletter !",
+      "fieldErrorMessage": "Entrez une adresse mail valide",
+      "errorMessage": "Une erreur est surevenue veuillez reesayer plus tard.",
+      "successMessage": "Merci pour votre inscription"
+    },
+    {
+      "_template": "BlogPostListBlock",
+      "limit": 3
+    }
+  ]
+}

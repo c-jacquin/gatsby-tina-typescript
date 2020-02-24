@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import { useStaticQuery, graphql } from 'gatsby';
-import { useGlobalJsonForm } from 'gatsby-tinacms-json';
+import { useLocalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
 
 import footerForm from '../@cms/form/globals/footer';
@@ -8,9 +8,9 @@ import Row from '../components/row';
 import { FooterContainer, FooterNavbar, FooterNavlink } from './styled';
 
 const Footer: React.FC = () => {
-  const { layoutJson, nav } = useStaticQuery(graphql`
+  const { footer, nav } = useStaticQuery(graphql`
     query Footer {
-      layoutJson(fileRelativePath: { regex: "/footer/" }) {
+      footer: settingsJson(fileRelativePath: { regex: "/footer/" }) {
         fileRelativePath
         rawJson
         id
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
             lng
             zoom
             flex
-            markdown
+            content
             style
             height
             submitLabel
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
           }
         }
       }
-      nav: layoutJson(fileRelativePath: { regex: "/header/" }) {
+      nav: settingsJson(fileRelativePath: { regex: "/header/" }) {
         fileRelativePath
         rawJson
         id
@@ -56,12 +56,9 @@ const Footer: React.FC = () => {
           label
         }
       }
-      allFile {
-        ...FluidImg
-      }
     }
   `);
-  const [values] = useGlobalJsonForm(layoutJson, footerForm) as any;
+  const [values] = useLocalJsonForm(footer, footerForm) as any;
 
   return (
     <FooterContainer>

@@ -1,7 +1,4 @@
 {
-  "__gatsby_resolved": {
-    "fileRelativePath": "/data/layout/footer.json"
-  },
   "rows": [
     {
       "flexAlign": "",
@@ -29,7 +26,7 @@
           "tag": "",
           "flexMap": false,
           "flex": 1,
-          "markdown": "",
+          "content": "",
           "style": "",
           "submitLabel": "",
           "fields": [
@@ -46,5 +43,8 @@
       ],
       "_template": "Setup"
     }
-  ]
+  ],
+  "__gatsby_resolved": {
+    "fileRelativePath": "/content/settings/footer.json"
+  }
 }

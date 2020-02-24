@@ -34,18 +34,14 @@ enum Template {
 //   width: number;
 // }
 
-const Col: React.FC<any> = ({ _template, files, title, ...props }) => {
+const Col: React.FC<any> = ({ _template, title, ...props }) => {
   switch (_template) {
     case Template.TitleBlock:
       return <PageTitle {...props}>{title}</PageTitle>;
     case Template.ContentBlock:
       return <MdContent {...props} />;
     case Template.BannerBlock:
-      return (
-        <Banner {...props} files={files}>
-          {title}
-        </Banner>
-      );
+      return <Banner {...props}>{title}</Banner>;
     case Template.BlogPostGridBlock:
       return <BlogPostGrid />;
     case Template.BlogPostListBlock:

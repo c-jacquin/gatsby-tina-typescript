@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
 
-import themeJson from '../../data/theme/index.json';
+import themeJson from '../../content/settings/theme.json';
 
 export type Theme = typeof themeJson;

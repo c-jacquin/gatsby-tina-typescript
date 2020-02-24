@@ -10,7 +10,7 @@ import normalize from '../../styles/normalize';
 const ThemeProvider: React.FC = ({ children }) => {
   const { themeJson } = useStaticQuery(graphql`
     query Theme {
-      themeJson {
+      themeJson: settingsJson(fileRelativePath: { regex: "/theme/" }) {
         id
         fileRelativePath
         rawJson
