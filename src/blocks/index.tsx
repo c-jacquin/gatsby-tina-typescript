@@ -4,6 +4,7 @@ import React from 'react';
 import Banner, { BannerBlock } from '@blocks/banner';
 import BlogPostGrid, { BlogPostGridBlock } from '@blocks/blog-post-grid';
 import BlogPostList, { BlogPostListBlock } from '@blocks/blog-post-list';
+import Grid, { GridBlock } from '@blocks/grid';
 import NewsletterForm, { NewsletterBlock } from '@blocks/newsletter';
 import MdContent, { ContentBlock } from '@blocks/md-content';
 import PageTitle, { TitleBlock } from '@blocks/title';
@@ -24,14 +25,6 @@ const Blocks: React.FC<BlocksProps> = ({ sections, markdown }) => (
   <>
     {sections.map(({ _template, ...props }, idx: number) => {
       switch (_template) {
-        case Template.TITLE:
-          return (
-            <PageTitle align={props.align} color={props.color} margin={props.margin} tag={props.tag} key={idx}>
-              {props.title}
-            </PageTitle>
-          );
-        case Template.CONTENT:
-          return markdown && <MdContent content={markdown[idx].childMarkdownRemark.html} style={props.style} key={idx} />;
         case Template.BANNER:
           return (
             <Banner
@@ -50,6 +43,14 @@ const Blocks: React.FC<BlocksProps> = ({ sections, markdown }) => (
           return <BlogPostGrid limit={props.limit} key={idx} />;
         case Template.BLOG_POST_LIST:
           return <BlogPostList limit={props.limit} key={idx} />;
+        case Template.TITLE:
+          return (
+            <PageTitle align={props.align} color={props.color} margin={props.margin} tag={props.tag} key={idx}>
+              {props.title}
+            </PageTitle>
+          );
+        case Template.CONTENT:
+          return markdown && <MdContent content={markdown[idx].childMarkdownRemark.html} style={props.style} key={idx} />;
         case Template.NEWSLETTER:
           return (
             <NewsletterForm
@@ -97,6 +98,18 @@ const Blocks: React.FC<BlocksProps> = ({ sections, markdown }) => (
               key={idx}
             />
           );
+        case Template.GRID:
+          return (
+            <Grid
+              cols={props.cols}
+              gutter={props.gutter}
+              lgCol={props.lgCol}
+              mdCol={props.mdCol}
+              smCol={props.smCol}
+              xlCol={props.xlCol}
+              key={idx}
+            />
+          );
         case Template.SPACER:
           return <Spacer hasLine={props.hasLine} height={props.height} lineColor={props.lineColor} key={idx} />;
         default:
@@ -122,6 +135,7 @@ export const sectionsQuery = graphql`
       ...RowBlock
       ...BlogPostGridBlock
       ...BlogPostListBlock
+      ...GridBlock
     }
   }
 `;
@@ -162,6 +176,7 @@ export const pageBlocks = {
     BlogPostListBlock,
     ContentBlock,
     FormBlock,
+    GridBlock,
     NewsletterBlock,
     RowBlock,
     SpacerBlock,

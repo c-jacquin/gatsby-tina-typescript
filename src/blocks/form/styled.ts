@@ -5,7 +5,7 @@ export const FormContainer = styled.form({
   flexDirection: 'column',
 });
 
-export const Field = styled.div({
+export const FieldWrapper = styled.div({
   marginBottom: '30px',
 });
 

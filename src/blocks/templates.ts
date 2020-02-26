@@ -1,14 +1,15 @@
 enum Template {
   BANNER = 'BannerBlock',
-  CONTENT = 'ContentBlock',
-  TITLE = 'TitleBlock',
   BLOG_POST_GRID = 'BlogPostGridBlock',
   BLOG_POST_LIST = 'BlogPostListBlock',
-  NEWSLETTER = 'NewsletterBlock',
+  CONTENT = 'ContentBlock',
   FORM = 'FormBlock',
+  GRID = 'GridBlock',
   MAP = 'MapBlock',
+  NEWSLETTER = 'NewsletterBlock',
   ROW = 'RowBlock',
   SPACER = 'SpacerBlock',
+  TITLE = 'TitleBlock',
 }
 
 export default Template;

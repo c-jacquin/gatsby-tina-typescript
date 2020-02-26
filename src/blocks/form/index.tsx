@@ -8,7 +8,7 @@ import Button from '@components/button';
 import Spinner from '@components/spinner';
 import Textarea from '@components/textarea';
 
-import { FormContainer, Field, ErrorLabel, SuccessLabel } from './styled';
+import { FormContainer, FieldWrapper, ErrorLabel, SuccessLabel } from './styled';
 
 interface FormProps {
   fields: Field[];
@@ -70,14 +70,14 @@ const Form: React.FC<FormProps> = ({ fields, submitLabel, errorMessage, successM
         switch (type) {
           case 'text':
             return (
-              <Field>
+              <FieldWrapper>
                 <Input name={name} label={label} type={type} key={name} ref={register({ required })} hasError={!!errors[name]} />
                 {/* {errors[name] && <ErrorLabel>{fieldErrorMessage}</ErrorLabel>} */}
-              </Field>
+              </FieldWrapper>
             );
           case 'email':
             return (
-              <Field>
+              <FieldWrapper>
                 <Input
                   name={name}
                   label={label}
@@ -87,14 +87,14 @@ const Form: React.FC<FormProps> = ({ fields, submitLabel, errorMessage, successM
                   hasError={!!errors[name]}
                 />
                 {/* {errors[name] && <ErrorLabel>{fieldErrorMessage}</ErrorLabel>} */}
-              </Field>
+              </FieldWrapper>
             );
           case 'textarea':
             return (
-              <Field>
+              <FieldWrapper>
                 <Textarea name={name} label={label} key={name} ref={register({ required })} />
                 {/* {errors[name] && <ErrorLabel>{fieldErrorMessage}</ErrorLabel>} */}
-              </Field>
+              </FieldWrapper>
             );
           default:
             return null;
@@ -139,7 +139,7 @@ export const FormBlock = {
       name: 'fields',
       description: 'The fields of the form',
       component: 'group-list',
-      itemProps: (item: Page['sections'][0]['fields'][0], idx: number) => ({
+      itemProps: (item: Field, idx: number) => ({
         key: idx,
         ...item,
       }),

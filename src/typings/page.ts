@@ -81,6 +81,11 @@ export interface Section {
   successMessage: string;
   fields: Field[];
   cols: Col[];
+  xlCol: number;
+  lgCol: number;
+  mdCol: number;
+  smCol: number;
+  gutter: number;
 }
 
 export interface Aside {
