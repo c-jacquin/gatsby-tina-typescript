@@ -7,10 +7,11 @@ import Input from '@components/input';
 import Button from '@components/button';
 import Spinner from '@components/spinner';
 import Textarea from '@components/textarea';
+import { Page } from '@typings/json';
 import { FormContainer, Field, ErrorLabel, SuccessLabel } from './styled';
 
 interface FormProps {
-  fields: any[];
+  fields: Page['sections'][0]['fields'];
   apiUrl: string;
   submitLabel: string;
   errorMessage: string;
@@ -138,7 +139,7 @@ export const FormBlock = {
       name: 'fields',
       description: 'The fields of the form',
       component: 'group-list',
-      itemProps: (item: any, idx: number) => ({
+      itemProps: (item: Page['sections'][0]['fields'][0], idx: number) => ({
         key: idx,
         ...item,
       }),
