@@ -11,7 +11,6 @@ module.exports = {
   plugins: [
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sitemap',
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
@@ -20,21 +19,6 @@ module.exports = {
       resolve: 'gatsby-plugin-layout',
       options: {
         component: require.resolve('./src/layout/site.tsx'),
-      },
-    },
-    {
-      resolve: `gatsby-plugin-csp`,
-      options: {
-        disableOnDev: false,
-        reportOnly: false,
-        mergeScriptHashes: false,
-        mergeStyleHashes: false,
-        mergeDefaultDirectives: true,
-        directives: {
-          'script-src': "'self' https://* 'unsafe-inline' blob:",
-          'style-src': "'self' 'unsafe-inline' blob:",
-          'img-src': "'self' https://* data: blob:",
-        },
       },
     },
     {
@@ -120,6 +104,24 @@ module.exports = {
           },
         ],
       },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      // options: {
+      //   output: `/sitemap.xml`,
+      //   // Exclude specific pages or groups of pages using glob parameters
+      //   // See: https://github.com/isaacs/minimatch
+      //   // The example below will exclude the single `path/to/page` and all routes beginning with `category`
+      //   exclude: ['/elements'],
+      //   query: `
+      //   {
+      //     site {
+      //       siteMetadata {
+      //         siteUrl
+      //       }
+      //     }
+      // }`,
+      // },
     },
   ],
 };

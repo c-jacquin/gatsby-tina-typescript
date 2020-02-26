@@ -27,7 +27,7 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": ["gatsby-config.js", "gatsby-browser.js", "gatsby-node.js"],
+  "ignorePatterns": ["gatsby-config.js", "gatsby-browser.js", "gatsby-node.js", "csp-util.js"],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-use-before-define": 0,

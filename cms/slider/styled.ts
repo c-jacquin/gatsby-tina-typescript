@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
-const RangeInput = styled.input`
-  width: 100%;
+export const RangeInput = styled.input`
+  width: 85%;
   cursor: grab;
 
   &:active {
@@ -13,4 +13,7 @@ const RangeInput = styled.input`
   }
 `;
 
-export default RangeInput;
+export const RangeWrapper = styled.div({
+  display: 'flex',
+  justifyContent: 'space-between',
+});

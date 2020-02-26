@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Col } from '@typings/page';
 
 interface ColContainerProps {
   flex: number;

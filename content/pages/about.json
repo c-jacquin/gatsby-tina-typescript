@@ -15,7 +15,7 @@
   },
   "sections": [
     {
-      "xlCol": 5,
+      "xlCol": 0,
       "lgCol": 3,
       "mdCol": 2,
       "smCol": 1,
@@ -91,7 +91,8 @@
         }
       ],
       "_template": "GridBlock",
-      "content": ""
+      "content": "",
+      "hmargin": 4
     }
   ],
   "seo": {

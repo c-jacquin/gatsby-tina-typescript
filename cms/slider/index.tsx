@@ -1,7 +1,7 @@
 import React, { useCallback, ChangeEvent } from 'react';
 
 import { FieldProps } from '../type';
-import RangeInput from './styled';
+import { RangeInput, RangeWrapper } from './styled';
 
 const Slider: React.FC<FieldProps> = ({ input, field, meta }) => {
   const handleChange = useCallback(
@@ -15,7 +15,10 @@ const Slider: React.FC<FieldProps> = ({ input, field, meta }) => {
     <div>
       <label htmlFor={input.name}>{field.label || field.name}</label>
       <div>{field.description}</div>
-      <RangeInput {...input} min={field.min} max={field.max} step={field.step} type="range" onChange={handleChange} />
+      <RangeWrapper>
+        <RangeInput {...input} min={field.min} max={field.max} step={field.step} type="range" onChange={handleChange} />
+        <span>{input.value}</span>
+      </RangeWrapper>
       <div className="field-error">{meta.error}</div>
     </div>
   );

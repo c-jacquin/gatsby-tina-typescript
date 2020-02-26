@@ -1,11 +1,8 @@
 import { Global } from '@emotion/core';
 import { graphql } from 'gatsby';
 import React, { CSSProperties } from 'react';
-import { Converter } from 'showdown';
 
 import { MdWrapper } from './styled';
-
-const converter = new Converter();
 
 interface MdContentProps {
   content: string;
@@ -16,7 +13,7 @@ interface MdContentProps {
 const MdContent: React.FC<MdContentProps> = ({ content, style, wrapperStyle }) => (
   <>
     <Global styles={style} />
-    <MdWrapper style={wrapperStyle} dangerouslySetInnerHTML={{ __html: converter.makeHtml(content) }} />
+    <MdWrapper style={wrapperStyle} dangerouslySetInnerHTML={{ __html: content }} />
   </>
 );
 
