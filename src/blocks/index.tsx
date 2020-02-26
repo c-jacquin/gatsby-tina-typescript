@@ -12,11 +12,11 @@ import Map, { MapBlock } from '@blocks/map';
 import Row, { RowBlock } from '@blocks/row';
 import Spacer, { SpacerBlock } from '@blocks/spacer';
 import Template from '@blocks/templates';
-import { Page } from '@typings/json';
+import { Section } from '@typings/page';
 import { Markdown } from '@typings/markdown';
 
 interface BlocksProps {
-  sections: Page['sections'];
+  sections: Section[];
   markdown?: Markdown[];
 }
 

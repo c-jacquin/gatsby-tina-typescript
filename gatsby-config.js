@@ -1,8 +1,13 @@
 const path = require('path');
-
+const { title, siteUrl, description } = require('./content/settings/site.json');
 const IS_PROD = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  siteMetadata: {
+    title,
+    siteUrl,
+    description,
+  },
   plugins: [
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

@@ -9,12 +9,12 @@ import { MapBlock } from '@blocks/map';
 import { ContentBlock } from '@blocks/md-content';
 import { NewsletterBlock } from '@blocks/newsletter';
 import { TitleBlock } from '@blocks/title';
-import { Page } from '@typings/json';
+import { Col as ColProps } from '@typings/page';
 import Col from './col';
 import { RowContainer, ColContainer } from './styled';
 
 interface RowProps {
-  cols: Page['sections'][0]['cols'];
+  cols: ColProps[];
   vmargin: number;
   hmargin: number;
   vpadding: number;

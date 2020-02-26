@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import React from 'react';
 
@@ -21,6 +20,7 @@ const BlogPostList: React.FC<BlogPostListProps> = ({ limit }) => {
               city
               place
               date
+              formattedDate: date(formatString: "DD/MM/YYY HH:mm")
               path
               image {
                 childImageSharp {
@@ -39,22 +39,24 @@ const BlogPostList: React.FC<BlogPostListProps> = ({ limit }) => {
 
   return (
     <List>
-      {posts?.edges.slice(0, limit || posts?.edges.length).map(({ node: { frontmatter: { image, title, city, place, date, path } } }) => (
-        <Link to={path} key={title}>
-          <ListItem>
-            <BlogItemThumb src={image?.childImageSharp.fluid.src} />
-            <BlogItemBody>
-              <BlogItemTitle>{title}</BlogItemTitle>
-              <div>
-                <BlogItemLabel>{city}</BlogItemLabel>
-                {' - '}
-                <BlogItemLabel>{place}</BlogItemLabel>
-              </div>
-              <BlogItemDate dateTime={date}>{format(new Date(date), 'dd/MM/yyyy')}</BlogItemDate>
-            </BlogItemBody>
-          </ListItem>
-        </Link>
-      ))}
+      {posts?.edges
+        .slice(0, limit || posts?.edges.length)
+        .map(({ node: { frontmatter: { image, title, city, place, date, path, formattedDate } } }) => (
+          <Link to={path} key={title}>
+            <ListItem>
+              <BlogItemThumb src={image?.childImageSharp.fluid.src} />
+              <BlogItemBody>
+                <BlogItemTitle>{title}</BlogItemTitle>
+                <div>
+                  <BlogItemLabel>{city}</BlogItemLabel>
+                  {' - '}
+                  <BlogItemLabel>{place}</BlogItemLabel>
+                </div>
+                <BlogItemDate dateTime={date}>{formattedDate}</BlogItemDate>
+              </BlogItemBody>
+            </ListItem>
+          </Link>
+        ))}
     </List>
   );
 };

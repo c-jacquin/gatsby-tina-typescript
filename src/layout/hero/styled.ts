@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
-import { transparentize } from 'polished';
-import BackgroundImage from 'gatsby-background-image';
+
 import { ParallaxBanner } from 'react-scroll-parallax';
 
-export const HeroWrapper = styled(ParallaxBanner)<{ large?: boolean }>(({ theme, large }: any) => ({
+export const HeroWrapper = styled(ParallaxBanner)(({ theme }: any) => ({
   position: 'relative',
   flex: '0 0 auto',
   top: 0,
@@ -19,22 +18,6 @@ export const HeroWrapper = styled(ParallaxBanner)<{ large?: boolean }>(({ theme,
 export const HeroContent = styled.div<{ large?: boolean }>(({ large }) => ({
   display: 'block',
   padding: large ? '8rem 0' : '3rem 0',
-}));
-
-export const HeroBackground = styled.div(({ theme }: any) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: '-8rem',
-  zIndex: -1,
-  backgroundColor: transparentize(0.1, theme.colors.white),
-  backgroundPosition: 'center',
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-  padding: 0,
-  transformStyle: 'preserve-3d',
-  transform: 'translateZ(-1px) scale(2) translateY(25%)',
 }));
 
 export const Headline = styled.h1(({ theme }: any) => ({
@@ -55,25 +38,6 @@ export const Textline = styled.p(({ theme }: any) => ({
   textTransform: 'none',
   paddingBottom: '0.3rem',
 }));
-
-export const Actions = styled.div(() => ({
-  paddingBottom: '0.5rem',
-  '> *': {
-    marginRight: '1rem',
-  },
-}));
-
-export const HeroImage = styled(BackgroundImage)`
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-`;
 
 export const Overlay = styled.div<{ lvl?: number }>(({ theme, lvl }: any) => ({
   position: 'absolute',

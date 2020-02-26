@@ -1,3 +1,4 @@
+import { RemarkNode } from 'gatsby-tinacms-remark/src/remark-node';
 import { ImageSharp } from './image';
 
 export interface Post {
@@ -11,10 +12,12 @@ export interface Post {
     city: string;
     place: string;
     date: string;
+    formattedDate: string;
     ownHero: boolean;
   };
   excerpt: string;
   html: string;
+  markdownRemark: RemarkNode;
 }
 
 export interface PostEdges {

@@ -2,16 +2,16 @@ import { graphql } from 'gatsby';
 import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { ContactFormvalues } from '@typings/form';
+import { ContactFormvalues, Field } from '@typings/form';
 import Input from '@components/input';
 import Button from '@components/button';
 import Spinner from '@components/spinner';
 import Textarea from '@components/textarea';
-import { Page } from '@typings/json';
+
 import { FormContainer, Field, ErrorLabel, SuccessLabel } from './styled';
 
 interface FormProps {
-  fields: Page['sections'][0]['fields'];
+  fields: Field[];
   apiUrl: string;
   submitLabel: string;
   errorMessage: string;

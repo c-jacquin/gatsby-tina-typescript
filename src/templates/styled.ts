@@ -16,10 +16,15 @@ export const PostImage = styled.img(({ theme }: any) => ({
   },
 }));
 
-export const PostContainer = styled.article(({ theme }: any) => ({
+export const PostContainer = styled.article<{ isEditing: boolean }>(({ theme, isEditing }: any) => ({
   flexGrow: 0,
   position: 'relative',
-  backgroundColor: transparentize(0.1, theme.colors.ui.whisper),
+  overflowY: isEditing ? 'auto' : 'inherit',
+  // eslint-disable-next-line no-nested-ternary
+  transform: isEditing ? `translateY(-${theme.hero.display ? (theme.hero.large ? '16rem' : '6rem') : 0})` : 'translateY(0)',
+  transition: 'transform 0.3s linear, background-color 0.3s linear',
+  height: isEditing ? '50rem' : 'auto',
+  backgroundColor: isEditing ? theme.colors.ui.whisper : transparentize(0.1, theme.colors.ui.whisper),
   boxShadow: `0 0.5rem 1rem -0.5rem ${transparentize(0.3, theme.colors.black)}`,
   borderRadius: '3px',
   padding: '2.5rem 2.5rem',
@@ -57,7 +62,7 @@ export const EditButton = styled.button<{ isEditing: any }>`
   border-radius: 10% 0 10% 0;
   color: ${(props: any) => props.theme.colors.white};
   background: ${(props: any) => props.theme.colors.primary};
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   cursor: pointer;

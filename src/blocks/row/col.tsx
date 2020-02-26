@@ -10,9 +10,9 @@ import NewsletterForm from '@blocks/newsletter';
 // import MdContent from '@blocks/md-content';
 import PageTitle from '@blocks/title';
 import Template from '@blocks/templates';
-import { Page } from '@typings/json';
+import { Col as ColProps } from '@typings/page';
 
-const Col: React.FC<Page['sections'][0]['cols'][0]> = ({ _template, ...props }) => {
+const Col: React.FC<ColProps> = ({ _template, ...props }) => {
   switch (_template) {
     case Template.TITLE:
       return (

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Seo from '@components/seo';
 import Hero from '@layout/hero';
-import { Theme } from '@typings/json';
+import { Theme } from '@typings/theme';
 import { Post } from '@typings/post';
 import { Wrapper, Main } from '../styled';
 
@@ -28,7 +28,7 @@ const BlogPostLayout: React.FC<PageLayoutProps> = ({ children, post, hero }) => 
             ...hero,
             image: post.frontmatter.ownHero ? post.frontmatter.image : hero.image,
             headline: post.frontmatter.title,
-            textline: `à ${post.frontmatter.city} - ${post.frontmatter.place}`,
+            textline: `à ${post.frontmatter.city} - ${post.frontmatter.place} le ${post.frontmatter.formattedDate}`,
           }}
         />
       )}
