@@ -1,8 +1,7 @@
 import { css } from '@emotion/core';
 
-import { Theme } from './theme';
+import { Theme } from '@typings/json';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function normalize({ colors, dimensions, fonts }: Theme) {
   return css`
     html {

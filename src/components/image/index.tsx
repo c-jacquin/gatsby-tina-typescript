@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
+import Img from 'gatsby-image';
 import React from 'react';
-import Img, { FluidObject } from 'gatsby-image';
+
+import { ImageSharp } from '@typings/image';
 
 const ImageWrapper = styled.div`
   overflow: hidden;
@@ -8,11 +10,7 @@ const ImageWrapper = styled.div`
 
 interface ImageProps {
   data: {
-    image: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
-    };
+    image: ImageSharp;
   };
 }
 

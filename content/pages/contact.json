@@ -2,12 +2,23 @@
   "path": "/contact",
   "label": "Contact",
   "layout": "1col",
+  "hasFooter": false,
+  "hero": {
+    "image": "../assets/images/smarties.jpg",
+    "headline": "Yooo !!",
+    "textline": "BAR ! ! ! ! !",
+    "large": false,
+    "display": true,
+    "overlay": true,
+    "opacity": 0.7,
+    "parallax": 0.1
+  },
   "sections": [
     {
       "title": "Contactez nous",
       "color": "#000",
       "align": "center",
-      "margin": "2",
+      "margin": 2,
       "tag": "h1",
       "_template": "TitleBlock",
       "content": ""
@@ -21,11 +32,11 @@
       "vmargin": 0,
       "cols": [
         {
-          "lat": 40,
+          "lat": -29.33,
           "lng": 40,
           "zoom": 13,
-          "height": 300,
-          "width": 300,
+          "height": 359,
+          "width": 500,
           "flex": 2,
           "hmargin": 0,
           "vmargin": 0,
@@ -75,5 +86,22 @@
       "_template": "RowBlock",
       "content": ""
     }
-  ]
+  ],
+  "seo": {
+    "description": "",
+    "keywords": [
+      {
+        "label": "keyword"
+      },
+      {
+        "label": "gatsby"
+      }
+    ],
+    "title": "",
+    "social": {
+      "description": "",
+      "image": "../assets/images/logo-big.png",
+      "title": ""
+    }
+  }
 }

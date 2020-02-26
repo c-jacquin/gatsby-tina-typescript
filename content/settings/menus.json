@@ -1,0 +1,49 @@
+{
+  "menus": [
+    {
+      "name": "main",
+      "links": [
+        {
+          "label": "Acceuil",
+          "path": "/"
+        },
+        {
+          "label": "Actions",
+          "path": "/actions"
+        },
+        {
+          "label": "A propos",
+          "path": "/about"
+        },
+        {
+          "label": "Contact",
+          "path": "/contact"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "links": [
+        {
+          "label": "Acceuil",
+          "path": "/"
+        },
+        {
+          "label": "Actions",
+          "path": "/actions"
+        },
+        {
+          "label": "A propos",
+          "path": "/about"
+        },
+        {
+          "label": "Contact",
+          "path": "/contact"
+        }
+      ]
+    }
+  ],
+  "__gatsby_resolved": {
+    "fileRelativePath": "/content/settings/menus.json"
+  }
+}

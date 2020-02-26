@@ -32,7 +32,6 @@ function useScroll({ throttleTime = 150, offset = 0 }) {
   useEffect(() => {
     const handleScroll = _.throttle(() => {
       const scrollY = window.pageYOffset;
-
       const nextScrollDirection = getScrollDirection(scrollY, offset, lastScrollY, scrollDirection);
 
       if (scrollDirection !== nextScrollDirection) {

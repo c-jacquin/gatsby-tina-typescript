@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { useTheme } from 'emotion-theming';
-import { Theme } from '../styles/theme';
+import { Theme } from '@typings/json';
 
 function useIsMobile() {
   const ref = useRef<boolean>();

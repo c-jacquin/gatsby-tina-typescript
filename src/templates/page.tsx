@@ -1,56 +1,18 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import { graphql } from 'gatsby';
 import { useLocalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
 
-import TitleBlock from '../@cms/form/blocks/title';
-import BannerBlock from '../@cms/form/blocks/banner';
-import ContentBlock from '../@cms/form/blocks/content';
-import { BlogPostGridBlock, BlogPostListBlock } from '../@cms/form/blocks/blog';
-import FormBlock from '../@cms/form/blocks/form';
-import NewsletterBlock from '../@cms/form/blocks/newsletter';
-import RowBlock from '../@cms/form/blocks/row';
-import MapBlock from '../@cms/form/blocks/map';
-import SpacerBlock from '../@cms/form/blocks/spacer';
-import Blocks from '../components/blocks';
-import PageLayout from '../layouts/page';
+import { Page, Site } from '@typings/json';
+import Blocks, { pageBlocks, asideBlocks } from '@blocks';
+import { heroField } from '@layout/hero';
+import PageLayout from '@layout/page';
+import { seoField } from '@components/seo';
 import { Col2Aside, Col2Container, Col2Main } from './styled';
 
-export const pageBlocks = {
-  label: 'Page Sections',
-  name: 'rawJson.sections',
-  component: 'blocks',
-  templates: {
-    TitleBlock,
-    BannerBlock,
-    ContentBlock,
-    BlogPostGridBlock,
-    BlogPostListBlock,
-    FormBlock,
-    NewsletterBlock,
-    RowBlock,
-    SpacerBlock,
-  },
-};
-
-export const asideBlocks = {
-  label: 'Aside Blocks',
-  name: 'rawJson.aside',
-  component: 'blocks',
-  templates: {
-    TitleBlock,
-    BannerBlock,
-    ContentBlock,
-    BlogPostListBlock,
-    FormBlock,
-    NewsletterBlock,
-    MapBlock,
-  },
-};
-interface ActionsPagProps {
+interface PageProps {
   data: {
-    page: any;
-    allFile: any;
+    page: Page;
+    site: Site;
   };
 }
 
@@ -60,13 +22,13 @@ enum Layout {
   PAPER = 'paper',
 }
 
-const PageTemplate: React.FC<ActionsPagProps> = ({ data }) => {
-  const [page] = useLocalJsonForm(data.page, pageForm) as any;
+const PageTemplate: React.FC<PageProps> = ({ data }) => {
+  const [page] = useLocalJsonForm(data.page as any, pageForm) as any;
 
   switch (page.layout) {
     case Layout.COL_2:
       return (
-        <PageLayout>
+        <PageLayout page={page}>
           <Col2Container>
             <Col2Main>
               <Blocks sections={page.sections} markdown={page.childrenPagesJsonBlockMarkdown} />
@@ -80,7 +42,7 @@ const PageTemplate: React.FC<ActionsPagProps> = ({ data }) => {
     default:
     case Layout.COL_1:
       return (
-        <PageLayout>
+        <PageLayout page={page}>
           <Blocks sections={page.sections} />
         </PageLayout>
       );
@@ -94,9 +56,13 @@ export const pageQuery = graphql`
       id
       fileRelativePath
       layout
+      label
+      hasFooter
+      ...HeroBlock
       ...SectionsBlock
       ...AsideBlock
       ...MarkdownBlock
+      ...SeoBlock
     }
   }
 `;
@@ -105,13 +71,25 @@ const pageForm = {
   label: 'Page',
   fields: [
     {
+      label: 'Title',
+      name: 'rawJson.label',
+      component: 'text',
+    },
+    {
       label: 'layout',
-      name: 'layout',
+      name: 'rawJson.layout',
       component: 'select',
       options: ['1col', '2col', 'paper'],
     },
+    {
+      label: 'has footer ?',
+      name: 'rawJson.hasFooter',
+      component: 'toggle',
+    },
+    heroField,
     pageBlocks,
     asideBlocks,
+    seoField,
   ],
 };
 

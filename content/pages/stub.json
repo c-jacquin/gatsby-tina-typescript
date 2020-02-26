@@ -1,0 +1,158 @@
+{
+  "path": "",
+  "label": "",
+  "layout": "",
+  "hasFooter": true,
+  "hero": {
+    "image": "../assets/images/logo-big.png",
+    "headline": "",
+    "textline": "",
+    "large": false,
+    "display": true,
+    "overlay": false,
+    "opacity": 0.7,
+    "parallax": 0.1
+  },
+  "sections": [
+    {
+      "_template": "Setup",
+      "hpadding": 0,
+      "vpadding": 0,
+      "hmargin": 0,
+      "vmargin": 0,
+      "flexAlign": "",
+      "title": "",
+      "align": "",
+      "color": "",
+      "margin": 0,
+      "tag": "",
+      "image": "../assets/images/logo-big.png",
+      "limit": 0,
+      "hasLine": false,
+      "lineColor": "",
+      "apiUrl": "",
+      "parallax": 0,
+      "height": 0,
+      "width": 0,
+      "lat": 0,
+      "lng": 0,
+      "zoom": 0,
+      "flexMap": false,
+      "flexReverse": false,
+      "titleColor": "",
+      "opacity": 0,
+      "style": "",
+      "content": "",
+      "fieldErrorMessage": "",
+      "errorMessage": "",
+      "submitLabel": "",
+      "successMessage": "",
+      "fields": [
+        {
+          "name": "",
+          "type": "",
+          "required": false,
+          "label": "",
+          "fieldErrorMessage": ""
+        }
+      ],
+      "cols": [
+        {
+          "hpadding": 0,
+          "vpadding": 0,
+          "hmargin": 0,
+          "vmargin": 0,
+          "width": 0,
+          "height": 0,
+          "opacity": 0,
+          "parallax": 0,
+          "lat": 0,
+          "lng": 0,
+          "zoom": 0,
+          "limit": 0,
+          "errorMessage": "",
+          "successMessage": "",
+          "fieldErrorMessage": "",
+          "image": "../assets/images/logo-big.png",
+          "title": "",
+          "color": "",
+          "align": "",
+          "margin": 0,
+          "tag": "",
+          "flex": 1,
+          "flexMap": false,
+          "content": "",
+          "style": "",
+          "submitLabel": "",
+          "apiUrl": "",
+          "fields": [
+            {
+              "name": "",
+              "type": "",
+              "required": false,
+              "label": "",
+              "fieldErrorMessage": ""
+            }
+          ],
+          "_template": ""
+        }
+      ]
+    }
+  ],
+  "aside": [
+    {
+      "_template": "Setup",
+      "title": "",
+      "align": "",
+      "color": "",
+      "margin": 0,
+      "width": 0,
+      "hasLine": false,
+      "lineColor": "",
+      "tag": "",
+      "lat": 0,
+      "lng": 0,
+      "zoom": 0,
+      "limit": 0,
+      "flexMap": false,
+      "image": "../assets/images/logo-big.png",
+      "parallax": 0,
+      "height": 0,
+      "titleColor": "",
+      "opacity": 0,
+      "style": "",
+      "content": "",
+      "apiUrl": "",
+      "fieldErrorMessage": "",
+      "errorMessage": "",
+      "submitLabel": "",
+      "successMessage": "",
+      "fields": [
+        {
+          "name": "",
+          "type": "",
+          "required": false,
+          "label": "",
+          "fieldErrorMessage": ""
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "description": "",
+    "keywords": [
+      {
+        "label": "keyword"
+      },
+      {
+        "label": "gatsby"
+      }
+    ],
+    "title": "",
+    "social": {
+      "description": "",
+      "image": "../assets/images/logo-big.png",
+      "title": ""
+    }
+  }
+}

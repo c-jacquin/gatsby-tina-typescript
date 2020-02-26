@@ -45,16 +45,39 @@
       "regular": 1.45,
       "heading": 1.2
     },
-    "containerPadding": "1.5em",
-    "heights": {
-      "header": 60,
-      "headerMobile": 45
-    }
+    "containerPadding": "1.5em"
   },
   "fonts": {
     "sansSerif": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", Arial, sans-serif",
     "serif": "Georgia, \"Times New Roman\", Times, serif",
     "monospace": "Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace, monospace"
+  },
+  "hero": {
+    "image": "../assets/images/smarties.jpg",
+    "headline": "Yooo !!",
+    "textline": "BAR ! ! ! ! !",
+    "large": true,
+    "display": true,
+    "overlay": true,
+    "opacity": 0.7,
+    "parallax": 0.1
+  },
+  "header": {
+    "linkSpace": "50px",
+    "color": "#CACCC9",
+    "activeLinkColor": "#ACA7A7",
+    "fontSize": "1.5em",
+    "backgroundColor": "#4A4A4A",
+    "logo": "../assets/images/logo-big.png",
+    "mobileLogo": "../assets/images/logo-banner.png",
+    "withLogo": true,
+    "sideMenuType": "slide",
+    "height": 45,
+    "heightLg": 60,
+    "opacity": 0.6
+  },
+  "footer": {
+    "height": 100
   },
   "__gatsby_resolved": {
     "fileRelativePath": "/content/settings/theme.json"

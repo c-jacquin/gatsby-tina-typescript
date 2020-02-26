@@ -1,50 +1,53 @@
-import React, { useMemo } from 'react';
-import { graphql } from 'gatsby';
-import _ from 'lodash';
-
 import { TinaField, TinaForm } from '@tinacms/form-builder';
 import { Wysiwyg } from '@tinacms/fields';
+import { graphql } from 'gatsby';
 import { useLocalRemarkForm, DeleteAction } from 'gatsby-tinacms-remark';
+import React, { useMemo } from 'react';
 
-import { PlainInput } from '../components/input/styled';
+import { PlainInput } from '@components/input/styled';
+import PostLayout from 'layout/post';
+import { Parallax } from 'react-scroll-parallax';
+import { Post } from '@typings/post';
+import { Theme } from '@typings/json';
 import { PostBody, PostContainer, PostImage, PostTitle, EditButton } from './styled';
 
-import PageLayout from '../layouts/page';
-
 interface PostProps {
-  data: any;
-  isEditing: any;
-  setIsEditing: any;
+  data: {
+    post: Post;
+    theme: Theme;
+  };
+  isEditing: boolean;
+  setIsEditing: (p: (p: boolean) => boolean) => void;
 }
 
-const Post: React.FC<PostProps> = props => {
-  // eslint-disable-next-line react/destructuring-assignment
-  const page = props.data.markdownRemark;
-  const { isEditing, setIsEditing } = props;
-
+const PostTemplate: React.FC<PostProps> = ({ data: { post, theme }, isEditing, setIsEditing }) => {
   return (
-    <PageLayout>
-      <PostContainer>
-        <PostImage src={page.frontmatter.image && page.frontmatter.image.childImageSharp.fluid.src} />
-        <PostTitle>
-          <TinaField name="rawFrontmatter.title" Component={PlainInput}>
-            {page.frontmatter.title}
+    <PostLayout post={post} hero={theme.hero}>
+      <Parallax y={[-20, 0]}>
+        <PostContainer>
+          {!post.frontmatter.ownHero && <PostImage src={post.frontmatter.image.childImageSharp.fluid.src} />}
+          {!post.frontmatter.ownHero && (
+            <PostTitle>
+              <TinaField name="rawFrontmatter.title" Component={PlainInput}>
+                {post.frontmatter.title}
+              </TinaField>
+            </PostTitle>
+          )}
+          <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
+            <PostBody
+              dangerouslySetInnerHTML={{
+                __html: post.html,
+              }}
+            />
           </TinaField>
-        </PostTitle>
-        <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
-          <PostBody
-            dangerouslySetInnerHTML={{
-              __html: page.html,
-            }}
-          />
-        </TinaField>
-        {process.env.NODE_ENV !== 'production' && (
-          <EditButton isEditing={isEditing} onClick={() => setIsEditing((p: boolean) => !p)}>
-            {isEditing ? 'Preview' : 'Edit'}
-          </EditButton>
-        )}
-      </PostContainer>
-    </PageLayout>
+          {process.env.NODE_ENV !== 'production' && (
+            <EditButton isEditing={isEditing} onClick={() => setIsEditing((p: boolean) => !p)}>
+              {isEditing ? 'Preview' : 'Edit'}
+            </EditButton>
+          )}
+        </PostContainer>
+      </Parallax>
+    </PostLayout>
   );
 };
 
@@ -74,10 +77,15 @@ const RemarkForm: React.FC<any> = props => {
           component: 'date',
         },
         {
+          label: 'Use image post as hero header ?',
+          name: 'rawFrontmatter.ownHero',
+          component: 'toggle',
+        },
+        {
           label: 'Image',
           name: 'rawFrontmatter.image',
           component: 'image',
-          parse: (filename: string) => `../../assets/images/${filename}`,
+          parse: (filename: string) => `../assets/images/${filename}`,
           uploadDir: () => `/content/images/`,
           previewSrc: (formValues: any) => {
             if (!formValues.frontmatter.image) return '';
@@ -103,7 +111,7 @@ const RemarkForm: React.FC<any> = props => {
   return (
     <TinaForm form={form as any}>
       {editingProps => {
-        return <Post {...props} data={{ ...props.data, markdownRemark }} {...editingProps} />;
+        return <PostTemplate {...props} data={{ ...props.data, markdownRemark }} {...editingProps} />;
       }}
     </TinaForm>
   );
@@ -113,13 +121,18 @@ export default RemarkForm;
 
 export const postQuery = graphql`
   query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    post: markdownRemark(frontmatter: { path: { eq: $path } }) {
       ...TinaRemark
       frontmatter {
         title
+        description
+        keywords {
+          label
+        }
         date
         place
         city
+        ownHero
         image {
           childImageSharp {
             fluid {
@@ -128,7 +141,11 @@ export const postQuery = graphql`
           }
         }
       }
+      excerpt(pruneLength: 160)
       html
+    }
+    theme: settingsJson(fileRelativePath: { regex: "/theme/" }) {
+      ...HeroThemeBlock
     }
   }
 `;

@@ -14,8 +14,20 @@
     "noUnusedParameters": true,
     "removeComments": false,
     "preserveConstEnums": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": "src",
+    "paths": {
+      "@blocks/*": ["blocks/*"],
+      "@blocks": ["blocks/index.tsx"],
+      "@components/*": ["components/*"],
+      "@layout/*": ["layout/*"],
+      "@hooks/*": ["hooks/*"],
+      "@providers/*": ["providers/*"],
+      "@styles/*": ["styles/*"],
+      "@templates/*": ["templates/*"],
+      "@typings/*": ["typings/*"]
+    }
   },
-  "include": ["./src/**/*"],
+  "include": ["src/**/*", "cms"],
   "exclude": ["gatsby-config.js", "gatsby-browser.js", "gatsby-node.js"]
 }

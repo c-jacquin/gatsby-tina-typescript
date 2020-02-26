@@ -1,9 +1,15 @@
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
 module.exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
   const config = getConfig();
+
+  config.resolve = {
+    ...config.resolve,
+    plugins: [...config.resolve.plugins, new TsconfigPathsPlugin({ configFile: path.join(__dirname, 'tsconfig.json') })],
+  };
 
   config.plugins = [
     ...config.plugins,
@@ -39,7 +45,7 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
         }
       }
 
-      pages: allPagesJson(filter: { path: { ne: null } }) {
+      pages: allPagesJson(filter: { path: { ne: "" } }) {
         edges {
           node {
             path
@@ -73,7 +79,6 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
 exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }) => {
   const { createNode, createNodeField, createParentChildLink } = actions;
 
-  console.log('create node ===> ', node.internal.type);
   if (node.internal.type === `PagesJson`) {
     if (node.sections) {
       const markdownHost = {

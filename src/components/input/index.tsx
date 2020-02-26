@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { forwardRef } from 'react';
 
 import { InputContainer, IconWrapper, InputLabel, InputWrapper, Line, NativeInput } from './styled';
@@ -6,7 +5,7 @@ import { InputContainer, IconWrapper, InputLabel, InputWrapper, Line, NativeInpu
 interface InputProps {
   name: string;
   type: string;
-  icon?: any;
+  icon?: React.ComponentType;
   label?: string;
   required?: boolean;
   placeholder?: string;

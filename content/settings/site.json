@@ -1,0 +1,19 @@
+{
+  "title": "Cameroon music business",
+  "description": "",
+  "keywords": [
+    {
+      "label": "cameroon"
+    },
+    {
+      "label": "music"
+    },
+    {
+      "label": "business"
+    }
+  ],
+  "siteUrl": "https://cameroonmusicbusiness.com",
+  "__gatsby_resolved": {
+    "fileRelativePath": "/content/settings/site.json"
+  }
+}

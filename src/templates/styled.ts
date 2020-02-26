@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from '@emotion/styled';
 import { transparentize } from 'polished';
 
@@ -18,16 +17,32 @@ export const PostImage = styled.img(({ theme }: any) => ({
 }));
 
 export const PostContainer = styled.article(({ theme }: any) => ({
-  position: 'relative',
-  backgroundColor: theme.colors.ui.calm,
-  boxShadow: `0 0.5rem 1rem -0.5rem ${transparentize(0.9, theme.colors.black)}`,
-  borderRadius: '10%',
-  padding: '0, 0',
-
   flexGrow: 0,
+  position: 'relative',
+  backgroundColor: transparentize(0.1, theme.colors.ui.whisper),
+  boxShadow: `0 0.5rem 1rem -0.5rem ${transparentize(0.3, theme.colors.black)}`,
+  borderRadius: '3px',
+  padding: '2.5rem 2.5rem',
+  maxWidth: '896px',
+  ' .gatsby-resp-image-wrapper': {
+    margin: '2.5rem calc(2.5 * -1) !important',
+  },
+
+  [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {
+    margin: 0,
+  },
 
   [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
-    padding: '3.5rem 2.5rem',
+    padding: '3.5rem 4rem',
+    maxWidth: '1024px',
+
+    ' .gatsby-resp-image-wrapper': {
+      margin: '3.5rem calc(4 * -1) !important',
+    },
+  },
+
+  [`@media(min-width: ${theme.dimensions.breakpoints.xl}px)`]: {
+    maxWidth: '1280px',
   },
 }));
 

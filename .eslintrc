@@ -20,6 +20,9 @@
     }
   },
   "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
     "react": {
       "version": "detect"
     }
@@ -27,7 +30,9 @@
   "ignorePatterns": ["gatsby-config.js", "gatsby-browser.js", "gatsby-node.js"],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-use-before-define": 0,
     "react/jsx-props-no-spreading": 0,
+    "react/no-array-index-key": 0,
     "react/no-unescaped-entities": 0,
     "react/prop-types": 0,
     "no-use-before-define": 0

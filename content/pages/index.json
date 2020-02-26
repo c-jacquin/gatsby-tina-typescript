@@ -2,22 +2,22 @@
   "path": "/",
   "label": "Acceuil",
   "layout": "2col",
+  "hasFooter": true,
+  "hero": {
+    "image": "../assets/images/smarties.jpg",
+    "headline": "Yooo !!",
+    "textline": "BAR ! ! ! ! !",
+    "large": false,
+    "display": true,
+    "overlay": true,
+    "opacity": 0.7,
+    "parallax": 0.1
+  },
   "sections": [
     {
-      "tag": "h2",
-      "parallax": 0.6,
-      "opacity": 0.45,
-      "height": 560,
-      "title": "A Title",
-      "color": "#000",
-      "_template": "BannerBlock",
-      "image": "../assets/images/smarties.jpg",
+      "limit": 4,
+      "_template": "BlogPostGridBlock",
       "content": ""
-    },
-    {
-      "content": "### gggg",
-      "style": "",
-      "_template": "ContentBlock"
     }
   ],
   "aside": [
@@ -33,5 +33,22 @@
       "_template": "BlogPostListBlock",
       "limit": 3
     }
-  ]
+  ],
+  "seo": {
+    "description": "",
+    "keywords": [
+      {
+        "label": "keyword"
+      },
+      {
+        "label": "gatsby"
+      }
+    ],
+    "title": "",
+    "social": {
+      "description": "",
+      "image": "../assets/images/logo-big.png",
+      "title": ""
+    }
+  }
 }
