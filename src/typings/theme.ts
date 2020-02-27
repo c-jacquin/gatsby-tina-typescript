@@ -87,7 +87,6 @@ export interface Header {
   activeLinkColor: string;
   fontSize: string;
   backgroundColor: string;
-  logo: ImageSharp;
   withLogo: boolean;
   sideMenuType: string;
   height: number;

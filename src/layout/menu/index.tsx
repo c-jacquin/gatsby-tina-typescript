@@ -5,11 +5,11 @@ import { transparentize } from 'polished';
 import React, { useContext, useMemo } from 'react';
 import { slide, bubble, elastic, fallDown, push, pushRotate, reveal, scaleDown, scaleRotate, stack } from 'react-burger-menu';
 
-import { Menus } from '@typings/menu';
-import { Theme } from '@typings/theme';
-
 import { MenuContext } from '@providers/menu';
 import { NavigationLink } from '@layout/header/styled';
+import { Menus } from '@typings/menu';
+import { Site } from '@typings/site';
+import { Theme } from '@typings/theme';
 import { SideMenuContainer, LogoWrapper } from './styled';
 
 const menu: Record<string, typeof slide> = {
@@ -29,23 +29,26 @@ const SideMenu = () => {
   const { isMenuOpen, toggleMenu } = useContext(MenuContext);
   const {
     settingsJson: {
-      header: { color, backgroundColor, fontSize, logo, withLogo, activeLinkColor, sideMenuType },
+      header: { color, backgroundColor, fontSize, withLogo, activeLinkColor, sideMenuType },
     },
     menus: { menus },
-  } = useStaticQuery<{ settingsJson: Theme; menus: Menus }>(graphql`
+    site: { logo },
+  } = useStaticQuery<{ settingsJson: Theme; menus: Menus; site: Site }>(graphql`
     query SideMenu {
+      site: settingsJson(fileRelativePath: { regex: "/site/" }) {
+        logo {
+          childImageSharp {
+            fluid(quality: 70, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
       settingsJson(fileRelativePath: { regex: "/theme/" }) {
         header {
           color
           backgroundColor
           fontSize
-          logo {
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
           withLogo
           activeLinkColor
           sideMenuType

@@ -6,12 +6,8 @@ export const SideMenuContainer = styled.aside(({ theme }: any) => ({
   },
 }));
 
-export const LogoWrapper = styled.div(({ theme }: any) => ({
-  // backgroundColor: theme.colors.white,
+export const LogoWrapper = styled.div(() => ({
   width: '100%',
   height: '100px',
   textAlign: 'center',
-  // ' img': {
-  //   display: 'inline',
-  // },
 }));

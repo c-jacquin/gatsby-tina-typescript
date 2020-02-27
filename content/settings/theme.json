@@ -68,7 +68,6 @@
     "activeLinkColor": "#ACA7A7",
     "fontSize": "1.5em",
     "backgroundColor": "#4A4A4A",
-    "logo": "../assets/images/logo-big.png",
     "withLogo": true,
     "sideMenuType": "slide",
     "height": 45,

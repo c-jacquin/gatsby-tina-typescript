@@ -75,13 +75,6 @@ const ThemeProvider: React.FC = ({ children }) => {
           fontSize
           linkSpace
           opacity
-          logo {
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
           withLogo
           activeLinkColor
           height

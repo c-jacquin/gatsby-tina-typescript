@@ -16,6 +16,7 @@
   "siteUrl": "https://cameroonmusicbusiness.com",
   "blogPrefix": "/actions",
   "rssTitle": "Cameroon music business events feed",
+  "logo": "../assets/images/logo-big.png",
   "__gatsby_resolved": {
     "fileRelativePath": "/content/settings/site.json"
   }

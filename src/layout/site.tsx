@@ -153,6 +153,13 @@ const siteForm = {
       component: 'text',
     },
     {
+      ...imageField,
+      label: 'Logo',
+      name: 'logo',
+      description: 'Your logo',
+      component: 'image',
+    },
+    {
       label: 'Keywords',
       name: 'rawJson.keywords',
       description: 'A list of keywords corresponding to your site (not used by search engine)',

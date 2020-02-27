@@ -1,6 +1,6 @@
 const path = require('path');
-const { title, siteUrl, description, appName, blogPrefix, rssTitle } = require('./content/settings/site.json');
-const { colors, header } = require('./content/settings/theme.json');
+const { title, siteUrl, description, appName, blogPrefix, rssTitle, logo } = require('./content/settings/site.json');
+const { colors } = require('./content/settings/theme.json');
 const IS_PROD = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -201,7 +201,7 @@ module.exports = {
         background_color: colors.secondary,
         theme_color: colors.primary,
         display: 'standalone',
-        icon: `./content${header.logo.replace('..', '')}`,
+        icon: `./content${logo.replace('..', '')}`,
       },
     },
     'gatsby-plugin-offline',

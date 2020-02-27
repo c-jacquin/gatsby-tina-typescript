@@ -5,35 +5,37 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { transparentize } from 'polished';
 import React, { useContext } from 'react';
 
-import { imageField } from '@blocks/image';
 import useIsMobile from '@hooks/useIsMobile';
 import useScroll from '@hooks/useScroll';
 import { MenuContext } from '@providers/menu';
 import { Theme } from '@typings/theme';
 import { Menus } from '@typings/menu';
-
+import { Site } from '@typings/site';
 import { HeaderContainer, Navbar, NavigationLink, HeaderLogo, MenuButton } from './styled';
 
 const Header: React.FC = () => {
   const {
     settingsJson: {
-      header: { withLogo, logo, linkSpace, color, fontSize, activeLinkColor },
+      header: { withLogo, linkSpace, color, fontSize, activeLinkColor },
     },
     menus: { menus },
-  } = useStaticQuery<{ settingsJson: Theme; menus: Menus }>(graphql`
+    site: { logo },
+  } = useStaticQuery<{ settingsJson: Theme; menus: Menus; site: Site }>(graphql`
     query Header {
+      site: settingsJson(fileRelativePath: { regex: "/site/" }) {
+        logo {
+          childImageSharp {
+            fluid(quality: 70, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
       settingsJson(fileRelativePath: { regex: "/theme/" }) {
         header {
           color
           fontSize
           linkSpace
-          logo {
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
           withLogo
           activeLinkColor
         }
@@ -100,20 +102,6 @@ export const headerField = {
       label: 'Display logo ?',
       name: 'withLogo',
       component: 'toggle',
-    },
-    {
-      ...imageField,
-      label: 'Logo',
-      name: 'logo',
-      description: 'Your logo',
-      component: 'image',
-    },
-    {
-      ...imageField,
-      label: 'Mobile Logo',
-      name: 'mobileLogo',
-      description: 'Your logo for mobile version (in the side menu)',
-      component: 'image',
     },
     {
       label: 'Mobile Menu animation',

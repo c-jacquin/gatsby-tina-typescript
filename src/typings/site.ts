@@ -1,3 +1,5 @@
+import { ImageSharp } from './image';
+
 export interface Site {
   title: string;
   appName: string;
@@ -6,4 +8,5 @@ export interface Site {
   siteUrl: string;
   blogPrefix: string;
   rssTitle: string;
+  logo: ImageSharp;
 }
