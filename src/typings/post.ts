@@ -9,8 +9,13 @@ export interface Post {
     path: string;
     title: string;
     content: string;
-    city: string;
-    place: string;
+    map: boolean;
+    zoom: number;
+    location: {
+      address: string;
+      lat: number;
+      lng: number;
+    };
     date: string;
     formattedDate: string;
     ownHero: boolean;

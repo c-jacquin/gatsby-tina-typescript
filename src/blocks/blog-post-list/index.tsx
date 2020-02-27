@@ -20,8 +20,6 @@ const BlogPostList: React.FC<BlogPostListProps> = ({ limit }) => {
           node {
             frontmatter {
               title
-              city
-              place
               date
               formattedDate: date(formatString: "DD/MM/YYY HH:mm")
               path
@@ -44,17 +42,13 @@ const BlogPostList: React.FC<BlogPostListProps> = ({ limit }) => {
     <List>
       {posts?.edges
         .slice(0, limit || posts?.edges.length)
-        .map(({ node: { frontmatter: { image, title, city, place, date, path, formattedDate } } }) => (
+        .map(({ node: { frontmatter: { image, title, location, date, path, formattedDate } } }) => (
           <Link to={site.blogPrefix + path} key={title}>
             <ListItem>
               <BlogItemThumb src={image?.childImageSharp.fluid.src} />
               <BlogItemBody>
                 <BlogItemTitle>{title}</BlogItemTitle>
-                <div>
-                  <BlogItemLabel>{city}</BlogItemLabel>
-                  {' - '}
-                  <BlogItemLabel>{place}</BlogItemLabel>
-                </div>
+                <BlogItemLabel>{location.address}</BlogItemLabel>
                 <BlogItemDate dateTime={date}>{formattedDate}</BlogItemDate>
               </BlogItemBody>
             </ListItem>

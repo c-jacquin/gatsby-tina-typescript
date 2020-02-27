@@ -17,6 +17,7 @@
   "blogPrefix": "/actions",
   "rssTitle": "Cameroon music business events feed",
   "logo": "../assets/images/logo-big.png",
+  "googlePlaceApiKey": "AIzaSyAplO600-SLORZycOMLCteP2d936lG0oNY",
   "__gatsby_resolved": {
     "fileRelativePath": "/content/settings/site.json"
   }

@@ -2,13 +2,19 @@
 title: wow
 description: lalala
 image: ../assets/images/melanchon_haddock.jpg
-city: Montreuil
-place: la salle
 path: /wow
 date: '2020-02-01T00:01:00.000Z'
+map: true
+zoom: 13
 ownHero: true
 keywords:
   - label: keyword
+location:
+  lat: 48.86302
+  lng: 2.370645
+  address: >-
+    Le Bataclan, 50, Boulevard Voltaire, Quartier Saint-Ambroise, Paris,
+    Île-de-France, 75011, France
 ---
 
 # Yo !! !! ! !

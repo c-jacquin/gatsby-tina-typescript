@@ -1583,6 +1583,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/googlemaps@*":
+  version "3.39.3"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.39.3.tgz#8664e424f335802c8aa46a94676666b0a0f31d97"
+  integrity sha512-L8O9HAVFZj0TuiS8h5ORthiMsrrhjxTC8XUusp5k47oXCst4VTm+qWKvrAvmYMybZVokbp4Udco1mNwJrTNZPQ==
+
 "@types/history@*":
   version "4.7.5"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.5.tgz#527d20ef68571a4af02ed74350164e7a67544860"
@@ -1694,6 +1699,14 @@
   integrity sha512-oS0rVwRLnTK0WbvLYqQaZoUw7CBHBe3Z4yop4GxbzX3DVYroo9fQQNzowmxASD0TExSXn1DLNGm7EywgC3zkPg==
   dependencies:
     "@types/leaflet" "*"
+    "@types/react" "*"
+
+"@types/react-places-autocomplete@^7.2.6":
+  version "7.2.6"
+  resolved "https://registry.yarnpkg.com/@types/react-places-autocomplete/-/react-places-autocomplete-7.2.6.tgz#2e24c1de8ad1088bd34b7825c0bfd255566855db"
+  integrity sha512-5cjtUHZ6ys4Jfqo3jWXeU3SGeloBNOpRy7Zj6ZOjhnveSBJmCQ8q3nhadUw3uhd8sScssxYsBkwojBXlN3vFww==
+  dependencies:
+    "@types/googlemaps" "*"
     "@types/react" "*"
 
 "@types/react-select@^2.0.11":
@@ -11796,6 +11809,14 @@ react-onclickoutside@^6.5.0:
   version "6.9.0"
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.9.0.tgz#a54bc317ae8cf6131a5d78acea55a11067f37a1f"
   integrity sha512-8ltIY3bC7oGhj2nPAvWOGi+xGFybPNhJM0V1H8hY/whNcXgmDeaeoCMPPd8VatrpTsUWjb/vGzrmu6SrXVty3A==
+
+react-places-autocomplete@^7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/react-places-autocomplete/-/react-places-autocomplete-7.2.1.tgz#ecdfdbb530ba19fedddd967a646642c2efd225cf"
+  integrity sha512-X1SRv3zJjEZ9dnfy/vlSFi8dpUZc/vW4CF7GhN46AVATNMmB1y1EwhX2aiqKVWXO1888p9l7FMJLgySPRBDMCQ==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    prop-types "^15.5.8"
 
 react-reconciler@^0.24.0:
   version "0.24.0"

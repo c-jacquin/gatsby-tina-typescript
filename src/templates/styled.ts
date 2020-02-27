@@ -16,7 +16,7 @@ export const PostImage = styled.img(({ theme }: any) => ({
   },
 }));
 
-export const PostContainer = styled.article<{ isEditing: boolean }>(({ theme, isEditing }: any) => ({
+export const PostContainer = styled.div<{ isEditing: boolean }>(({ theme, isEditing }: any) => ({
   flexGrow: 0,
   position: 'relative',
   overflowY: isEditing ? 'auto' : 'inherit',

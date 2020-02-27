@@ -7,6 +7,8 @@ export interface Hero {
   image: ImageSharp;
   headline: string;
   textline: string;
+  date?: string;
+  formattedDate?: string;
   large: boolean;
   display: boolean;
   overlay: boolean;

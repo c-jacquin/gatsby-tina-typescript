@@ -10,6 +10,7 @@ import { PlainInput } from '@components/input/styled';
 import PostLayout from '@layout/post';
 import { Post } from '@typings/post';
 import { Theme } from '@typings/theme';
+import Map from '@blocks/map';
 import { PostBody, PostContainer, PostImage, PostTitle, EditButton } from './styled';
 
 interface BlogPostTemplateProps {
@@ -44,6 +45,14 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data: { markdownRem
               </TinaField>
             </PostTitle>
           )}
+          {markdownRemark.frontmatter.map && !!markdownRemark.frontmatter.location && (
+            <Map
+              height={300}
+              lat={markdownRemark.frontmatter.location.lat}
+              lng={markdownRemark.frontmatter.location.lng}
+              zoom={markdownRemark.frontmatter.zoom}
+            />
+          )}
           <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
             <PostBody
               dangerouslySetInnerHTML={{
@@ -74,16 +83,6 @@ export const blogPostForm = {
       component: 'text',
     },
     {
-      label: 'City',
-      name: 'rawFrontmatter.city',
-      component: 'text',
-    },
-    {
-      label: 'Place',
-      name: 'rawFrontmatter.place',
-      component: 'text',
-    },
-    {
       label: 'Date',
       name: 'rawFrontmatter.date',
       component: 'date',
@@ -105,6 +104,24 @@ export const blogPostForm = {
         if (!formValues.frontmatter.image) return '';
         return formValues.frontmatter.image.childImageSharp.fluid.src;
       },
+    },
+    {
+      label: 'location',
+      name: 'rawFrontmatter.location',
+      component: 'location',
+    },
+    {
+      label: 'Display a map on top ?',
+      name: 'rawFrontmatter.map',
+      component: 'toggle',
+    },
+    {
+      label: 'map zoom',
+      name: 'rawFrontmatter.zoom',
+      component: 'slider',
+      step: 1,
+      min: 1,
+      max: 19,
     },
     {
       label: 'Body',
@@ -130,9 +147,14 @@ export const blogPostQuery = graphql`
           label
         }
         date
+        location {
+          address
+          lat
+          lng
+        }
+        map
+        zoom
         formattedDate: date(formatString: "DD/MM/YYYY HH:mm")
-        place
-        city
         ownHero
         image {
           childImageSharp {

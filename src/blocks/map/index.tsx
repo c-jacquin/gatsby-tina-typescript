@@ -9,8 +9,8 @@ interface MapProps {
   lng: number;
   zoom: number;
   flexMap?: boolean;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
 
 const Map: React.FC<MapProps> = ({ lat, lng, zoom, width, height, flexMap }) => {

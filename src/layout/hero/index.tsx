@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { imageField } from '@blocks/image';
 import { Page } from '@typings/page';
 import { Wrapper } from '../styled';
-import { HeroWrapper, HeroContent, Headline, Textline, Overlay } from './styled';
+import { HeroWrapper, HeroContent, Headline, Textline, Overlay, Datetime } from './styled';
 
 interface HeroProps {
   hero: Page['hero'];
@@ -26,6 +26,7 @@ const Hero: React.FC<HeroProps> = ({ hero }) => {
           <Wrapper>
             {hero.headline && <Headline>{hero.headline}</Headline>}
             {hero.textline && <Textline>{hero.textline}</Textline>}
+            {hero.date && hero.formattedDate && <Datetime date={hero.date} formatted={hero.formattedDate} />}
           </Wrapper>
         </HeroContent>
       )}

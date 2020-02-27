@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { RemarkCreatorPlugin } from 'gatsby-tinacms-remark';
 import { useLocalJsonForm, useGlobalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
+import Helmet from 'react-helmet';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { withPlugin } from 'tinacms';
 
@@ -50,6 +51,7 @@ const MasterLayout: React.FC<MasterProps> = ({ children }) => {
         }
         siteUrl
         blogPrefix
+        googlePlaceApiKey
       }
     }
   `);
@@ -58,6 +60,11 @@ const MasterLayout: React.FC<MasterProps> = ({ children }) => {
 
   return (
     <ParallaxProvider>
+      {process.env.NODE_ENV === 'development' && (
+        <Helmet>
+          <script src={`https://maps.googleapis.com/maps/api/js?key=${site.googlePlaceApiKey}&libraries=places`} />
+        </Helmet>
+      )}
       <ThemeProvider>
         <MenuProvider>
           <Root id="root">
@@ -207,9 +214,8 @@ const BlogPostCreator = new RemarkCreatorPlugin({
       required: true,
       ...imageField,
     },
-    { name: 'city', label: 'Ville', component: 'text', required: true },
-    { name: 'place', label: 'Salle de concert', component: 'text', required: true },
     { name: 'date', label: 'Date', component: 'date', required: true },
+    { name: 'location', label: 'Place', component: 'location' },
   ],
   filename: form => {
     const slug = form.title.replace(/\s+/, '-').toLowerCase();
@@ -220,6 +226,13 @@ const BlogPostCreator = new RemarkCreatorPlugin({
     ...form,
     path: `/${form.title.replace(/\s+/, '-').toLowerCase()}`,
     ownHero: true,
+    map: false,
+    location: {
+      address: '',
+      lat: 0,
+      lng: 0,
+    },
+    zoom: 13,
   }),
 });
 

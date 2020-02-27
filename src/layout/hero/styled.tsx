@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 
 import { ParallaxBanner } from 'react-scroll-parallax';
 
@@ -48,3 +49,19 @@ export const Overlay = styled.div<{ lvl?: number }>(({ theme, lvl }: any) => ({
   backgroundColor: theme.colors.black,
   opacity: lvl || theme.hero.opacity,
 }));
+
+const Time = styled.time(({ theme }: any) => ({
+  fontHeight: '0.6em',
+  fontWeight: 'lighter',
+  color: theme.colors.secondary,
+}));
+
+export const Datetime: React.FC<{ date: string; formatted: string }> = ({ date, formatted }) => {
+  const splitted = formatted.split(' ');
+
+  return (
+    <Time dateTime={date}>
+      Le {splitted[0]} à {splitted[1]}
+    </Time>
+  );
+};

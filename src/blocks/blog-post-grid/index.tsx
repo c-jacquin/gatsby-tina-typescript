@@ -21,8 +21,6 @@ const BlogPostGrid: React.FC<BlogPostGridProps> = ({ limit }) => {
           node {
             frontmatter {
               title
-              city
-              place
               date
               path
               image {

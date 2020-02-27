@@ -185,12 +185,6 @@ const themeForm = {
       ...heroField,
       fields: heroField.fields,
     },
-    {
-      label: 'Footer',
-      name: 'rawJson.footer',
-      component: 'group',
-      fields: [],
-    },
   ],
 };
 
