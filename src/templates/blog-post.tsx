@@ -101,7 +101,7 @@ export const blogPostForm = {
       component: 'image',
       parse: (filename: string) => `../assets/images/${filename}`,
       uploadDir: () => `/content/images/`,
-      previewSrc: (formValues: any) => {
+      previewSrc: (formValues: Post) => {
         if (!formValues.frontmatter.image) return '';
         return formValues.frontmatter.image.childImageSharp.fluid.src;
       },
@@ -120,8 +120,8 @@ export const blogPostForm = {
 };
 
 export const blogPostQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query($slug: String!) {
+    markdownRemark(frontmatter: { path: { eq: $slug } }) {
       ...TinaRemark
       frontmatter {
         title
@@ -136,8 +136,8 @@ export const blogPostQuery = graphql`
         ownHero
         image {
           childImageSharp {
-            fluid {
-              src
+            fluid(quality: 70, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

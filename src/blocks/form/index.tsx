@@ -70,14 +70,14 @@ const Form: React.FC<FormProps> = ({ fields, submitLabel, errorMessage, successM
         switch (type) {
           case 'text':
             return (
-              <FieldWrapper>
+              <FieldWrapper key={name}>
                 <Input name={name} label={label} type={type} key={name} ref={register({ required })} hasError={!!errors[name]} />
                 {/* {errors[name] && <ErrorLabel>{fieldErrorMessage}</ErrorLabel>} */}
               </FieldWrapper>
             );
           case 'email':
             return (
-              <FieldWrapper>
+              <FieldWrapper key={name}>
                 <Input
                   name={name}
                   label={label}
@@ -91,7 +91,7 @@ const Form: React.FC<FormProps> = ({ fields, submitLabel, errorMessage, successM
             );
           case 'textarea':
             return (
-              <FieldWrapper>
+              <FieldWrapper key={name}>
                 <Textarea name={name} label={label} key={name} ref={register({ required })} />
                 {/* {errors[name] && <ErrorLabel>{fieldErrorMessage}</ErrorLabel>} */}
               </FieldWrapper>

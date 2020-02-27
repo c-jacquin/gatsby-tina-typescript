@@ -3,7 +3,7 @@ import React from 'react';
 import Seo from '@components/seo';
 import Hero from '@layout/hero';
 import Footer from '@layout/footer';
-import { Page } from '@typings/json';
+import { Page } from '@typings/page';
 import { Main } from '../styled';
 
 interface PageLayoutProps {

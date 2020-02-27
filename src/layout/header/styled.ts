@@ -1,11 +1,11 @@
 import Burger from '@animated-burgers/burger-squeeze';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import Image from 'gatsby-image';
 import { transparentize } from 'polished';
 
 import { SCROLL_DIRECTION } from '@hooks/useScroll';
-import { Theme } from '@typings/json';
+import { Theme } from '@typings/theme';
 
 function getHeaderTransform(isTop: boolean, scrollDirection: SCROLL_DIRECTION | null, theme: Theme) {
   if (isTop) {
@@ -72,7 +72,7 @@ export const NavigationLink = styled(Link)<{ activeColor?: string; color?: strin
   },
 }));
 
-export const HeaderLogo = styled(Img)(({ theme }: any) => ({
+export const HeaderLogo = styled(Image)(({ theme }: any) => ({
   display: 'none',
   [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
     display: 'inline-block',

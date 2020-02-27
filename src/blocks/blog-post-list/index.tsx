@@ -9,8 +9,11 @@ interface BlogPostListProps {
 }
 
 const BlogPostList: React.FC<BlogPostListProps> = ({ limit }) => {
-  const { posts } = useStaticQuery<PostEdges>(graphql`
+  const { posts, site } = useStaticQuery<PostEdges & { site: { blogPrefix: string } }>(graphql`
     query BlogPostList {
+      site: settingsJson(fileRelativePath: { regex: "/site/" }) {
+        blogPrefix
+      }
       posts: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/blog/" } }, sort: { fields: frontmatter___date, order: DESC }) {
         totalCount
         edges {
@@ -24,8 +27,8 @@ const BlogPostList: React.FC<BlogPostListProps> = ({ limit }) => {
               path
               image {
                 childImageSharp {
-                  fluid {
-                    src
+                  fluid(quality: 70, maxWidth: 1920) {
+                    ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }
@@ -42,7 +45,7 @@ const BlogPostList: React.FC<BlogPostListProps> = ({ limit }) => {
       {posts?.edges
         .slice(0, limit || posts?.edges.length)
         .map(({ node: { frontmatter: { image, title, city, place, date, path, formattedDate } } }) => (
-          <Link to={path} key={title}>
+          <Link to={site.blogPrefix + path} key={title}>
             <ListItem>
               <BlogItemThumb src={image?.childImageSharp.fluid.src} />
               <BlogItemBody>

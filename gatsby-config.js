@@ -1,5 +1,6 @@
 const path = require('path');
-const { title, siteUrl, description } = require('./content/settings/site.json');
+const { title, siteUrl, description, appName, blogPrefix, rssTitle } = require('./content/settings/site.json');
+const { colors, header } = require('./content/settings/theme.json');
 const IS_PROD = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -9,6 +10,12 @@ module.exports = {
     description,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        color: colors.primary,
+      },
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-emotion',
@@ -55,9 +62,25 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-embed-video',
+            options: {
+              width: 800,
+              ratio: 1.77,
+              height: 400,
+              related: false,
+              noIframeBorder: true,
+              urlOverrides: [
+                {
+                  id: 'youtube',
+                  embedURL: videoId => `https://www.youtube-nocookie.com/embed/${videoId}`,
+                },
+              ],
+            },
+          },
+          {
             resolve: 'gatsby-remark-relative-images',
             options: {
-              name: 'uploads',
+              name: 'content/assets/images',
             },
           },
           {
@@ -105,23 +128,82 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-sitemap',
     {
-      resolve: `gatsby-plugin-sitemap`,
-      // options: {
-      //   output: `/sitemap.xml`,
-      //   // Exclude specific pages or groups of pages using glob parameters
-      //   // See: https://github.com/isaacs/minimatch
-      //   // The example below will exclude the single `path/to/page` and all routes beginning with `category`
-      //   exclude: ['/elements'],
-      //   query: `
-      //   {
-      //     site {
-      //       siteMetadata {
-      //         siteUrl
-      //       }
-      //     }
-      // }`,
-      // },
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+            settings: settingsJson(fileRelativePath: { regex: "/site/" }) {
+              blogPrefix
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({
+              query: {
+                site,
+                allMarkdownRemark,
+                settings: { blogPrefix },
+              },
+            }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + (blogPrefix || '') + edge.node.frontmatter.path,
+                  guid: site.siteMetadata.siteUrl + (blogPrefix || '') + edge.node.frontmatter.path,
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                });
+              });
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      frontmatter {
+                        title
+                        date
+                        path
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: rssTitle,
+            match: blogPrefix ? `^$${blogPrefix}/` : undefined,
+          },
+        ],
+      },
     },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: title,
+        short_name: appName,
+        start_url: '/',
+        background_color: colors.secondary,
+        theme_color: colors.primary,
+        display: 'standalone',
+        icon: `./content${header.logo.replace('..', '')}`,
+      },
+    },
+    'gatsby-plugin-offline',
   ],
 };

@@ -5,7 +5,9 @@ import { transparentize } from 'polished';
 import React, { useContext, useMemo } from 'react';
 import { slide, bubble, elastic, fallDown, push, pushRotate, reveal, scaleDown, scaleRotate, stack } from 'react-burger-menu';
 
-import { Menus, Theme } from '@typings/json';
+import { Menus } from '@typings/menu';
+import { Theme } from '@typings/theme';
+
 import { MenuContext } from '@providers/menu';
 import { NavigationLink } from '@layout/header/styled';
 import { SideMenuContainer, LogoWrapper } from './styled';
@@ -24,10 +26,10 @@ const menu: Record<string, typeof slide> = {
 };
 
 const SideMenu = () => {
-  const { isMenuOpen } = useContext(MenuContext);
+  const { isMenuOpen, toggleMenu } = useContext(MenuContext);
   const {
     settingsJson: {
-      header: { color, backgroundColor, fontSize, mobileLogo, withLogo, activeLinkColor, sideMenuType },
+      header: { color, backgroundColor, fontSize, logo, withLogo, activeLinkColor, sideMenuType },
     },
     menus: { menus },
   } = useStaticQuery<{ settingsJson: Theme; menus: Menus }>(graphql`
@@ -37,10 +39,10 @@ const SideMenu = () => {
           color
           backgroundColor
           fontSize
-          mobileLogo {
+          logo {
             childImageSharp {
-              fluid {
-                src
+              fluid(quality: 70, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
@@ -71,6 +73,7 @@ const SideMenu = () => {
       <Menu
         isOpen={isMenuOpen}
         disableCloseOnEsc
+        onStateChange={toggleMenu}
         pageWrapId="main"
         outerContainerId="root"
         burgerBarClassName={
@@ -89,9 +92,9 @@ const SideMenu = () => {
           } as any
         }
       >
-        {withLogo && mobileLogo && (
+        {withLogo && logo && (
           <LogoWrapper>
-            <Img fluid={mobileLogo.childImageSharp.fluid} />
+            <Img fluid={logo.childImageSharp.fluid} />
           </LogoWrapper>
         )}
         {menus

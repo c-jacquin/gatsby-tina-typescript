@@ -1,6 +1,8 @@
 import 'modern-normalize';
 
+import { useStaticQuery, graphql } from 'gatsby';
 import { RemarkCreatorPlugin } from 'gatsby-tinacms-remark';
+import { useLocalJsonForm, useGlobalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { withPlugin } from 'tinacms';
@@ -11,8 +13,7 @@ import { MenuProvider } from '@providers/menu';
 import { heroField } from '@layout/hero';
 import Header from '@layout/header';
 import SideMenu from '@layout/menu';
-import { useLocalJsonForm, useGlobalJsonForm } from 'gatsby-tinacms-json';
-import { useStaticQuery, graphql } from 'gatsby';
+import { Menu } from '@typings/menu';
 import { Root } from './styled';
 
 interface MasterProps {
@@ -48,6 +49,7 @@ const MasterLayout: React.FC<MasterProps> = ({ children }) => {
           label
         }
         siteUrl
+        blogPrefix
       }
     }
   `);
@@ -109,7 +111,7 @@ const menusForm = {
           ],
         },
       ],
-      itemProps: ({ name, ...menu }: any, idx: number) => ({
+      itemProps: ({ name, ...menu }: Menu, idx: number) => ({
         key: idx,
         label: name,
         ...menu,
@@ -133,6 +135,11 @@ const siteForm = {
     {
       label: 'Title',
       name: 'rawJson.title',
+      component: 'text',
+    },
+    {
+      label: 'App name',
+      name: 'rawJson.appName',
       component: 'text',
     },
     {
@@ -164,6 +171,17 @@ const siteForm = {
           component: 'text',
         },
       ],
+    },
+    {
+      label: 'Blog prefix',
+      name: 'rawJson.blogPrefix',
+      description: 'prefix used before your blog page (must start with a /)',
+      component: 'text',
+    },
+    {
+      label: 'Rss feed title',
+      name: 'rawJson.rssTitle',
+      component: 'text',
     },
   ],
 };

@@ -10,8 +10,11 @@ interface BlogPostGridProps {
 }
 
 const BlogPostGrid: React.FC<BlogPostGridProps> = ({ limit }) => {
-  const { posts } = useStaticQuery<PostEdges>(graphql`
+  const { posts, site } = useStaticQuery<PostEdges & { site: { blogPrefix: string } }>(graphql`
     query BlogPostGrid {
+      site: settingsJson(fileRelativePath: { regex: "/site/" }) {
+        blogPrefix
+      }
       posts: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/blog/" } }, sort: { fields: frontmatter___date, order: DESC }) {
         totalCount
         edges {
@@ -24,8 +27,8 @@ const BlogPostGrid: React.FC<BlogPostGridProps> = ({ limit }) => {
               path
               image {
                 childImageSharp {
-                  fluid {
-                    src
+                  fluid(quality: 70, maxWidth: 1920) {
+                    ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }
@@ -40,7 +43,7 @@ const BlogPostGrid: React.FC<BlogPostGridProps> = ({ limit }) => {
   return (
     <PostGridContainer>
       {posts?.edges.slice(0, limit || posts?.edges.length).map(({ node: { frontmatter: { title, image, path }, excerpt } }) => (
-        <Card key={title} content={excerpt} image={image?.childImageSharp.fluid.src} title={title} path={path} />
+        <Card key={title} content={excerpt} image={image?.childImageSharp.fluid.src} title={title} path={site.blogPrefix + path} />
       ))}
     </PostGridContainer>
   );

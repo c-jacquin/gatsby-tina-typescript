@@ -2,7 +2,8 @@ import { graphql } from 'gatsby';
 import { useLocalJsonForm } from 'gatsby-tinacms-json';
 import React from 'react';
 
-import { Page, Site } from '@typings/json';
+import { Page } from '@typings/page';
+import { Site } from '@typings/site';
 import Blocks, { pageBlocks, asideBlocks } from '@blocks';
 import { heroField } from '@layout/hero';
 import PageLayout from '@layout/page';

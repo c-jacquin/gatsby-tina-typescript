@@ -3,7 +3,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import { imageField } from '@blocks/image';
-import { Site } from '@typings/json';
+import { Site } from '@typings/site';
 
 interface SeoProps {
   title?: string;
@@ -138,8 +138,8 @@ export const seoQuery = graphql`
         description
         image {
           childImageSharp {
-            fluid {
-              src
+            fluid(quality: 70, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

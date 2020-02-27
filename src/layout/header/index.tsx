@@ -9,7 +9,9 @@ import { imageField } from '@blocks/image';
 import useIsMobile from '@hooks/useIsMobile';
 import useScroll from '@hooks/useScroll';
 import { MenuContext } from '@providers/menu';
-import { Theme, Menus } from '@typings/json';
+import { Theme } from '@typings/theme';
+import { Menus } from '@typings/menu';
+
 import { HeaderContainer, Navbar, NavigationLink, HeaderLogo, MenuButton } from './styled';
 
 const Header: React.FC = () => {
@@ -27,8 +29,8 @@ const Header: React.FC = () => {
           linkSpace
           logo {
             childImageSharp {
-              fluid {
-                src
+              fluid(quality: 70, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }

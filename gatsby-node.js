@@ -3,6 +3,8 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
+const { blogPrefix } = require('./content/settings/site.json');
+
 module.exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
   const config = getConfig();
 
@@ -61,9 +63,11 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
   }
   result.data.blogPosts.edges.forEach(({ node }) => {
     createPage({
-      path: node.frontmatter.path,
+      path: blogPrefix + node.frontmatter.path,
       component: blogPostTemplate,
-      context: {},
+      context: {
+        slug: node.frontmatter.path,
+      },
     });
   });
 

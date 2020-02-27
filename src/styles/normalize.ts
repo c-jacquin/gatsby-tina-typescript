@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 
-import { Theme } from '@typings/json';
+import { Theme } from '@typings/theme';
 
 function normalize({ colors, dimensions, fonts }: Theme) {
   return css`

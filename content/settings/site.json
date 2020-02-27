@@ -1,5 +1,6 @@
 {
   "title": "Cameroon music business",
+  "appName": "Cmb",
   "description": "",
   "keywords": [
     {
@@ -13,6 +14,8 @@
     }
   ],
   "siteUrl": "https://cameroonmusicbusiness.com",
+  "blogPrefix": "/actions",
+  "rssTitle": "Cameroon music business events feed",
   "__gatsby_resolved": {
     "fileRelativePath": "/content/settings/site.json"
   }

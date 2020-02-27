@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import { imageField } from '@blocks/image';
-import { Page } from '@typings/json';
+import { Page } from '@typings/page';
 import { Wrapper } from '../styled';
 import { HeroWrapper, HeroContent, Headline, Textline, Overlay } from './styled';
 
