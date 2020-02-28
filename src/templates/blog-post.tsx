@@ -62,7 +62,13 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data: { markdownRem
               }}
             />
           </TinaField>
-          {markdownRemark.frontmatter.share && <ShareButtons url={`${site.siteUrl}`} />}
+          {markdownRemark.frontmatter.share && (
+            <ShareButtons
+              url={`${site.siteUrl}`}
+              display={{ email: true, facebook: true, twitter: true, whatsapp: true }}
+              flexAlign="flex-end"
+            />
+          )}
 
           {process.env.NODE_ENV !== 'production' && (
             <EditButton isEditing={isEditing} onClick={() => setIsEditing((p: boolean) => !p)}>
