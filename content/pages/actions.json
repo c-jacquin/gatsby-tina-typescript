@@ -6,12 +6,12 @@
   "hero": {
     "image": "../assets/images/smarties.jpg",
     "headline": "Rejoingez le combat",
-    "textline": "Bande de moules à gauffre!!",
-    "large": false,
+    "textline": "Bande de moules à gauffre",
+    "large": true,
     "display": true,
-    "overlay": true,
+    "overlay": false,
     "opacity": 0.7,
-    "parallax": 0.9
+    "parallax": -0.2
   },
   "sections": [
     {
