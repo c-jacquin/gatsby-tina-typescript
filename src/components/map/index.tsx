@@ -35,7 +35,7 @@ const Map: React.FC<MapProps> = ({ markers, lat, lng, zoom, height, width, zoomC
 
   return (
     <MapWrapper height={height} width={width}>
-      <StyledMap zoomControl={false} touchZoom={false} dragging={false} center={{ lat, lng }} zoom={zoom}>
+      <StyledMap zoomControl={false} scrollWheelZoom={false} touchZoom={false} dragging={false} center={{ lat, lng }} zoom={zoom}>
         {markers && markers.map(position => <Marker position={position} />)}
         <TileLayer
           name="OpenStreetMap"

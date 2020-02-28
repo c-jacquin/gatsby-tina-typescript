@@ -87,6 +87,16 @@ export const heroField = {
       max: 1,
     },
   ],
+  defaultItem: {
+    display: true,
+    large: true,
+    headline: '',
+    textline: '',
+    image: '../assets/images/logo-big.png',
+    overlay: true,
+    opacity: 0.4,
+    parallax: 0.4,
+  },
 };
 
 export const heroFragment = graphql`

@@ -2,7 +2,7 @@ import 'modern-normalize';
 
 import { useStaticQuery, graphql } from 'gatsby';
 import { RemarkCreatorPlugin } from 'gatsby-tinacms-remark';
-import { useLocalJsonForm, useGlobalJsonForm } from 'gatsby-tinacms-json';
+import { useLocalJsonForm, useGlobalJsonForm, JsonCreatorPlugin } from 'gatsby-tinacms-json';
 import React from 'react';
 import Helmet from 'react-helmet';
 import { ParallaxProvider } from 'react-scroll-parallax';
@@ -12,6 +12,7 @@ import { imageField } from '@blocks/image';
 import ThemeProvider from '@providers/theme';
 import { MenuProvider } from '@providers/menu';
 import { heroField } from '@layout/hero';
+import { seoField } from '@layout/seo';
 import Header from '@layout/header';
 import SideMenu from '@layout/menu';
 import { Menu } from '@typings/menu';
@@ -204,6 +205,7 @@ const BlogPostCreator = new RemarkCreatorPlugin({
   label: 'Nouvelle Action',
   fields: [
     { name: 'title', label: 'Titre', component: 'text', required: true },
+    { name: 'description', label: 'Description', component: 'text', required: true },
     {
       name: 'image',
       label: 'Image',
@@ -231,56 +233,34 @@ const BlogPostCreator = new RemarkCreatorPlugin({
       address: '',
       lat: 0,
       lng: 0,
+      ...form.location,
     },
     zoom: 13,
     share: true,
+    keywords: [],
   }),
 });
 
-const PageCreator = new RemarkCreatorPlugin({
+const PageCreator = new JsonCreatorPlugin({
   label: 'Nouvelle Page',
   fields: [
-    { name: 'label', label: 'Label', component: 'text', required: true },
-    { name: 'path', label: 'Path', component: 'text', required: true },
-    { name: 'layout', label: 'Layout', component: 'select', options: ['1col', '2col', 'paper'], required: true },
-    { name: 'hasFooter', label: 'has Footer ?', component: 'toggle', required: true },
-    heroField,
-  ],
+    { name: 'label', label: 'Label', component: 'text' },
+    { name: 'path', label: 'Path', component: 'text' },
+    { name: 'layout', label: 'Layout', component: 'select', options: ['1col', '2col', 'paper'] },
+    { name: 'hasFooter', label: 'has Footer ?', component: 'toggle' },
+  ] as any,
   filename: form => {
-    const slug = form.title.replace(/\s+/, '-').toLowerCase();
+    const slug = form.label.replace(/\s+/, '-').toLowerCase();
 
     return `content/pages/${slug}.json`;
   },
-  frontmatter: form => ({
+  data: form => ({
     ...form,
     path: form.path || `/${form.label.replace(/\s+/, '-').toLowerCase()}`,
     sections: [],
     aside: form.layout === '2col' ? [] : null,
-    seo: {
-      appName: '',
-      author: '',
-      copyright: '',
-      description: '',
-      keywords: [
-        {
-          label: 'keyword',
-        },
-      ],
-      title: '',
-      facebook: {
-        description: '',
-        image: '../assets/images/logo-big.png',
-        title: '',
-        type: 'article',
-        url: '',
-      },
-      twitter: {
-        card: 'summary',
-        description: '',
-        image: '../assets/images/logo-big.png',
-        title: '',
-      },
-    },
+    hero: heroField.defaultItem,
+    seo: seoField.defaultItem,
   }),
 });
 

@@ -124,6 +124,23 @@ export const seoField = {
       component: 'image',
     },
   ],
+  defaultItem: {
+    description: '',
+    keywords: [
+      {
+        label: 'keyword',
+      },
+      {
+        label: 'gatsby',
+      },
+    ],
+    title: '',
+    social: {
+      description: '',
+      image: '../assets/images/logo-big.png',
+      title: '',
+    },
+  },
 };
 
 export const seoQuery = graphql`
