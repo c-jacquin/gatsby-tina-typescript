@@ -48,17 +48,17 @@ const Seo: React.FC<SeoProps> = ({
         { name: 'description', content: description || site.description },
         { name: 'keywords', content: (keywords || site.keywords).map(({ label }) => label).join(',') },
 
-        { name: 'twitter:card', content: twitterCard },
-        { name: 'twitter:url', content: shareUrl || site.siteUrl },
-        { name: 'twitter:title', content: shareLabel || title || site.title },
-        { name: 'twitter:description', content: description || site.description },
-        { name: 'twitter:image', content: site.siteUrl + shareThumb },
+        { property: 'twitter:card', content: twitterCard },
+        { property: 'twitter:url', content: shareUrl ? site.siteUrl + shareUrl : site.siteUrl },
+        { property: 'twitter:title', content: shareLabel || title || site.title },
+        { property: 'twitter:description', content: description || site.description },
+        { property: 'twitter:image', content: site.siteUrl + shareThumb },
 
-        { name: 'og:url', content: shareUrl || site.siteUrl },
-        { name: 'og:type', content: ogType },
-        { name: 'og:title', content: shareLabel || title || site.title },
-        { name: 'og:description', content: description || site.description },
-        { name: 'og:image', content: site.siteUrl + shareThumb },
+        { property: 'og:url', content: shareUrl ? site.siteUrl + shareUrl : site.siteUrl },
+        { property: 'og:type', content: ogType },
+        { property: 'og:title', content: shareLabel || title || site.title },
+        { property: 'og:description', content: description || site.description },
+        { property: 'og:image', content: site.siteUrl + shareThumb },
         ...meta,
       ]}
     />
