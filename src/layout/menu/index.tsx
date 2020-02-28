@@ -76,7 +76,6 @@ const SideMenu = () => {
       <Menu
         isOpen={isMenuOpen}
         disableCloseOnEsc
-        onStateChange={toggleMenu}
         pageWrapId="main"
         outerContainerId="root"
         burgerBarClassName={
