@@ -1,7 +1,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import OpenMap from 'pigeon-maps';
+// import OpenMap from 'pigeon-maps';
 
+import OpenMap from '@components/map';
 import useIsMobile from '@hooks/useIsMobile';
 
 interface MapProps {
@@ -18,10 +19,10 @@ const Map: React.FC<MapProps> = ({ lat, lng, zoom, width, height, flexMap }) => 
 
   return (
     <OpenMap
-      touchEvents={false}
-      mouseEvents={false}
-      center={[lat, lng]}
+      lat={lat}
+      lng={lng}
       zoom={zoom}
+      zoomControl={false}
       width={flexMap ? undefined : width}
       height={!isMobile && flexMap ? undefined : height}
     />

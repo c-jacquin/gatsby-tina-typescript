@@ -6,7 +6,7 @@ import { RemarkNode } from 'gatsby-tinacms-remark/src/remark-node';
 import React, { useEffect } from 'react';
 import { Parallax } from 'react-scroll-parallax';
 
-import Map from '@blocks/map';
+import Map from '@components/map';
 import { PlainInput } from '@components/input/styled';
 import PostLayout from '@layout/post';
 import { Post } from '@typings/post';
@@ -53,6 +53,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data: { markdownRem
               lat={markdownRemark.frontmatter.location.lat}
               lng={markdownRemark.frontmatter.location.lng}
               zoom={markdownRemark.frontmatter.zoom}
+              markers={[{ lat: markdownRemark.frontmatter.location.lat, lng: markdownRemark.frontmatter.location.lng }]}
             />
           )}
           <TinaField name="rawMarkdownBody" Component={Wysiwyg}>

@@ -52,6 +52,15 @@
       "title": "Suivez nous",
       "_template": "SocialBlock",
       "flexAlign": "center"
+    },
+    {
+      "lat": 40,
+      "lng": 127.43,
+      "zoom": 4,
+      "height": 300,
+      "width": 219,
+      "flexMap": false,
+      "_template": "MapBlock"
     }
   ],
   "seo": {

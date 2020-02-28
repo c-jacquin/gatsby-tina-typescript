@@ -128,6 +128,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-react-leaflet',
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-feed',
