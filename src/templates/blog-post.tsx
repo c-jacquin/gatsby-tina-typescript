@@ -6,23 +6,25 @@ import { RemarkNode } from 'gatsby-tinacms-remark/src/remark-node';
 import React, { useEffect } from 'react';
 import { Parallax } from 'react-scroll-parallax';
 
+import Map from '@blocks/map';
 import { PlainInput } from '@components/input/styled';
 import PostLayout from '@layout/post';
 import { Post } from '@typings/post';
 import { Theme } from '@typings/theme';
-import Map from '@blocks/map';
-import { PostBody, PostContainer, PostImage, PostTitle, EditButton } from './styled';
+import { Site } from '@typings/site';
+import { PostBody, PostContainer, PostImage, PostTitle, EditButton, ShareButtons } from './styled';
 
 interface BlogPostTemplateProps {
   data: {
     markdownRemark: Post & RemarkNode;
     theme: Theme;
+    site: Site;
   };
   isEditing: boolean;
   setIsEditing: (p: (p: boolean) => boolean) => void;
 }
 
-const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data: { markdownRemark, theme }, isEditing, setIsEditing }) => {
+const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data: { markdownRemark, theme, site }, isEditing, setIsEditing }) => {
   useLocalRemarkForm(markdownRemark, blogPostForm);
 
   useEffect(() => {
@@ -60,6 +62,8 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data: { markdownRem
               }}
             />
           </TinaField>
+          {markdownRemark.frontmatter.share && <ShareButtons url={`${site.siteUrl}`} />}
+
           {process.env.NODE_ENV !== 'production' && (
             <EditButton isEditing={isEditing} onClick={() => setIsEditing((p: boolean) => !p)}>
               {isEditing ? 'Preview' : 'Edit'}
@@ -80,6 +84,12 @@ export const blogPostForm = {
     {
       label: 'Title',
       name: 'rawFrontmatter.title',
+      component: 'text',
+    },
+    {
+      label: 'Path',
+      description: 'change the url of the blog post',
+      name: 'rawFrontmatter.path',
       component: 'text',
     },
     {
@@ -124,6 +134,11 @@ export const blogPostForm = {
       max: 19,
     },
     {
+      label: 'Sharable on social network ?',
+      name: 'rawFrontmatter.share',
+      component: 'toggle',
+    },
+    {
       label: 'Body',
       name: 'rawMarkdownBody',
       component: 'markdown',
@@ -142,6 +157,7 @@ export const blogPostQuery = graphql`
       ...TinaRemark
       frontmatter {
         title
+        path
         description
         keywords {
           label
@@ -154,6 +170,7 @@ export const blogPostQuery = graphql`
         }
         map
         zoom
+        share
         formattedDate: date(formatString: "DD/MM/YYYY HH:mm")
         ownHero
         image {
@@ -169,6 +186,10 @@ export const blogPostQuery = graphql`
     }
     theme: settingsJson(fileRelativePath: { regex: "/theme/" }) {
       ...HeroThemeBlock
+    }
+    site: settingsJson(fileRelativePath: { regex: "/site/" }) {
+      siteUrl
+      blogPrefix
     }
   }
 `;

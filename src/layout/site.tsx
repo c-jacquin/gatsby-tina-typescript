@@ -233,6 +233,7 @@ const BlogPostCreator = new RemarkCreatorPlugin({
       lng: 0,
     },
     zoom: 13,
+    share: true,
   }),
 });
 

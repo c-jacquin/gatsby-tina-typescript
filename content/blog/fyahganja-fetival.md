@@ -5,6 +5,7 @@ image: ../assets/images/blackCat.jpg
 path: /fyahganja-festival
 date: '2020-02-22T00:00:00.000Z'
 map: false
+share: true
 zoom: 13
 ownHero: true
 keywords:

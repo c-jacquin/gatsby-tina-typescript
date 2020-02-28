@@ -5,6 +5,7 @@ image: ../assets/images/larger.jpg
 path: /amazing-action
 date: '2020-02-18T00:00:00.000Z'
 map: false
+share: true
 zoom: 13
 ownHero: true
 keywords:

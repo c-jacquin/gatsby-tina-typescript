@@ -20,6 +20,9 @@ const BlogPostList: React.FC<BlogPostListProps> = ({ limit }) => {
           node {
             frontmatter {
               title
+              location {
+                address
+              }
               date
               formattedDate: date(formatString: "DD/MM/YYY HH:mm")
               path

@@ -45,6 +45,12 @@ export interface Col {
   submitLabel: string;
   apiUrl: string;
   fields: Field[];
+  facebook: boolean;
+  twitter: boolean;
+  email: boolean;
+  whatsapp: boolean;
+  url: string;
+  flexAlign: string;
   _template: string;
 }
 
@@ -88,6 +94,11 @@ export interface Section {
   mdCol: number;
   smCol: number;
   gutter: number;
+  facebook: boolean;
+  twitter: boolean;
+  email: boolean;
+  whatsapp: boolean;
+  url: string;
 }
 
 export interface Aside {
@@ -118,6 +129,12 @@ export interface Aside {
   submitLabel: string;
   successMessage: string;
   fields: Field[];
+  facebook: boolean;
+  twitter: boolean;
+  email: boolean;
+  whatsapp: boolean;
+  url: string;
+  flexAlign: string;
 }
 
 export interface Keyword {

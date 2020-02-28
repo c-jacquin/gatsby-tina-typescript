@@ -10,6 +10,7 @@ enum Template {
   ROW = 'RowBlock',
   SPACER = 'SpacerBlock',
   TITLE = 'TitleBlock',
+  SOCIAL_SHARE = 'SocialShareBlock',
 }
 
 export default Template;

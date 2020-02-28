@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { transparentize } from 'polished';
 
+import SocialShare from '@components/social-share';
+
 export const PostBody = styled.div({});
 
 export const PostTitle = styled.h1({
@@ -17,6 +19,8 @@ export const PostImage = styled.img(({ theme }: any) => ({
 }));
 
 export const PostContainer = styled.div<{ isEditing: boolean }>(({ theme, isEditing }: any) => ({
+  display: 'flex',
+  flexDirection: 'column',
   flexGrow: 0,
   position: 'relative',
   overflowY: isEditing ? 'auto' : 'inherit',
@@ -94,3 +98,7 @@ export const Col2Aside = styled.aside(({ theme }: any) => ({
     width: '20%',
   },
 }));
+
+export const ShareButtons = styled(SocialShare)({
+  alignSelf: 'flex-end',
+});

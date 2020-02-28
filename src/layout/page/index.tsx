@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Seo from '@components/seo';
+import Seo from '@layout/seo';
 import Hero from '@layout/hero';
 import Footer from '@layout/footer';
 import { Page } from '@typings/page';

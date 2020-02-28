@@ -11,6 +11,7 @@ export interface Post {
     content: string;
     map: boolean;
     zoom: number;
+    share: boolean;
     location: {
       address: string;
       lat: number;

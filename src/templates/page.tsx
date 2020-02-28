@@ -7,7 +7,7 @@ import { Site } from '@typings/site';
 import Blocks, { pageBlocks, asideBlocks } from '@blocks';
 import { heroField } from '@layout/hero';
 import PageLayout from '@layout/page';
-import { seoField } from '@components/seo';
+import { seoField } from '@layout/seo';
 import { Col2Aside, Col2Container, Col2Main } from './styled';
 
 interface PageProps {
@@ -32,10 +32,10 @@ const PageTemplate: React.FC<PageProps> = ({ data }) => {
         <PageLayout page={page}>
           <Col2Container>
             <Col2Main>
-              <Blocks sections={page.sections} markdown={page.childrenPagesJsonBlockMarkdown} />
+              <Blocks sections={page.sections} markdown={page.childrenPagesJsonBlockMarkdown} path={page.path} />
             </Col2Main>
             <Col2Aside>
-              <Blocks sections={page.aside} />
+              <Blocks sections={page.aside} path={page.path} />
             </Col2Aside>
           </Col2Container>
         </PageLayout>
@@ -44,7 +44,7 @@ const PageTemplate: React.FC<PageProps> = ({ data }) => {
     case Layout.COL_1:
       return (
         <PageLayout page={page}>
-          <Blocks sections={page.sections} />
+          <Blocks sections={page.sections} path={page.path} />
         </PageLayout>
       );
   }

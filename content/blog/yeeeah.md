@@ -6,6 +6,7 @@ path: /yeeeah
 date: 2019-12-10T00:00:00.000Z
 map: false
 zoom: 13
+share: true
 ownHero: false
 keywords:
   - label: keyword

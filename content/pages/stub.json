@@ -52,6 +52,11 @@
       "errorMessage": "",
       "submitLabel": "",
       "successMessage": "",
+      "email": true,
+      "facebook": true,
+      "twitter": true,
+      "whatsapp": true,
+      "url": "",
       "fields": [
         {
           "name": "",
@@ -79,6 +84,11 @@
           "successMessage": "",
           "fieldErrorMessage": "",
           "image": "../assets/images/logo-big.png",
+          "email": true,
+          "facebook": true,
+          "twitter": true,
+          "whatsapp": true,
+          "url": "",
           "title": "",
           "color": "",
           "align": "",
@@ -90,6 +100,7 @@
           "style": "",
           "submitLabel": "",
           "apiUrl": "",
+          "flexAlign": "",
           "fields": [
             {
               "name": "",
@@ -132,6 +143,11 @@
       "errorMessage": "",
       "submitLabel": "",
       "successMessage": "",
+      "email": true,
+      "facebook": true,
+      "twitter": true,
+      "whatsapp": true,
+      "url": "",
       "fields": [
         {
           "name": "",

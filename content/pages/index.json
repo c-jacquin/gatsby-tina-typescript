@@ -22,9 +22,6 @@
   ],
   "aside": [
     {
-      "_template": "BlogSearchBlock"
-    },
-    {
       "_template": "NewsletterBlock",
       "apiUrl": "https://getform.io/f/a5310e1c-3aa0-4eb5-b88e-23fb551d47d5",
       "title": "Inscrivez vous à la newletter !",
@@ -35,6 +32,16 @@
     {
       "_template": "BlogPostListBlock",
       "limit": 3
+    },
+    {
+      "email": true,
+      "facebook": true,
+      "twitter": true,
+      "whatsapp": false,
+      "url": "",
+      "title": "Partagez la page",
+      "flexAlign": "center",
+      "_template": "SocialShareBlock"
     }
   ],
   "seo": {

@@ -120,6 +120,7 @@ export const ColFragment = graphql`
       ...FormColsBlock
       ...MapColsBlock
       ...BlogPostListColsBlock
+      ...SocialShareColsBlock
     }
   }
 `;
