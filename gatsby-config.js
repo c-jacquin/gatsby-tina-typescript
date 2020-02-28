@@ -156,15 +156,17 @@ module.exports = {
                 settings: { blogPrefix },
               },
             }) => {
-              return allMarkdownRemark.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + (blogPrefix || '') + edge.node.frontmatter.path,
-                  guid: site.siteMetadata.siteUrl + (blogPrefix || '') + edge.node.frontmatter.path,
-                  custom_elements: [{ 'content:encoded': edge.node.html }],
+              return allMarkdownRemark.edges
+                .filter(({ node }) => !!node.frontmatter.path)
+                .map(edge => {
+                  return Object.assign({}, edge.node.frontmatter, {
+                    description: edge.node.excerpt,
+                    date: edge.node.frontmatter.date,
+                    url: site.siteMetadata.siteUrl + (blogPrefix || '') + edge.node.frontmatter.path,
+                    guid: site.siteMetadata.siteUrl + (blogPrefix || '') + edge.node.frontmatter.path,
+                    custom_elements: [{ 'content:encoded': edge.node.html }],
+                  });
                 });
-              });
             },
             query: `
               {
