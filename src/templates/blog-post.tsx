@@ -37,7 +37,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data: { markdownRem
 
   return (
     <PostLayout post={markdownRemark} hero={theme.hero}>
-      <Parallax y={[-20, 0]}>
+      <Parallax y={[-10, 0]}>
         <PostContainer isEditing={isEditing}>
           {!markdownRemark.frontmatter.ownHero && <PostImage src={markdownRemark.frontmatter.image.childImageSharp.fluid.src} />}
           {!markdownRemark.frontmatter.ownHero && (

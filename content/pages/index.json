@@ -42,6 +42,16 @@
       "title": "Partagez la page",
       "flexAlign": "center",
       "_template": "SocialShareBlock"
+    },
+    {
+      "rss": true,
+      "facebook": true,
+      "twitter": true,
+      "facebookUrl": "",
+      "twitterUrl": "",
+      "title": "Suivez nous",
+      "_template": "SocialBlock",
+      "flexAlign": "center"
     }
   ],
   "seo": {

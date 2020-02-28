@@ -62,6 +62,11 @@
     "opacity": 0.7,
     "parallax": 0.1
   },
+  "social": {
+    "facebook": "#4267b2",
+    "twitter": "#1FA2F2",
+    "whatsapp": "#1EA41F"
+  },
   "header": {
     "linkSpace": "50px",
     "color": "#CACCC9",

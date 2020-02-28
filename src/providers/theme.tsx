@@ -98,6 +98,11 @@ const ThemeProvider: React.FC = ({ children }) => {
             }
           }
         }
+        social {
+          facebook
+          twitter
+          whatsapp
+        }
       }
     }
   `);

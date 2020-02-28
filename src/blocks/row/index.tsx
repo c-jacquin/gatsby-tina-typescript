@@ -11,7 +11,7 @@ import { ContentBlock } from '@blocks/md-content';
 import { NewsletterBlock } from '@blocks/newsletter';
 import { TitleBlock } from '@blocks/title';
 import { Col as ColProps } from '@typings/page';
-import { SocialShareBlock } from '@blocks/social-share';
+import { SocialShareBlock } from '@blocks/social/share';
 import { RowContainer } from './styled';
 
 interface RowProps {

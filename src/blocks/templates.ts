@@ -11,6 +11,7 @@ enum Template {
   SPACER = 'SpacerBlock',
   TITLE = 'TitleBlock',
   SOCIAL_SHARE = 'SocialShareBlock',
+  SOCIAL = 'SocialBlock',
 }
 
 export default Template;

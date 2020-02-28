@@ -56,7 +56,10 @@
       "facebook": true,
       "twitter": true,
       "whatsapp": true,
+      "rss": true,
       "url": "",
+      "twitterUrl": "",
+      "facebookUrl": "",
       "fields": [
         {
           "name": "",
@@ -88,6 +91,7 @@
           "facebook": true,
           "twitter": true,
           "whatsapp": true,
+          "rss": true,
           "url": "",
           "title": "",
           "color": "",
@@ -101,6 +105,8 @@
           "submitLabel": "",
           "apiUrl": "",
           "flexAlign": "",
+          "twitterUrl": "",
+          "facebookUrl": "",
           "fields": [
             {
               "name": "",
@@ -147,7 +153,10 @@
       "facebook": true,
       "twitter": true,
       "whatsapp": true,
+      "rss": true,
       "url": "",
+      "twitterUrl": "",
+      "facebookUrl": "",
       "fields": [
         {
           "name": "",

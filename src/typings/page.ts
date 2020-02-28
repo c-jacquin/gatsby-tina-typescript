@@ -49,6 +49,9 @@ export interface Col {
   twitter: boolean;
   email: boolean;
   whatsapp: boolean;
+  facebookUrl: string;
+  twitterUrl: string;
+  rss: boolean;
   url: string;
   flexAlign: string;
   _template: string;
@@ -98,7 +101,10 @@ export interface Section {
   twitter: boolean;
   email: boolean;
   whatsapp: boolean;
+  rss: boolean;
   url: string;
+  facebookUrl: string;
+  twitterUrl: string;
 }
 
 export interface Aside {
@@ -133,8 +139,11 @@ export interface Aside {
   twitter: boolean;
   email: boolean;
   whatsapp: boolean;
+  rss: boolean;
   url: string;
   flexAlign: string;
+  facebookUrl: string;
+  twitterUrl: string;
 }
 
 export interface Keyword {

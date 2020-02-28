@@ -1,8 +1,9 @@
-import styled from '@emotion/styled';
+import { graphql } from 'gatsby';
 import React from 'react';
 
+import { AsideTitle } from '@components/title';
 import SocialShareButtons from '@components/social-share';
-import { graphql } from 'gatsby';
+import { SocialContainer } from './styled';
 
 interface SocialSharingProps {
   facebook?: boolean;
@@ -14,25 +15,12 @@ interface SocialSharingProps {
   title: string;
 }
 
-const SocialShareContainer = styled.div({
-  marginTop: '10px',
-  display: 'flex',
-  flexDirection: 'column',
-});
-
-const SocialShareTitle = styled.div({
-  fontWeight: 'bold',
-  fontSize: '1.2em',
-  alignSelf: 'center',
-  marginBottom: '5px',
-});
-
 const SocialShare: React.FC<SocialSharingProps> = ({ url, email, facebook, twitter, whatsapp, title, flexAlign }) => {
   return (
-    <SocialShareContainer>
-      {title && title !== '' && <SocialShareTitle>{title}</SocialShareTitle>}
+    <SocialContainer>
+      {title && title !== '' && <AsideTitle>{title}</AsideTitle>}
       <SocialShareButtons flexAlign={flexAlign} url={url} display={{ email, facebook, twitter, whatsapp }} />
-    </SocialShareContainer>
+    </SocialContainer>
   );
 };
 

@@ -98,6 +98,12 @@ export interface Footer {
   height: number;
 }
 
+export interface Social {
+  facebook: string;
+  twitter: string;
+  whatsapp: string;
+}
+
 export interface Theme {
   colors: Colors;
   dimensions: Dimensions;
@@ -105,4 +111,5 @@ export interface Theme {
   hero: Hero;
   header: Header;
   footer: Footer;
+  social: Social;
 }

@@ -11,7 +11,8 @@ import PageTitle, { TitleBlock } from '@blocks/title';
 import Form, { FormBlock } from '@blocks/form';
 import Map, { MapBlock } from '@blocks/map';
 import Row, { RowBlock } from '@blocks/row';
-import SocialShare, { SocialShareBlock } from '@blocks/social-share';
+import SocialShare, { SocialShareBlock } from '@blocks/social/share';
+import Social, { SocialBlock } from '@blocks/social';
 import Spacer, { SpacerBlock } from '@blocks/spacer';
 import Template from '@blocks/templates';
 import { Section } from '@typings/page';
@@ -136,6 +137,18 @@ const Blocks: React.FC<BlocksProps> = ({ sections, markdown, path = '' }) => {
                 flexAlign={props.flexAlign}
               />
             );
+          case Template.SOCIAL:
+            return (
+              <Social
+                facebook={props.facebook}
+                facebookUrl={props.facebookUrl}
+                title={props.title}
+                twitter={props.twitter}
+                twitterUrl={props.twitterUrl}
+                rss={props.rss}
+                flexAlign={props.flexAlign}
+              />
+            );
           default:
             return null;
         }
@@ -162,6 +175,7 @@ export const sectionsQuery = graphql`
       ...BlogPostListBlock
       ...GridBlock
       ...SocialShareBlock
+      ...SocialBlock
     }
   }
 `;
@@ -179,6 +193,7 @@ export const asideQuery = graphql`
       ...BlogPostGridAsideBlock
       ...BlogPostListAsideBlock
       ...SocialShareAsideBlock
+      ...SocialAsideBlock
     }
   }
 `;
@@ -209,6 +224,7 @@ export const pageBlocks = {
     SpacerBlock,
     TitleBlock,
     SocialShareBlock,
+    SocialBlock,
   },
 };
 
@@ -227,5 +243,6 @@ export const asideBlocks = {
     SpacerBlock,
     TitleBlock,
     SocialShareBlock,
+    SocialBlock,
   },
 };
