@@ -7,13 +7,15 @@ import { TitleTag } from '@typings/form';
 interface PageTitleProps {
   align: CSSProperties['textAlign'];
   color: string;
+  backgroundColor: string;
   margin: number;
   tag: TitleTag;
 }
 
-const PageTitle: React.FC<PageTitleProps> = ({ align, color, margin, tag, children }) => {
+const PageTitle: React.FC<PageTitleProps> = ({ align, color, margin, tag, backgroundColor, children }) => {
   const Title = styled[tag]({
     color,
+    backgroundColor,
     textAlign: align,
     margin: `${margin}em 0`,
   });
@@ -34,6 +36,11 @@ export const TitleBlock = {
     {
       label: 'color',
       name: 'color',
+      component: 'color',
+    },
+    {
+      label: 'background color',
+      name: 'backgroundColor',
       component: 'color',
     },
     {
@@ -59,6 +66,7 @@ export const TitleBlock = {
   defaultItem: {
     title: 'un titre',
     color: '#000',
+    backgroundColor: '#fff',
     align: 'center',
     margin: 2,
     tag: 'h2',
@@ -69,6 +77,7 @@ export const TitleFragment = graphql`
   fragment TitleBlock on PagesJsonSections {
     title
     color
+    backgroundColor
     align
     margin
     tag
@@ -79,6 +88,7 @@ export const TitleColsFragment = graphql`
   fragment TitleColsBlock on PagesJsonSectionsCols {
     title
     color
+    backgroundColor
     align
     margin
     tag
@@ -89,6 +99,7 @@ export const TitleAsideFragment = graphql`
   fragment TitleAsideBlock on PagesJsonAside {
     title
     color
+    backgroundColor
     align
     margin
     tag

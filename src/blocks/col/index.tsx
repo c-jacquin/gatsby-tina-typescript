@@ -21,7 +21,13 @@ const Col: React.FC<ColProps> = ({ _template, hmargin, vmargin, vpadding, hpaddi
         switch (_template) {
           case Template.TITLE:
             return (
-              <PageTitle align={props.align} color={props.color} margin={props.margin} tag={props.tag}>
+              <PageTitle
+                align={props.align}
+                color={props.color}
+                margin={props.margin}
+                tag={props.tag}
+                backgroundColor={props.backgroundColor}
+              >
                 {props.title}
               </PageTitle>
             );

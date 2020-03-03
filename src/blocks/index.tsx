@@ -58,7 +58,14 @@ const Blocks: React.FC<BlocksProps> = ({ sections, markdown, path = '' }) => {
             return <BlogPostList limit={props.limit} key={idx} />;
           case Template.TITLE:
             return (
-              <PageTitle align={props.align} color={props.color} margin={props.margin} tag={props.tag} key={idx}>
+              <PageTitle
+                align={props.align}
+                color={props.color}
+                margin={props.margin}
+                tag={props.tag}
+                backgroundColor={props.backgroundColor}
+                key={idx}
+              >
                 {props.title}
               </PageTitle>
             );

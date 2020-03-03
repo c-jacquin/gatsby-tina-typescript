@@ -15,6 +15,16 @@
   },
   "sections": [
     {
+      "title": "un titre",
+      "color": "#000",
+      "backgroundColor": "#CD2C2C",
+      "align": "center",
+      "margin": 2,
+      "tag": "h2",
+      "_template": "TitleBlock",
+      "content": ""
+    },
+    {
       "limit": 4,
       "_template": "BlogPostGridBlock",
       "content": ""

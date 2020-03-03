@@ -53,6 +53,7 @@ export interface Col {
   twitterUrl: string;
   rss: boolean;
   url: string;
+  backgroundColor: string;
   flexAlign: string;
   _template: string;
 }
@@ -105,6 +106,7 @@ export interface Section {
   url: string;
   facebookUrl: string;
   twitterUrl: string;
+  backgroundColor: string;
 }
 
 export interface Aside {
@@ -144,6 +146,7 @@ export interface Aside {
   flexAlign: string;
   facebookUrl: string;
   twitterUrl: string;
+  backgroundColor: string;
 }
 
 export interface Keyword {
