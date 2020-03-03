@@ -92,6 +92,8 @@ export interface Header {
   height: number;
   heightLg: number;
   opacity: number;
+  fixed: boolean;
+  animated: boolean;
 }
 
 export interface Footer {

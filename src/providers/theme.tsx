@@ -79,6 +79,8 @@ const ThemeProvider: React.FC = ({ children }) => {
           activeLinkColor
           height
           heightLg
+          fixed
+          animated
         }
         footer {
           height

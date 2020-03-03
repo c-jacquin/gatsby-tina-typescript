@@ -76,8 +76,10 @@
     "withLogo": true,
     "sideMenuType": "slide",
     "height": 45,
-    "heightLg": 60,
-    "opacity": 0.6
+    "heightLg": 64,
+    "opacity": 0,
+    "fixed": false,
+    "animated": false
   },
   "footer": {
     "height": 100

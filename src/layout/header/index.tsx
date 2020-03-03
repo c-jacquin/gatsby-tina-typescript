@@ -16,7 +16,7 @@ import { HeaderContainer, Navbar, NavigationLink, HeaderLogo, MenuButton } from 
 const Header: React.FC = () => {
   const {
     settingsJson: {
-      header: { withLogo, linkSpace, color, fontSize, activeLinkColor },
+      header: { withLogo, linkSpace, color, fontSize, activeLinkColor, fixed, animated },
     },
     menus: { menus },
     site: { logo },
@@ -38,6 +38,8 @@ const Header: React.FC = () => {
           linkSpace
           withLogo
           activeLinkColor
+          fixed
+          animated
         }
       }
       menus: settingsJson(fileRelativePath: { regex: "/menus/" }) {
@@ -67,7 +69,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <HeaderContainer isTop={isTop} scrollDirection={scrollDirection}>
+    <HeaderContainer isTop={isTop} scrollDirection={scrollDirection} fixed={fixed} animated={animated}>
       <MenuButton isOpen={isMenuOpen} onClick={toggleMenu} />
       {withLogo && !!logo && <HeaderLogo fluid={logo.childImageSharp.fluid} />}
       <Navbar>
@@ -158,6 +160,16 @@ export const headerField = {
       min: 0,
       max: 100,
       step: 1,
+    },
+    {
+      label: 'fixed',
+      name: 'fixed',
+      component: 'toggle',
+    },
+    {
+      label: 'animated',
+      name: 'animated',
+      component: 'toggle',
     },
   ],
 };

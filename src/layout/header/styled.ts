@@ -19,24 +19,29 @@ function getHeaderTransform(isTop: boolean, scrollDirection: SCROLL_DIRECTION | 
   }
 }
 
-export const HeaderContainer = styled.header<{ isTop: boolean; scrollDirection?: SCROLL_DIRECTION | null }>(
-  ({ theme, isTop, scrollDirection }: any) => ({
-    padding: `0 ${theme.dimensions.containerPadding}`,
-    backgroundColor: transparentize(theme.header.opacity, theme.header.backgroundColor),
-    height: `${theme.header.height}px`,
-    transition: 'transform 0.3s linear',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    zIndex: 11,
-    transform: getHeaderTransform(isTop, scrollDirection, theme),
-    [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
-      height: `${theme.header.heightLg}px`,
-      display: 'flex',
-    },
-  }),
-);
+interface HeaderContainerProps {
+  isTop: boolean;
+  scrollDirection: SCROLL_DIRECTION | null;
+  fixed: boolean;
+  animated: boolean;
+}
+
+export const HeaderContainer = styled.header<HeaderContainerProps>(({ theme, isTop, scrollDirection, fixed, animated }: any) => ({
+  padding: `0 ${theme.dimensions.containerPadding}`,
+  backgroundColor: transparentize(theme.header.opacity, theme.header.backgroundColor),
+  height: `${theme.header.height}px`,
+  transition: animated ? 'transform 0.3s linear' : 'inherit',
+  position: fixed ? 'fixed' : 'static',
+  top: 0,
+  left: 0,
+  width: '100%',
+  zIndex: 11,
+  transform: animated ? getHeaderTransform(isTop, scrollDirection, theme) : 'inherit',
+  [`@media(min-width: ${theme.dimensions.breakpoints.lg}px)`]: {
+    height: `${theme.header.heightLg}px`,
+    display: 'flex',
+  },
+}));
 
 export const Navbar = styled.nav(({ theme }: any) => ({
   display: 'none',
