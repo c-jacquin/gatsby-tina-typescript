@@ -122,6 +122,7 @@ module.exports = {
               defaultCommitMessage: 'chore(cms): Edited with TinaCMS',
               defaultCommitName: process.env.AUTHOR_NAME,
               defaultCommitEmail: process.env.GIT_AUTHOR_EMAIL,
+              gitRemote: 'git@github.com:charjac/cmb-website.git',
               pushOnCommit: true,
               sshKey: process.env.SSH_KEY,
             },
