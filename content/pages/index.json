@@ -15,6 +15,29 @@
   },
   "sections": [
     {
+      "title": "un titre",
+      "color": "#000",
+      "backgroundColor": "#fff",
+      "align": "center",
+      "margin": 2,
+      "tag": "h2",
+      "container": {
+        "marginTop": 0,
+        "marginRight": 0,
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "paddingTop": 0,
+        "paddingRight": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "flex": 0,
+        "flexJustify": "center",
+        "backgroundColor": ""
+      },
+      "_template": "TitleBlock",
+      "content": ""
+    },
+    {
       "limit": 0,
       "container": {
         "marginTop": 0,
