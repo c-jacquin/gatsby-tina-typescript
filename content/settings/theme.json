@@ -53,7 +53,7 @@
     "monospace": "Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace, monospace"
   },
   "hero": {
-    "image": "../assets/images/smarties.jpg",
+    "image": "../assets/images/logo-big.png",
     "headline": "Yooo !!",
     "textline": "BAR ! ! ! ! !",
     "large": true,

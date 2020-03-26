@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 export const PostGridContainer = styled.section(({ theme }: any) => ({
   display: 'grid',
   gridGap: '1rem',
-  padding: '1rem',
+  // padding: '1rem',
   margin: '0 auto',
 
   [`@media(min-width: ${theme.dimensions.breakpoints.md}px)`]: {

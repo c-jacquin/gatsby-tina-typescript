@@ -1,8 +1,8 @@
 ---
-title: amazing action
-description: lalala
-image: ../assets/images/larger.jpg
-path: /amazing-action
+title: demo
+description: i am a demo
+image: ../assets/images/logo-big.png
+path: /demo
 date: '2020-02-18T00:00:00.000Z'
 map: false
 share: true
@@ -16,6 +16,6 @@ location:
   address: 'Lueng Bata, Banda Aceh, Aceh, 23123, Indonésie'
 ---
 
-sdf
+Yo
 
-sfsdfsfsdf fsf sf sf sfs
+I am a demo !!!

@@ -8,16 +8,15 @@ interface PageTitleProps {
   align: CSSProperties['textAlign'];
   color: string;
   backgroundColor: string;
-  margin: number;
   tag: TitleTag;
 }
 
-const PageTitle: React.FC<PageTitleProps> = ({ align, color, margin, tag, backgroundColor, children }) => {
+const PageTitle: React.FC<PageTitleProps> = ({ align, color, tag, backgroundColor, children }) => {
   const Title = styled[tag]({
     color,
     backgroundColor,
     textAlign: align,
-    margin: `${margin}em 0`,
+    margin: 0,
   });
 
   return <Title>{children}</Title>;
@@ -47,14 +46,6 @@ export const TitleBlock = {
       label: 'align',
       name: 'align',
       component: 'text',
-    },
-    {
-      label: 'vertical margin',
-      name: 'margin',
-      component: 'slider',
-      min: 0,
-      max: 5,
-      step: 0.1,
     },
     {
       label: 'title tag type',
@@ -97,6 +88,17 @@ export const TitleColsFragment = graphql`
 
 export const TitleAsideFragment = graphql`
   fragment TitleAsideBlock on PagesJsonAside {
+    title
+    color
+    backgroundColor
+    align
+    margin
+    tag
+  }
+`;
+
+export const TitleColsColsFragment = graphql`
+  fragment TitleColsColsBlock on PagesJsonSectionsColsCols {
     title
     color
     backgroundColor

@@ -94,3 +94,9 @@ export const BlogPostListAsideFragment = graphql`
     limit
   }
 `;
+
+export const BlogPostListColsColsFragment = graphql`
+  fragment BlogPostListColsColsBlock on PagesJsonSectionsColsCols {
+    limit
+  }
+`;

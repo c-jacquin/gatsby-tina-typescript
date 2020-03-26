@@ -4,7 +4,7 @@
   "layout": "2col",
   "hasFooter": true,
   "hero": {
-    "image": "../assets/images/smarties.jpg",
+    "image": "../assets/images/logo-big.png",
     "headline": "Yooo !!",
     "textline": "BAR ! ! ! ! !",
     "large": false,
@@ -15,64 +15,25 @@
   },
   "sections": [
     {
-      "title": "un titre",
-      "color": "#000",
-      "backgroundColor": "#CD2C2C",
-      "align": "center",
-      "margin": 2,
-      "tag": "h2",
-      "_template": "TitleBlock",
-      "content": ""
-    },
-    {
-      "limit": 4,
+      "limit": 0,
+      "container": {
+        "marginTop": 0,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "paddingTop": 0,
+        "paddingRight": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "flex": 0,
+        "flexJustify": "center",
+        "backgroundColor": ""
+      },
       "_template": "BlogPostGridBlock",
       "content": ""
     }
   ],
-  "aside": [
-    {
-      "_template": "NewsletterBlock",
-      "apiUrl": "https://getform.io/f/a5310e1c-3aa0-4eb5-b88e-23fb551d47d5",
-      "title": "Inscrivez vous à la newletter !",
-      "fieldErrorMessage": "Entrez une adresse mail valide",
-      "errorMessage": "Une erreur est surevenue veuillez reesayer plus tard.",
-      "successMessage": "Merci pour votre inscription"
-    },
-    {
-      "_template": "BlogPostListBlock",
-      "limit": 3
-    },
-    {
-      "email": true,
-      "facebook": true,
-      "twitter": true,
-      "whatsapp": false,
-      "url": "",
-      "title": "Partagez la page",
-      "flexAlign": "center",
-      "_template": "SocialShareBlock"
-    },
-    {
-      "rss": true,
-      "facebook": true,
-      "twitter": true,
-      "facebookUrl": "",
-      "twitterUrl": "",
-      "title": "Suivez nous",
-      "_template": "SocialBlock",
-      "flexAlign": "center"
-    },
-    {
-      "lat": 40,
-      "lng": 127.43,
-      "zoom": 4,
-      "height": 300,
-      "width": 219,
-      "flexMap": false,
-      "_template": "MapBlock"
-    }
-  ],
+  "aside": [],
   "seo": {
     "description": "",
     "keywords": [

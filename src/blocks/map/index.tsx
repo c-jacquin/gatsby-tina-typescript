@@ -123,3 +123,14 @@ export const MapAsideFragment = graphql`
     flexMap
   }
 `;
+
+export const MapColsColsFragment = graphql`
+  fragment MapColsColsBlock on PagesJsonSectionsColsCols {
+    lat
+    lng
+    zoom
+    height
+    width
+    flexMap
+  }
+`;

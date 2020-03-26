@@ -16,7 +16,7 @@ const Slider: React.FC<FieldProps> = ({ input, field, meta }) => {
       <label htmlFor={input.name}>{field.label || field.name}</label>
       <div>{field.description}</div>
       <RangeWrapper>
-        <RangeInput {...input} min={field.min} max={field.max} step={field.step} type="range" onChange={handleChange} />
+        <RangeInput {...input} min={field.min} max={field.max} step={field.step} type="number" onChange={handleChange} />
         <span>{input.value}</span>
       </RangeWrapper>
       <div className="field-error">{meta.error}</div>

@@ -112,3 +112,15 @@ export const socialAsideFragment = graphql`
     flexAlign
   }
 `;
+
+export const socialColsColsFragment = graphql`
+  fragment SocialShareColsColsBlock on PagesJsonSectionsColsCols {
+    facebook
+    twitter
+    email
+    whatsapp
+    url
+    title
+    flexAlign
+  }
+`;

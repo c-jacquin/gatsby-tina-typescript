@@ -16,10 +16,6 @@
   "sections": [
     {
       "_template": "Setup",
-      "hpadding": 0,
-      "vpadding": 0,
-      "hmargin": 0,
-      "vmargin": 0,
       "flexAlign": "",
       "title": "",
       "align": "",
@@ -70,12 +66,104 @@
           "fieldErrorMessage": ""
         }
       ],
+      "container": {
+        "marginTop": 0.1,
+        "marginBottom": 0.1,
+        "marginLeft": 0.1,
+        "marginRight": 0.1,
+        "paddingTop": 0.1,
+        "paddingBottom": 0.1,
+        "paddingLeft": 0.1,
+        "paddingRight": 0.1,
+        "flex": 0.1,
+        "backgroundColor": "",
+        "flexJustify": ""
+      },
       "cols": [
         {
-          "hpadding": 0,
-          "vpadding": 0,
-          "hmargin": 0,
-          "vmargin": 0,
+          "cols": [
+            {
+              "container": {
+                "marginTop": 0,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "paddingTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "flex": 0,
+                "backgroundColor": "",
+                "flexJustify": ""
+              },
+              "width": 0,
+              "height": 0,
+              "opacity": 0,
+              "parallax": 0,
+              "lat": 0,
+              "lng": 0,
+              "zoom": 0,
+              "limit": 0,
+              "xlCol": 4,
+              "lgCol": 3,
+              "mdCol": 2,
+              "smCol": 1,
+              "gutter": 0.5,
+              "errorMessage": "",
+              "successMessage": "",
+              "fieldErrorMessage": "",
+              "image": "../assets/images/logo-big.png",
+              "email": true,
+              "facebook": true,
+              "twitter": true,
+              "whatsapp": true,
+              "rss": true,
+              "url": "",
+              "title": "",
+              "color": "",
+              "backgroundColor": "",
+              "align": "",
+              "margin": 0,
+              "tag": "",
+              "flex": 1,
+              "flexMap": false,
+              "content": "",
+              "style": "",
+              "submitLabel": "",
+              "apiUrl": "",
+              "flexAlign": "",
+              "twitterUrl": "",
+              "facebookUrl": "",
+              "fields": [
+                {
+                  "name": "",
+                  "type": "",
+                  "required": false,
+                  "label": "",
+                  "fieldErrorMessage": ""
+                }
+              ],
+              "_template": ""
+            }
+          ],
+          "container": {
+            "marginTop": 0,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "paddingTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "flex": 0,
+            "backgroundColor": "",
+            "flexJustify": ""
+          },
+          "xlCol": 4,
+          "lgCol": 3,
+          "mdCol": 2,
+          "smCol": 1,
+          "gutter": 0.5,
           "width": 0,
           "height": 0,
           "opacity": 0,
@@ -126,6 +214,19 @@
   "aside": [
     {
       "_template": "Setup",
+      "container": {
+        "marginTop": 0,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "paddingTop": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "flex": 0,
+        "backgroundColor": "",
+        "flexJustify": ""
+      },
       "title": "",
       "align": "",
       "color": "",
@@ -160,6 +261,7 @@
       "url": "",
       "twitterUrl": "",
       "facebookUrl": "",
+      "flexAlign": "",
       "fields": [
         {
           "name": "",

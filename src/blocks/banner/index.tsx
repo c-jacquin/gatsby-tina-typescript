@@ -122,3 +122,14 @@ export const BannerAsideFragment = graphql`
     color
   }
 `;
+
+export const BannerColsColsFragment = graphql`
+  fragment BannerColsColsBlock on PagesJsonSectionsColsCols {
+    tag
+    parallax
+    opacity
+    height
+    title
+    color
+  }
+`;

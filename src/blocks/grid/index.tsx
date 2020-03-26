@@ -2,25 +2,27 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import { BannerBlock } from '@blocks/banner';
-import Col, { makeColBlock } from '@blocks/col';
-import { containerForm } from '@blocks/common';
 import { FormBlock } from '@blocks/form';
 import { ImageBlock } from '@blocks/image';
 import { MapBlock } from '@blocks/map';
 import { ContentBlock } from '@blocks/md-content';
 import { NewsletterBlock } from '@blocks/newsletter';
 import { TitleBlock } from '@blocks/title';
-import { Col as ColProps } from '@typings/page';
+import { CellProps } from '@typings/page';
+
 import { GridWrapper, GridWrapperProps } from './styled';
 
+import Cell from './cell';
+import { containerizeBlock } from './cell/container';
+
 interface GridProps extends GridWrapperProps {
-  cols: ColProps[];
+  cols: CellProps[];
 }
 
 const Grid: React.FC<GridProps> = ({ cols, ...style }) => (
   <GridWrapper {...style}>
     {cols.map(props => (
-      <Col {...props} />
+      <Cell {...props} />
     ))}
   </GridWrapper>
 );
@@ -30,7 +32,6 @@ export default Grid;
 export const GridBlock = {
   label: 'Grid',
   fields: [
-    ...containerForm,
     {
       label: 'column on huge device',
       name: 'xlCol',
@@ -76,13 +77,13 @@ export const GridBlock = {
       name: 'cols',
       component: 'blocks',
       templates: {
-        ContentBlock: makeColBlock(ContentBlock),
-        MapBlock: makeColBlock(MapBlock),
-        FormBlock: makeColBlock(FormBlock),
-        TitleBlock: makeColBlock(TitleBlock),
-        NewsletterBlock: makeColBlock(NewsletterBlock),
-        BannerBlock: makeColBlock(BannerBlock),
-        ImageBlock: makeColBlock(ImageBlock),
+        ContentBlock: containerizeBlock(ContentBlock),
+        MapBlock: containerizeBlock(MapBlock),
+        FormBlock: containerizeBlock(FormBlock),
+        TitleBlock: containerizeBlock(TitleBlock),
+        NewsletterBlock: containerizeBlock(NewsletterBlock),
+        BannerBlock: containerizeBlock(BannerBlock),
+        ImageBlock: containerizeBlock(ImageBlock),
       },
     },
   ],
@@ -104,5 +105,16 @@ export const gridFragment = graphql`
     smCol
     gutter
     ...ColsBlock
+  }
+`;
+
+export const gridColsFragment = graphql`
+  fragment GridColsBlock on PagesJsonSectionsCols {
+    xlCol
+    lgCol
+    mdCol
+    smCol
+    gutter
+    ...ColsColsBlock
   }
 `;

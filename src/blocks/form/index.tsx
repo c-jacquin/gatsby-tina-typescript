@@ -23,7 +23,7 @@ const emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")
 const Form: React.FC<FormProps> = ({ fields, submitLabel, errorMessage, successMessage, apiUrl }) => {
   const [hasServerError, setHasServerError] = useState(false);
   const [isPending, setIsPending] = useState(false);
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState<string | undefined>();
   const { register, handleSubmit, errors, reset } = useForm({
     mode: 'onBlur',
   });
@@ -228,6 +228,21 @@ export const FormColsFragment = graphql`
 
 export const FormAsideFragment = graphql`
   fragment FormAsideBlock on PagesJsonAside {
+    errorMessage
+    submitLabel
+    successMessage
+    fields {
+      label
+      type
+      required
+      name
+      fieldErrorMessage
+    }
+  }
+`;
+
+export const FormColsColsFragment = graphql`
+  fragment FormColsColsBlock on PagesJsonSectionsColsCols {
     errorMessage
     submitLabel
     successMessage

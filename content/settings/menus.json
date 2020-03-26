@@ -6,18 +6,6 @@
         {
           "label": "Acceuil",
           "path": "/"
-        },
-        {
-          "label": "Actions",
-          "path": "/actions"
-        },
-        {
-          "label": "A propos",
-          "path": "/about"
-        },
-        {
-          "label": "Contact",
-          "path": "/contact"
         }
       ]
     },

@@ -20,7 +20,7 @@ interface NewsletterFormProps {
 const NewsletterForm: React.FC<NewsletterFormProps> = ({ apiUrl, title, errorMessage, fieldErrorMessage, successMessage }) => {
   const [hasServerError, setHasServerError] = useState(false);
   const [isPending, setIsPending] = useState(false);
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState<string | undefined>();
   const { register, handleSubmit, errors, reset } = useForm();
 
   const onSubmit = useCallback(
@@ -141,6 +141,16 @@ export const NewsletterColsFragment = graphql`
 `;
 export const NewsletterAsideFragment = graphql`
   fragment NewsletterAsideBlock on PagesJsonAside {
+    apiUrl
+    title
+    fieldErrorMessage
+    errorMessage
+    successMessage
+  }
+`;
+
+export const NewsletterColsColsFragment = graphql`
+  fragment NewsletterColsColsBlock on PagesJsonSectionsColsCols {
     apiUrl
     title
     fieldErrorMessage

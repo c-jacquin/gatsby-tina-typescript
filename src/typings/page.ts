@@ -2,6 +2,31 @@ import { CSSProperties } from 'react';
 
 import { TitleTag, Field } from './form';
 import { ImageSharp } from './image';
+import { Site } from './site';
+
+export interface CellProps extends Section {
+  container: Container;
+  _template: string;
+  markdown: any;
+  site: Site;
+  path: string;
+}
+
+export interface Container {
+  marginTop: number;
+  marginBottom: number;
+  marginLeft: number;
+  marginRight: number;
+
+  paddingTop: number;
+  paddingBottom: number;
+  paddingLeft: number;
+  paddingRight: number;
+
+  backgroundColor: string;
+  flex: number;
+  flexJustify: 'flext-start' | 'center' | 'flex-end';
+}
 
 export interface Hero {
   image: ImageSharp;
@@ -60,10 +85,7 @@ export interface Col {
 
 export interface Section {
   _template: string;
-  hpadding: number;
-  vpadding: number;
-  hmargin: number;
-  vmargin: number;
+  container: Container;
   flexAlign: string;
   title: string;
   align: CSSProperties['textAlign'];
@@ -92,7 +114,7 @@ export interface Section {
   submitLabel: string;
   successMessage: string;
   fields: Field[];
-  cols: Col[];
+  cols: CellProps[];
   xlCol: number;
   lgCol: number;
   mdCol: number;
