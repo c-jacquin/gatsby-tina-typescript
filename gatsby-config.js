@@ -72,7 +72,7 @@ module.exports = {
               urlOverrides: [
                 {
                   id: 'youtube',
-                  embedURL: videoId => `https://www.youtube-nocookie.com/embed/${videoId}`,
+                  embedURL: (videoId) => `https://www.youtube-nocookie.com/embed/${videoId}`,
                 },
               ],
             },
@@ -120,9 +120,10 @@ module.exports = {
             options: {
               pathToRepo: __dirname,
               defaultCommitMessage: 'chore(cms): Edited with TinaCMS',
-              defaultCommitName: 'TinaCMS',
-              defaultCommitEmail: 'git@tinacms.org',
+              defaultCommitName: process.env.AUTHOR_NAME,
+              defaultCommitEmail: process.env.GIT_AUTHOR_EMAIL,
               pushOnCommit: true,
+              sshKey: process.env.SSH_KEY,
             },
           },
         ],
@@ -159,7 +160,7 @@ module.exports = {
             }) => {
               return allMarkdownRemark.edges
                 .filter(({ node }) => !!node.frontmatter.path)
-                .map(edge => {
+                .map((edge) => {
                   return Object.assign({}, edge.node.frontmatter, {
                     description: edge.node.excerpt,
                     date: edge.node.frontmatter.date,
