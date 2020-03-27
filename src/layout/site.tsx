@@ -125,7 +125,7 @@ const menusForm = {
         ...menu,
       }),
       defaultItem: () => ({
-        name: 'main',
+        name: 'a new menu',
         link: [
           {
             label: 'a page',
@@ -219,12 +219,12 @@ const BlogPostCreator = new RemarkCreatorPlugin({
     { name: 'date', label: 'Date', component: 'date', required: true },
     { name: 'location', label: 'Place', component: 'location' },
   ],
-  filename: form => {
+  filename: (form) => {
     const slug = form.title.replace(/\s+/, '-').toLowerCase();
 
     return `content/blog/${slug}.md`;
   },
-  frontmatter: form => ({
+  frontmatter: (form) => ({
     ...form,
     path: `/${form.title.replace(/\s+/, '-').toLowerCase()}`,
     ownHero: true,
@@ -249,12 +249,12 @@ const PageCreator = new JsonCreatorPlugin({
     { name: 'layout', label: 'Layout', component: 'select', options: ['1col', '2col', 'paper'] },
     { name: 'hasFooter', label: 'has Footer ?', component: 'toggle' },
   ] as any,
-  filename: form => {
+  filename: (form) => {
     const slug = form.label.replace(/\s+/, '-').toLowerCase();
 
     return `content/pages/${slug}.json`;
   },
-  data: form => ({
+  data: (form) => ({
     ...form,
     path: form.path || `/${form.label.replace(/\s+/, '-').toLowerCase()}`,
     sections: [],
