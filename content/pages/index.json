@@ -2,7 +2,7 @@
   "path": "/",
   "label": "Acceuil",
   "layout": "2col",
-  "hasFooter": true,
+  "hasFooter": false,
   "hero": {
     "image": "../assets/images/logo-big.png",
     "headline": "Yooo !!",
@@ -15,7 +15,7 @@
   },
   "sections": [
     {
-      "title": "un titre",
+      "title": "Test d",
       "color": "#000",
       "backgroundColor": "#fff",
       "align": "center",
